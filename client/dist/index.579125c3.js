@@ -1,4 +1,4 @@
-export default [
+const data = [
   {
     id: 1,
     title: "Amazon Kindle E-reader",
@@ -8,7 +8,7 @@ export default [
   {
     id: 2,
     title: "Apple 10.5-Inch iPad Pro",
-    quantity: 0,
+    quantity: 3,
     price: 649.99,
   },
   {
@@ -24,3 +24,13 @@ export default [
     price: 13.74,
   },
 ];
+const root = React.createRoot(document.getElementById("root"));
+const App = () => {
+  return React.createElement("h1", null, "Hello world");
+};
+_c = App;
+root.render();
+var _c;
+$RefreshReg$(_c, "App");
+
+//# sourceMappingURL=index.579125c3.js.map
