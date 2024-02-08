@@ -2,7 +2,6 @@ import Header from "./Header";
 import AddForm from "./AddForm";
 import ProductListing from "./ProductListing";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { fetchProducts, addNewProduct } from "../services/productService";
 
 const App = () => {
@@ -39,16 +38,14 @@ const App = () => {
       <Header />
       <main>
         <ProductListing products={products} />
-        {addProductVisible ? (
+        {
           <AddForm
             onCancelClick={handleCancelClick}
             onAddProductSubmit={handleAddProductSubmit}
+            visible={addProductVisible}
+            setVisible={setAddProductVisible}
           />
-        ) : (
-          <button onClick={() => setAddProductVisible(true)}>
-            Add a product
-          </button>
-        )}
+        }
       </main>
     </div>
   );

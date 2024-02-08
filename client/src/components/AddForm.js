@@ -1,14 +1,9 @@
 import { useState } from "react";
 
-const AddForm = ({ onCancelClick, onAddProductSubmit }) => {
+const AddForm = ({ onAddProductSubmit, visible, setVisible }) => {
   const [title, setTitle] = useState("");
   const [quantity, setQuantity] = useState("");
   const [price, setPrice] = useState("");
-
-  const handleCancelClick = (e) => {
-    e.preventDefault();
-    onCancelClick();
-  };
 
   const reset = () => {
     setTitle("");
@@ -26,10 +21,18 @@ const AddForm = ({ onCancelClick, onAddProductSubmit }) => {
     onAddProductSubmit(newProduct, reset);
   };
 
+  let className = "add-form";
+
+  if (visible) {
+    className += " visible";
+  }
+
   return (
-    <div className="add-form visible">
+    <div className={className}>
       <p>
-        <button className="add-product-button">Add A Product</button>
+        <button className="add-product-button" onClick={() => setVisible(true)}>
+          Add A Product
+        </button>
       </p>
       <h3>Add Product</h3>
       <form onSubmit={handleSubmit}>
@@ -71,7 +74,7 @@ const AddForm = ({ onCancelClick, onAddProductSubmit }) => {
         </div>
         <div className="actions form-actions">
           <button type="submit">Add</button>
-          <button type="button" onClick={handleCancelClick}>
+          <button type="button" onClick={() => setVisible(false)}>
             Cancel
           </button>
         </div>
