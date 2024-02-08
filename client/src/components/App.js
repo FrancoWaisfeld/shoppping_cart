@@ -2,7 +2,11 @@ import Header from "./Header";
 import AddForm from "./AddForm";
 import ProductListing from "./ProductListing";
 import { useEffect, useState } from "react";
-import { fetchProducts, addNewProduct } from "../services/productService";
+import {
+  fetchProducts,
+  addNewProduct,
+  updateProduct,
+} from "../services/productService";
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -14,11 +18,6 @@ const App = () => {
       setProducts(data);
     })();
   }, []);
-
-  const handleCancelClick = () => {
-    // TODO form reset
-    setAddProductVisible(false);
-  };
 
   const handleAddProductSubmit = async (newProduct, callback) => {
     try {
@@ -33,14 +32,32 @@ const App = () => {
     }
   };
 
+  const handleEditProductSubmit = async (product, callback) => {
+    try {
+      const { data } = await updateProduct(product);
+      const newProducts = products.map((product) =>
+        product._id == data._id ? data : product,
+      );
+      setProducts(newProducts);
+
+      if (callback) {
+        callback();
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return (
     <div id="app">
       <Header />
       <main>
-        <ProductListing products={products} />
+        <ProductListing
+          products={products}
+          onEditProductSubmit={handleEditProductSubmit}
+        />
         {
           <AddForm
-            onCancelClick={handleCancelClick}
             onAddProductSubmit={handleAddProductSubmit}
             visible={addProductVisible}
             setVisible={setAddProductVisible}

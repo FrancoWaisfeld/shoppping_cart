@@ -12,3 +12,12 @@ export const addNewProduct = async (newProduct) => {
   });
   return result;
 };
+
+export const updateProduct = async ({ id, title, price, quantity }) => {
+  const result = await axios.put(`/api/products/${id}`, {
+    title,
+    price,
+    quantity,
+  });
+  return result;
+};
