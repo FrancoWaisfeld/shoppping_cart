@@ -1,4 +1,4 @@
-import Product from "./Product";
+import EditableProduct from "./EditableProduct";
 
 const ProductListing = ({ products, onEditProductSubmit }) => {
   return (
@@ -6,7 +6,7 @@ const ProductListing = ({ products, onEditProductSubmit }) => {
       <h2>Products</h2>
       <ul className="product-list">
         {products.map((product) => (
-          <Product
+          <EditableProduct
             key={product._id}
             product={product}
             onEditProductSubmit={onEditProductSubmit}
