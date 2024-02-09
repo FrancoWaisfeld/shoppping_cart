@@ -21,3 +21,7 @@ export const updateProduct = async ({ id, title, price, quantity }) => {
   });
   return result;
 };
+
+export const deleteProduct = async (id) => {
+  await axios.delete(`/api/products/${id}`);
+};

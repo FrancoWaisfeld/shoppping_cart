@@ -1,4 +1,4 @@
-const Product = ({ product, setEditFormVisible }) => {
+const Product = ({ product, setEditFormVisible, onDeleteClick }) => {
   return (
     <div className="product-details">
       <h3>{product.title}</h3>
@@ -12,7 +12,10 @@ const Product = ({ product, setEditFormVisible }) => {
           Edit
         </button>
       </div>
-      <button className="delete-button">
+      <button
+        className="delete-button"
+        onClick={() => onDeleteClick(product._id)}
+      >
         <span>X</span>
       </button>
     </div>

@@ -27369,22 +27369,31 @@ const App = ()=>{
             console.error(e);
         }
     };
+    const handleDeleteClick = async (productId)=>{
+        try {
+            await (0, _productService.deleteProduct)(productId);
+            setProducts(products.filter((product)=>product._id !== productId));
+        } catch (e) {
+            console.error(e);
+        }
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         id: "app",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerDefault.default), {}, void 0, false, {
                 fileName: "src/components/App.js",
-                lineNumber: 53,
+                lineNumber: 63,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _productListingDefault.default), {
                         products: products,
-                        onEditProductSubmit: handleEditProductSubmit
+                        onEditProductSubmit: handleEditProductSubmit,
+                        onDeleteClick: handleDeleteClick
                     }, void 0, false, {
                         fileName: "src/components/App.js",
-                        lineNumber: 55,
+                        lineNumber: 65,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _addFormDefault.default), {
@@ -27393,19 +27402,19 @@ const App = ()=>{
                         setVisible: setAddProductVisible
                     }, void 0, false, {
                         fileName: "src/components/App.js",
-                        lineNumber: 60,
+                        lineNumber: 71,
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/App.js",
-                lineNumber: 54,
+                lineNumber: 64,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/App.js",
-        lineNumber: 52,
+        lineNumber: 62,
         columnNumber: 5
     }, undefined);
 };
@@ -27679,7 +27688,7 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _editableProduct = require("./EditableProduct");
 var _editableProductDefault = parcelHelpers.interopDefault(_editableProduct);
-const ProductListing = ({ products, onEditProductSubmit })=>{
+const ProductListing = ({ products, onEditProductSubmit, onDeleteClick })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "product-listing",
         children: [
@@ -27694,7 +27703,8 @@ const ProductListing = ({ products, onEditProductSubmit })=>{
                 className: "product-list",
                 children: products.map((product)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _editableProductDefault.default), {
                         product: product,
-                        onEditProductSubmit: onEditProductSubmit
+                        onEditProductSubmit: onEditProductSubmit,
+                        onDeleteClick: onDeleteClick
                     }, product._id, false, {
                         fileName: "src/components/ProductListing.js",
                         lineNumber: 9,
@@ -27738,7 +27748,7 @@ var _editForm = require("./EditForm");
 var _editFormDefault = parcelHelpers.interopDefault(_editForm);
 var _react = require("react");
 var _s = $RefreshSig$();
-const EditableProduct = ({ product, onEditProductSubmit })=>{
+const EditableProduct = ({ product, onEditProductSubmit, onDeleteClick })=>{
     _s();
     const [editFormVisible, setEditFormVisible] = (0, _react.useState)(false);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -27746,7 +27756,8 @@ const EditableProduct = ({ product, onEditProductSubmit })=>{
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _productDefault.default), {
                 product: product,
-                setEditFormVisible: setEditFormVisible
+                setEditFormVisible: setEditFormVisible,
+                onDeleteClick: onDeleteClick
             }, void 0, false, {
                 fileName: "src/components/EditableProduct.js",
                 lineNumber: 10,
@@ -27758,7 +27769,7 @@ const EditableProduct = ({ product, onEditProductSubmit })=>{
                 onEditProductSubmit: onEditProductSubmit
             }, void 0, false, {
                 fileName: "src/components/EditableProduct.js",
-                lineNumber: 12,
+                lineNumber: 16,
                 columnNumber: 9
             }, undefined)
         ]
@@ -27789,7 +27800,7 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-const Product = ({ product, setEditFormVisible })=>{
+const Product = ({ product, setEditFormVisible, onDeleteClick })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "product-details",
         children: [
@@ -27851,11 +27862,12 @@ const Product = ({ product, setEditFormVisible })=>{
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                 className: "delete-button",
+                onClick: ()=>onDeleteClick(product._id),
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                     children: "X"
                 }, void 0, false, {
                     fileName: "src/components/Product.js",
-                    lineNumber: 16,
+                    lineNumber: 19,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
@@ -28078,6 +28090,7 @@ const AddForm = ({ onAddProductSubmit, visible, setVisible })=>{
         setTitle("");
         setQuantity("");
         setPrice("");
+        setVisible(false);
     };
     const handleSubmit = (e)=>{
         e.preventDefault();
@@ -28100,19 +28113,19 @@ const AddForm = ({ onAddProductSubmit, visible, setVisible })=>{
                     children: "Add A Product"
                 }, void 0, false, {
                     fileName: "src/components/AddForm.js",
-                    lineNumber: 33,
+                    lineNumber: 34,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/AddForm.js",
-                lineNumber: 32,
+                lineNumber: 33,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                 children: "Add Product"
             }, void 0, false, {
                 fileName: "src/components/AddForm.js",
-                lineNumber: 37,
+                lineNumber: 38,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -28126,7 +28139,7 @@ const AddForm = ({ onAddProductSubmit, visible, setVisible })=>{
                                 children: "Product Name:"
                             }, void 0, false, {
                                 fileName: "src/components/AddForm.js",
-                                lineNumber: 40,
+                                lineNumber: 41,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -28138,13 +28151,13 @@ const AddForm = ({ onAddProductSubmit, visible, setVisible })=>{
                                 required: true
                             }, void 0, false, {
                                 fileName: "src/components/AddForm.js",
-                                lineNumber: 41,
+                                lineNumber: 42,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/AddForm.js",
-                        lineNumber: 39,
+                        lineNumber: 40,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -28155,7 +28168,7 @@ const AddForm = ({ onAddProductSubmit, visible, setVisible })=>{
                                 children: "Price:"
                             }, void 0, false, {
                                 fileName: "src/components/AddForm.js",
-                                lineNumber: 51,
+                                lineNumber: 52,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -28169,13 +28182,13 @@ const AddForm = ({ onAddProductSubmit, visible, setVisible })=>{
                                 required: true
                             }, void 0, false, {
                                 fileName: "src/components/AddForm.js",
-                                lineNumber: 52,
+                                lineNumber: 53,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/AddForm.js",
-                        lineNumber: 50,
+                        lineNumber: 51,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -28186,7 +28199,7 @@ const AddForm = ({ onAddProductSubmit, visible, setVisible })=>{
                                 children: "Quantity:"
                             }, void 0, false, {
                                 fileName: "src/components/AddForm.js",
-                                lineNumber: 64,
+                                lineNumber: 65,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -28199,13 +28212,13 @@ const AddForm = ({ onAddProductSubmit, visible, setVisible })=>{
                                 required: true
                             }, void 0, false, {
                                 fileName: "src/components/AddForm.js",
-                                lineNumber: 65,
+                                lineNumber: 66,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/AddForm.js",
-                        lineNumber: 63,
+                        lineNumber: 64,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -28216,7 +28229,7 @@ const AddForm = ({ onAddProductSubmit, visible, setVisible })=>{
                                 children: "Add"
                             }, void 0, false, {
                                 fileName: "src/components/AddForm.js",
-                                lineNumber: 76,
+                                lineNumber: 77,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28225,25 +28238,25 @@ const AddForm = ({ onAddProductSubmit, visible, setVisible })=>{
                                 children: "Cancel"
                             }, void 0, false, {
                                 fileName: "src/components/AddForm.js",
-                                lineNumber: 77,
+                                lineNumber: 78,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/AddForm.js",
-                        lineNumber: 75,
+                        lineNumber: 76,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/AddForm.js",
-                lineNumber: 38,
+                lineNumber: 39,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/AddForm.js",
-        lineNumber: 31,
+        lineNumber: 32,
         columnNumber: 5
     }, undefined);
 };
@@ -28264,6 +28277,7 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "fetchProducts", ()=>fetchProducts);
 parcelHelpers.export(exports, "addNewProduct", ()=>addNewProduct);
 parcelHelpers.export(exports, "updateProduct", ()=>updateProduct);
+parcelHelpers.export(exports, "deleteProduct", ()=>deleteProduct);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 const fetchProducts = async ()=>{
@@ -28284,6 +28298,9 @@ const updateProduct = async ({ id, title, price, quantity })=>{
         quantity
     });
     return result;
+};
+const deleteProduct = async (id)=>{
+    await (0, _axiosDefault.default).delete(`/api/products/${id}`);
 };
 
 },{"axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jo6P5":[function(require,module,exports) {

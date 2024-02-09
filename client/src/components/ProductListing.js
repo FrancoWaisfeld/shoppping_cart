@@ -1,6 +1,6 @@
 import EditableProduct from "./EditableProduct";
 
-const ProductListing = ({ products, onEditProductSubmit }) => {
+const ProductListing = ({ products, onEditProductSubmit, onDeleteClick }) => {
   return (
     <div className="product-listing">
       <h2>Products</h2>
@@ -10,6 +10,7 @@ const ProductListing = ({ products, onEditProductSubmit }) => {
             key={product._id}
             product={product}
             onEditProductSubmit={onEditProductSubmit}
+            onDeleteClick={onDeleteClick}
           />
         ))}
       </ul>

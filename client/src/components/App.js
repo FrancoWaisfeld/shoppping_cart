@@ -6,6 +6,7 @@ import {
   fetchProducts,
   addNewProduct,
   updateProduct,
+  deleteProduct,
 } from "../services/productService";
 
 const App = () => {
@@ -48,6 +49,15 @@ const App = () => {
     }
   };
 
+  const handleDeleteClick = async (productId) => {
+    try {
+      await deleteProduct(productId);
+      setProducts(products.filter((product) => product._id !== productId));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return (
     <div id="app">
       <Header />
@@ -55,6 +65,7 @@ const App = () => {
         <ProductListing
           products={products}
           onEditProductSubmit={handleEditProductSubmit}
+          onDeleteClick={handleDeleteClick}
         />
         {
           <AddForm

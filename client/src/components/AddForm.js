@@ -9,6 +9,7 @@ const AddForm = ({ onAddProductSubmit, visible, setVisible }) => {
     setTitle("");
     setQuantity("");
     setPrice("");
+    setVisible(false);
   };
 
   const handleSubmit = (e) => {
