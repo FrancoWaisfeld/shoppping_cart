@@ -27339,15 +27339,23 @@ var _productListing = require("./ProductListing");
 var _productListingDefault = parcelHelpers.interopDefault(_productListing);
 var _react = require("react");
 var _productService = require("../services/productService");
+var _cartService = require("../services/cartService");
 var _s = $RefreshSig$();
 const App = ()=>{
     _s();
     const [products, setProducts] = (0, _react.useState)([]);
+    const [cart, setCart] = (0, _react.useState)([]);
     const [addProductVisible, setAddProductVisible] = (0, _react.useState)(false);
     (0, _react.useEffect)(()=>{
         (async ()=>{
             const data = await (0, _productService.fetchProducts)();
             setProducts(data);
+        })();
+    }, []);
+    (0, _react.useEffect)(()=>{
+        (async ()=>{
+            const data = await (0, _cartService.fetchCart)();
+            setCart(data);
         })();
     }, []);
     const handleAddProductSubmit = async (newProduct, callback)=>{
@@ -27380,9 +27388,11 @@ const App = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         id: "app",
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerDefault.default), {}, void 0, false, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerDefault.default), {
+                cart: cart
+            }, void 0, false, {
                 fileName: "src/components/App.js",
-                lineNumber: 63,
+                lineNumber: 72,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
@@ -27393,7 +27403,7 @@ const App = ()=>{
                         onDeleteClick: handleDeleteClick
                     }, void 0, false, {
                         fileName: "src/components/App.js",
-                        lineNumber: 65,
+                        lineNumber: 74,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _addFormDefault.default), {
@@ -27402,23 +27412,23 @@ const App = ()=>{
                         setVisible: setAddProductVisible
                     }, void 0, false, {
                         fileName: "src/components/App.js",
-                        lineNumber: 71,
+                        lineNumber: 80,
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/App.js",
-                lineNumber: 64,
+                lineNumber: 73,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/App.js",
-        lineNumber: 62,
+        lineNumber: 71,
         columnNumber: 5
     }, undefined);
 };
-_s(App, "k2wxNd9x+svgjyeaIN9fZpOw9pU=");
+_s(App, "zC71s65dK7VwMfI9DdS7/BOClPk=");
 _c = App;
 exports.default = App;
 var _c;
@@ -27429,7 +27439,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","react/jsx-dev-runtime":"iTorj","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Header":"hsJbF","./ProductListing":"83Yr4","react":"21dqq","./AddForm":"9FxpF","../services/productService":"hN7Za"}],"hsJbF":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","react/jsx-dev-runtime":"iTorj","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Header":"hsJbF","./ProductListing":"83Yr4","react":"21dqq","./AddForm":"9FxpF","../services/productService":"hN7Za","../services/cartService":"dMYeP"}],"hsJbF":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$bfed = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27439,72 +27449,29 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _cartItems = require("./CartItems");
-var _cartItemsDefault = parcelHelpers.interopDefault(_cartItems);
-const Header = ()=>{
-    const cartItems = {
-        length: 1,
-        total: 49.99
-    };
+var _cart = require("./Cart");
+var _cartDefault = parcelHelpers.interopDefault(_cart);
+const Header = ({ cart })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("header", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
                 children: "The Shop!"
             }, void 0, false, {
                 fileName: "src/components/Header.js",
-                lineNumber: 7,
+                lineNumber: 6,
                 columnNumber: 7
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "cart",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                        children: "Your Cart"
-                    }, void 0, false, {
-                        fileName: "src/components/Header.js",
-                        lineNumber: 9,
-                        columnNumber: 9
-                    }, undefined),
-                    cartItems.length > 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cartItemsDefault.default), {}, void 0, false, {
-                        fileName: "src/components/Header.js",
-                        lineNumber: 10,
-                        columnNumber: 33
-                    }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                        children: "Your cart is empty"
-                    }, void 0, false, {
-                        fileName: "src/components/Header.js",
-                        lineNumber: 10,
-                        columnNumber: 49
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                        children: [
-                            "Total: $",
-                            cartItems.total
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/Header.js",
-                        lineNumber: 11,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        className: "checkout",
-                        disabled: true,
-                        children: "Checkout"
-                    }, void 0, false, {
-                        fileName: "src/components/Header.js",
-                        lineNumber: 12,
-                        columnNumber: 9
-                    }, undefined)
-                ]
-            }, void 0, true, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cartDefault.default), {
+                cart: cart
+            }, void 0, false, {
                 fileName: "src/components/Header.js",
-                lineNumber: 8,
+                lineNumber: 7,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/Header.js",
-        lineNumber: 6,
+        lineNumber: 5,
         columnNumber: 5
     }, undefined);
 };
@@ -27518,7 +27485,69 @@ $RefreshReg$(_c, "Header");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./CartItems":"fu7yu"}],"fu7yu":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./Cart":"h8J3U"}],"h8J3U":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$ad24 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$ad24.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _cartItems = require("./CartItems");
+var _cartItemsDefault = parcelHelpers.interopDefault(_cartItems);
+const Cart = ({ cart })=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "cart",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                children: "Your Cart"
+            }, void 0, false, {
+                fileName: "src/components/Cart.js",
+                lineNumber: 6,
+                columnNumber: 7
+            }, undefined),
+            cart.length > 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cartItemsDefault.default), {
+                cart: cart
+            }, void 0, false, {
+                fileName: "src/components/Cart.js",
+                lineNumber: 7,
+                columnNumber: 26
+            }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                children: "Your cart is empty"
+            }, void 0, false, {
+                fileName: "src/components/Cart.js",
+                lineNumber: 7,
+                columnNumber: 54
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                className: "checkout",
+                disabled: cart.length === 0,
+                children: "Checkout"
+            }, void 0, false, {
+                fileName: "src/components/Cart.js",
+                lineNumber: 8,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/Cart.js",
+        lineNumber: 5,
+        columnNumber: 5
+    }, undefined);
+};
+_c = Cart;
+exports.default = Cart;
+var _c;
+$RefreshReg$(_c, "Cart");
+
+  $parcel$ReactRefreshHelpers$ad24.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","./CartItems":"fu7yu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"fu7yu":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$1824 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27528,9 +27557,11 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-const CartItems = ()=>{
+var _helpers = require("../utils/helpers");
+var _cartItem = require("./CartItem");
+var _cartItemDefault = parcelHelpers.interopDefault(_cartItem);
+const CartItems = ({ cart })=>{
+    console.log(cart);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("table", {
         className: "cart-items",
         children: [
@@ -27542,7 +27573,7 @@ const CartItems = ()=>{
                             children: "Item"
                         }, void 0, false, {
                             fileName: "src/components/CartItems.js",
-                            lineNumber: 8,
+                            lineNumber: 10,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
@@ -27550,7 +27581,7 @@ const CartItems = ()=>{
                             children: "Quantity"
                         }, void 0, false, {
                             fileName: "src/components/CartItems.js",
-                            lineNumber: 9,
+                            lineNumber: 11,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
@@ -27558,84 +27589,31 @@ const CartItems = ()=>{
                             children: "Price"
                         }, void 0, false, {
                             fileName: "src/components/CartItems.js",
-                            lineNumber: 10,
+                            lineNumber: 12,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/CartItems.js",
-                    lineNumber: 7,
+                    lineNumber: 9,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/CartItems.js",
-                lineNumber: 6,
+                lineNumber: 8,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tbody", {
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tr", {
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
-                                children: "Amazon Kindle E-reader"
-                            }, void 0, false, {
-                                fileName: "src/components/CartItems.js",
-                                lineNumber: 15,
-                                columnNumber: 11
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
-                                children: "2"
-                            }, void 0, false, {
-                                fileName: "src/components/CartItems.js",
-                                lineNumber: 16,
-                                columnNumber: 11
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
-                                children: "$79.99"
-                            }, void 0, false, {
-                                fileName: "src/components/CartItems.js",
-                                lineNumber: 17,
-                                columnNumber: 11
-                            }, undefined)
-                        ]
-                    }, void 0, true, {
+                children: cart.map((cartItem)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cartItemDefault.default), {
+                        cartItem: cartItem
+                    }, cartItem._id, false, {
                         fileName: "src/components/CartItems.js",
-                        lineNumber: 14,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tr", {
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
-                                children: "Apple 10.5-Inch iPad Pro"
-                            }, void 0, false, {
-                                fileName: "src/components/CartItems.js",
-                                lineNumber: 20,
-                                columnNumber: 11
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
-                                children: "1"
-                            }, void 0, false, {
-                                fileName: "src/components/CartItems.js",
-                                lineNumber: 21,
-                                columnNumber: 11
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
-                                children: "$649.99"
-                            }, void 0, false, {
-                                fileName: "src/components/CartItems.js",
-                                lineNumber: 22,
-                                columnNumber: 11
-                            }, undefined)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/CartItems.js",
-                        lineNumber: 19,
-                        columnNumber: 9
-                    }, undefined)
-                ]
-            }, void 0, true, {
+                        lineNumber: 17,
+                        columnNumber: 11
+                    }, undefined))
+            }, void 0, false, {
                 fileName: "src/components/CartItems.js",
-                lineNumber: 13,
+                lineNumber: 15,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tfoot", {
@@ -27643,26 +27621,29 @@ const CartItems = ()=>{
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
                         colSpan: "3",
                         className: "total",
-                        children: "Total: $729.98"
-                    }, void 0, false, {
+                        children: [
+                            "Total: $",
+                            (0, _helpers.calculateCartTotal)(cart)
+                        ]
+                    }, void 0, true, {
                         fileName: "src/components/CartItems.js",
-                        lineNumber: 27,
+                        lineNumber: 22,
                         columnNumber: 11
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/CartItems.js",
-                    lineNumber: 26,
+                    lineNumber: 21,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/CartItems.js",
-                lineNumber: 25,
+                lineNumber: 20,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/CartItems.js",
-        lineNumber: 5,
+        lineNumber: 7,
         columnNumber: 5
     }, undefined);
 };
@@ -27676,7 +27657,70 @@ $RefreshReg$(_c, "CartItems");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"83Yr4":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./CartItem":"h762k","../utils/helpers":"3mrwQ"}],"h762k":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$48cf = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$48cf.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+const CartItem = ({ cartItem })=>{
+    const { title, quantity, price } = cartItem;
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tr", {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
+                children: title
+            }, void 0, false, {
+                fileName: "src/components/CartItem.js",
+                lineNumber: 6,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
+                children: quantity
+            }, void 0, false, {
+                fileName: "src/components/CartItem.js",
+                lineNumber: 7,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
+                children: [
+                    "$",
+                    price
+                ]
+            }, void 0, true, {
+                fileName: "src/components/CartItem.js",
+                lineNumber: 8,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/CartItem.js",
+        lineNumber: 5,
+        columnNumber: 5
+    }, undefined);
+};
+_c = CartItem;
+exports.default = CartItem;
+var _c;
+$RefreshReg$(_c, "CartItem");
+
+  $parcel$ReactRefreshHelpers$48cf.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"3mrwQ":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "calculateCartTotal", ()=>calculateCartTotal);
+const calculateCartTotal = (items)=>{
+    return items.reduce((acc, item)=>acc + item.price * item.quantity, 0);
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"83Yr4":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$e46a = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -32678,6 +32722,39 @@ Object.entries(HttpStatusCode).forEach(([key, value])=>{
 });
 exports.default = HttpStatusCode;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["4rkIz","1xC6H","8lqZg"], "8lqZg", "parcelRequiree8ef")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dMYeP":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "fetchCart", ()=>fetchCart);
+var _axios = require("axios");
+var _axiosDefault = parcelHelpers.interopDefault(_axios);
+const testItems = [
+    {
+        _id: "545454f72092473d55a809e1",
+        title: "Kindle",
+        price: 50,
+        quantity: 3,
+        productId: "61d754d72092473d55a809e1",
+        createdAt: "2020-10-04T05:57:02.777Z",
+        updatedAt: "2020-10-04T05:57:02.777Z",
+        _v: 0
+    },
+    {
+        _id: "51d754d72092473333a809e1",
+        title: "Mac Mini",
+        price: 850,
+        quantity: 2,
+        productId: "51d754d72092473333a809e1",
+        createdAt: "2020-10-04T05:57:02.777Z",
+        updatedAt: "2020-10-04T05:57:02.777Z",
+        _v: 0
+    }
+];
+const fetchCart = async ()=>{
+    const { data } = await (0, _axiosDefault.default).get("/api/cart");
+    return data;
+};
+
+},{"axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["4rkIz","1xC6H","8lqZg"], "8lqZg", "parcelRequiree8ef")
 
 //# sourceMappingURL=index.975ef6c8.js.map

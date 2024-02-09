@@ -1,6 +1,8 @@
-import React from "react";
+import { calculateCartTotal } from "../utils/helpers";
+import CartItem from "./CartItem";
 
-const CartItems = () => {
+const CartItems = ({ cart }) => {
+  console.log(cart);
   return (
     <table className="cart-items">
       <thead>
@@ -11,21 +13,14 @@ const CartItems = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Amazon Kindle E-reader</td>
-          <td>2</td>
-          <td>$79.99</td>
-        </tr>
-        <tr>
-          <td>Apple 10.5-Inch iPad Pro</td>
-          <td>1</td>
-          <td>$649.99</td>
-        </tr>
+        {cart.map((cartItem) => (
+          <CartItem key={cartItem._id} cartItem={cartItem} />
+        ))}
       </tbody>
       <tfoot>
         <tr>
           <td colSpan="3" className="total">
-            Total: $729.98
+            Total: ${calculateCartTotal(cart)}
           </td>
         </tr>
       </tfoot>

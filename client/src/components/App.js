@@ -8,15 +8,24 @@ import {
   updateProduct,
   deleteProduct,
 } from "../services/productService";
+import { fetchCart } from "../services/cartService";
 
 const App = () => {
   const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
   const [addProductVisible, setAddProductVisible] = useState(false);
 
   useEffect(() => {
     (async () => {
       const data = await fetchProducts();
       setProducts(data);
+    })();
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      const data = await fetchCart();
+      setCart(data);
     })();
   }, []);
 
@@ -60,7 +69,7 @@ const App = () => {
 
   return (
     <div id="app">
-      <Header />
+      <Header cart={cart} />
       <main>
         <ProductListing
           products={products}

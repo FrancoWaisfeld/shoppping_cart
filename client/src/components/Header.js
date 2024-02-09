@@ -1,18 +1,10 @@
-import CartItems from "./CartItems";
+import Cart from "./Cart";
 
-const Header = () => {
-  const cartItems = { length: 1, total: 49.99 };
+const Header = ({ cart }) => {
   return (
     <header>
       <h1>The Shop!</h1>
-      <div className="cart">
-        <h2>Your Cart</h2>
-        {cartItems.length > 0 ? <CartItems /> : <p>Your cart is empty</p>}
-        <p>Total: ${cartItems.total}</p>
-        <button className="checkout" disabled>
-          Checkout
-        </button>
-      </div>
+      <Cart cart={cart} />
     </header>
   );
 };
