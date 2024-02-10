@@ -27388,17 +27388,12 @@ const App = ()=>{
     };
     const handleAddToCart = async (id)=>{
         try {
-            let swapped = false;
+            let newCart;
             const data = await (0, _cartService.addToCart)(id);
             const { product, item } = data;
-            const newCart = cart.map((ele)=>{
-                if (ele._id === item._id) {
-                    swapped = true;
-                    return item;
-                } else return ele;
-            });
-            if (!swapped) newCart.concat(data);
             const newProducts = (0, _helpers.replaceItemInArray)(products, product);
+            if (cart.some((ele)=>ele._id === item._id)) newCart = (0, _helpers.replaceItemInArray)(cart, item);
+            else newCart = cart.concat(item);
             setProducts(newProducts);
             setCart(newCart);
         } catch (e) {
@@ -27412,7 +27407,7 @@ const App = ()=>{
                 cart: cart
             }, void 0, false, {
                 fileName: "src/components/App.js",
-                lineNumber: 96,
+                lineNumber: 92,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
@@ -27424,7 +27419,7 @@ const App = ()=>{
                         onAddToCart: handleAddToCart
                     }, void 0, false, {
                         fileName: "src/components/App.js",
-                        lineNumber: 98,
+                        lineNumber: 94,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _addFormDefault.default), {
@@ -27433,19 +27428,19 @@ const App = ()=>{
                         setVisible: setAddProductVisible
                     }, void 0, false, {
                         fileName: "src/components/App.js",
-                        lineNumber: 105,
+                        lineNumber: 101,
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/App.js",
-                lineNumber: 97,
+                lineNumber: 93,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/App.js",
-        lineNumber: 95,
+        lineNumber: 91,
         columnNumber: 5
     }, undefined);
 };

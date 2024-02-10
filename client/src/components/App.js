@@ -68,22 +68,18 @@ const App = () => {
 
   const handleAddToCart = async (id) => {
     try {
-      let swapped = false;
+      let newCart;
       const data = await addToCart(id);
       const { product, item } = data;
 
-      const newCart = cart.map((ele) => {
-        if (ele._id === item._id) {
-          swapped = true;
-          return item;
-        } else {
-          return ele;
-        }
-      });
-
-      if (!swapped) newCart.concat(data);
-
       const newProducts = replaceItemInArray(products, product);
+
+      if (cart.some((ele) => ele._id === item._id)) {
+        newCart = replaceItemInArray(cart, item);
+      } else {
+        newCart = cart.concat(item);
+      }
+
       setProducts(newProducts);
       setCart(newCart);
     } catch (e) {
