@@ -33,3 +33,7 @@ export const addToCart = async (productId) => {
   console.log(data);
   return data;
 };
+
+export const checkoutCart = async () => {
+  await axios.post("/api/checkout");
+};

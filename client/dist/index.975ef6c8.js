@@ -27400,14 +27400,23 @@ const App = ()=>{
             console.error(e);
         }
     };
+    const handleCheckout = async ()=>{
+        try {
+            await (0, _cartService.checkoutCart)();
+            setCart([]);
+        } catch (error) {
+            console.error(error);
+        }
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         id: "app",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerDefault.default), {
-                cart: cart
+                cart: cart,
+                onCheckout: handleCheckout
             }, void 0, false, {
                 fileName: "src/components/App.js",
-                lineNumber: 92,
+                lineNumber: 101,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
@@ -27419,7 +27428,7 @@ const App = ()=>{
                         onAddToCart: handleAddToCart
                     }, void 0, false, {
                         fileName: "src/components/App.js",
-                        lineNumber: 94,
+                        lineNumber: 103,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _addFormDefault.default), {
@@ -27428,19 +27437,19 @@ const App = ()=>{
                         setVisible: setAddProductVisible
                     }, void 0, false, {
                         fileName: "src/components/App.js",
-                        lineNumber: 101,
+                        lineNumber: 110,
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/App.js",
-                lineNumber: 93,
+                lineNumber: 102,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/App.js",
-        lineNumber: 91,
+        lineNumber: 100,
         columnNumber: 5
     }, undefined);
 };
@@ -27467,7 +27476,7 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _cart = require("./Cart");
 var _cartDefault = parcelHelpers.interopDefault(_cart);
-const Header = ({ cart })=>{
+const Header = ({ cart, onCheckout })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("header", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
@@ -27478,7 +27487,8 @@ const Header = ({ cart })=>{
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cartDefault.default), {
-                cart: cart
+                cart: cart,
+                onCheckout: onCheckout
             }, void 0, false, {
                 fileName: "src/components/Header.js",
                 lineNumber: 7,
@@ -27513,7 +27523,7 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _cartItems = require("./CartItems");
 var _cartItemsDefault = parcelHelpers.interopDefault(_cartItems);
-const Cart = ({ cart })=>{
+const Cart = ({ cart, onCheckout })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "cart",
         children: [
@@ -27540,6 +27550,7 @@ const Cart = ({ cart })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                 className: "checkout",
                 disabled: cart.length === 0,
+                onClick: ()=>onCheckout(),
                 children: "Checkout"
             }, void 0, false, {
                 fileName: "src/components/Cart.js",
@@ -32752,6 +32763,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "fetchCart", ()=>fetchCart);
 parcelHelpers.export(exports, "addToCart", ()=>addToCart);
+parcelHelpers.export(exports, "checkoutCart", ()=>checkoutCart);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 const testItems = [
@@ -32786,6 +32798,9 @@ const addToCart = async (productId)=>{
     });
     console.log(data);
     return data;
+};
+const checkoutCart = async ()=>{
+    await (0, _axiosDefault.default).post("/api/checkout");
 };
 
 },{"axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["4rkIz","1xC6H","8lqZg"], "8lqZg", "parcelRequiree8ef")

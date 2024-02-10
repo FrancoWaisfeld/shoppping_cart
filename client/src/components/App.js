@@ -8,7 +8,7 @@ import {
   updateProduct,
   deleteProduct,
 } from "../services/productService";
-import { addToCart, fetchCart } from "../services/cartService";
+import { addToCart, checkoutCart, fetchCart } from "../services/cartService";
 import { replaceItemInArray } from "../utils/helpers";
 
 const App = () => {
@@ -87,9 +87,18 @@ const App = () => {
     }
   };
 
+  const handleCheckout = async () => {
+    try {
+      await checkoutCart();
+      setCart([]);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div id="app">
-      <Header cart={cart} />
+      <Header cart={cart} onCheckout={handleCheckout} />
       <main>
         <ProductListing
           products={products}
