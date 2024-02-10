@@ -27,3 +27,9 @@ export const fetchCart = async () => {
   const { data } = await axios.get("/api/cart");
   return data;
 };
+
+export const addToCart = async (productId) => {
+  const { data } = await axios.post(`/api/add-to-cart/`, { productId });
+  console.log(data);
+  return data;
+};

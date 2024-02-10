@@ -8,7 +8,8 @@ import {
   updateProduct,
   deleteProduct,
 } from "../services/productService";
-import { fetchCart } from "../services/cartService";
+import { addToCart, fetchCart } from "../services/cartService";
+import { replaceItemInArray } from "../utils/helpers";
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -45,9 +46,7 @@ const App = () => {
   const handleEditProductSubmit = async (product, callback) => {
     try {
       const { data } = await updateProduct(product);
-      const newProducts = products.map((product) =>
-        product._id == data._id ? data : product,
-      );
+      const newProducts = replaceItemInArray(products, data);
       setProducts(newProducts);
 
       if (callback) {
@@ -67,6 +66,31 @@ const App = () => {
     }
   };
 
+  const handleAddToCart = async (id) => {
+    try {
+      let swapped = false;
+      const data = await addToCart(id);
+      const { product, item } = data;
+
+      const newCart = cart.map((ele) => {
+        if (ele._id === item._id) {
+          swapped = true;
+          return item;
+        } else {
+          return ele;
+        }
+      });
+
+      if (!swapped) newCart.concat(data);
+
+      const newProducts = replaceItemInArray(products, product);
+      setProducts(newProducts);
+      setCart(newCart);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return (
     <div id="app">
       <Header cart={cart} />
@@ -75,6 +99,7 @@ const App = () => {
           products={products}
           onEditProductSubmit={handleEditProductSubmit}
           onDeleteClick={handleDeleteClick}
+          onAddToCart={handleAddToCart}
         />
         {
           <AddForm

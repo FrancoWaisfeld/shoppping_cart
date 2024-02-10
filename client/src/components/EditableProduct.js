@@ -2,7 +2,12 @@ import Product from "./Product";
 import EditForm from "./EditForm";
 import { useState } from "react";
 
-const EditableProduct = ({ product, onEditProductSubmit, onDeleteClick }) => {
+const EditableProduct = ({
+  product,
+  onEditProductSubmit,
+  onDeleteClick,
+  onAddToCart,
+}) => {
   const [editFormVisible, setEditFormVisible] = useState(false);
 
   return (
@@ -11,6 +16,7 @@ const EditableProduct = ({ product, onEditProductSubmit, onDeleteClick }) => {
         product={product}
         setEditFormVisible={setEditFormVisible}
         onDeleteClick={onDeleteClick}
+        onAddToCart={onAddToCart}
       />
       {editFormVisible && (
         <EditForm

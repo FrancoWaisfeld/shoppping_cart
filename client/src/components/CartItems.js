@@ -2,7 +2,6 @@ import { calculateCartTotal } from "../utils/helpers";
 import CartItem from "./CartItem";
 
 const CartItems = ({ cart }) => {
-  console.log(cart);
   return (
     <table className="cart-items">
       <thead>
