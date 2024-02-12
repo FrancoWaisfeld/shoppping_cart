@@ -3,20 +3,20 @@ const Schema = mongoose.Schema;
 
 const ProductSchema = new Schema({
   title: {
-    type:String,
+    type: String,
     required: true,
     trim: true
   },
   price: {
-    type:Number,
+    type: Number,
     required: true,
   },
   quantity: {
-    type:Number,
+    type: Number,
     required: true
   }
 
-}, {timestamps: true})
+}, { timestamps: true });
 
 const Product = mongoose.model('product', ProductSchema);
 
