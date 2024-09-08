@@ -1,61 +1,68 @@
 # Shopping Cart App
 
-## Setup
+The Shopping Cart App allows users to create new products, specify quantities, and add them to a cart for checkout. This application is built using Express.js and React.js.
 
-1. Install [Node.js](https://nodejs.org/en/download/package-manager/) if you haven't already
-2. Clone this repository
-3. `cd` into the downloaded directory
-4. `cd` into server and run `npm install` from the command line to install all dependencies
+## Installation
 
-## DataBase Setup
+### Prerequisites
 
-1. Create mongoDB account - https://account.mongodb.com/account/register
-2. Create a free AWS cluster
-3. Go to `collections` (Browse Collections) and create a new database (shopping_cart) for example with two collections `products` and `cartitems`. Note: If you are going to work in pairs create two databases (for example team1_shopping and team2_shopping) and each database should have two collections `products` and `cartitems`.
-4. Under Security tab, click Database Access, and on the right `add new database user`. After you enter username and password, click `add user` at the bottom right corner.
-5. Under Security tab, click Network Access, and whitelist your IP address.
-6. Once your cluster is created, under Clusters tab, click connect and then MongoDB for VSCode and copy the connection string which will look something like this `mongodb+srv://test123:<password>@cluster0-zamyu.mongodb.net/`. Instead of `test123` there will be your username, and you will need to replace `<password>` with your password and `test` with the database name. You will have to put the name of your database after the connection string with some flags `mongodb+srv://test123:<password>@cluster0-zamyu.mongodb.net/<databaseName>?retryWrites=true&w=majority`. Change `<databaseName>` with the name of your database.
-7. Finally, inside your project folder, `cd` into server, create new file `.env` and enter `DB=<paste the string from above here>`. It will look similar to this `DB=mongodb+srv://test123:mypass@cluster0-zamyu.mongodb.net/shopping_cart?retryWrites=true&w=majority`.
+- Install [Node.js](https://nodejs.org/en/download/package-manager/) if you haven't already.
 
-## Viewing Static Version of the App
+### Steps
 
-While developing the app, you can take a look at the static pages that you'll eventually convert into a dynamic application. To do so, visit `http://localhost:5001/ui` in the browser. You are also encouraged to read and reuse the markup, classes and ids used in these static files in your components. They're located in the `/server/public/ui` folder.
+1. Clone this repository.
+2. Navigate to the downloaded directory:
 
-## Developing the app
-
-The starting point of the application is the `/client/src/index.js` file. That's where the root component of the application - `App` - is rendered to the DOM. You can add new components to the `/client/src/components` folder and new test files to the `/client/src/tests` folder.
-
-For the initial application data, you can start with the following list of products:
-
-```js
-[
-  {
-    id: 1,
-    title: "Amazon Kindle E-reader",
-    quantity: 5,
-    price: 79.99,
-  },
-  {
-    id: 2,
-    title: "Apple 10.5-Inch iPad Pro",
-    quantity: 3,
-    price: 649.99,
-  },
-  {
-    id: 3,
-    title: "Yamaha Portable Keyboard",
-    quantity: 2,
-    price: 155.99,
-  },
-  {
-    id: 4,
-    title: "Tinker, Tailor, Soldier, Spy - A John le Carre Novel",
-    quantity: 12,
-    price: 13.74,
-  },
-];
+```bash
+cd path/to/your/repository
 ```
 
-## DOCS
+3. Navigate to the server directory and install dependencies:
 
-You can find documentation in the `docs` folder in `api.md` file.
+```bash
+cd server
+npm install
+```
+
+4. Navigate to the client directory and install dependencies:
+
+```bash
+cd client
+npm install
+```
+
+### Database Setup
+
+1. Create a MongoDB account: [Register here](https://account.mongodb.com/account/register).
+2. Set up a free AWS cluster.
+3. Create a new database (e.g., `shopping_cart`) with two collections: `products` and `cartitems`.
+   - If working in pairs, create separate databases for each team (e.g., `team1_shopping`, `team2_shopping`), each with the same collections.
+4. Add a new database user under the Security tab in Database Access, providing a username and password.
+5. Whitelist your IP address under the Security tab in Network Access.
+6. Connect to your cluster:
+   - Copy the connection string from the Clusters tab (e.g., `mongodb+srv://<username>:<password>@cluster0-zamyu.mongodb.net/`).
+   - Replace `<username>`, `<password>`, and `test` with your credentials and database name.
+   - Example connection string: `mongodb+srv://test123:mypass@cluster0-zamyu.mongodb.net/shopping_cart?retryWrites=true&w=majority`.
+7. Create a `.env` file in the server directory and add your connection string:
+   ```plaintext
+   DB=mongodb+srv://<username>:<password>@cluster0-zamyu.mongodb.net/<databaseName>?retryWrites=true&w=majority
+   ```
+
+## Usage
+
+### Developing the App
+
+- The entry point of the application is `/client/src/index.js`, where the root component `App` is rendered to the DOM.
+- Add new components to the `/client/src/components` folder.
+- Add test files to the `/client/src/tests` folder.
+
+## Features
+
+- Create and manage products and quantities.
+- Add products to a shopping cart.
+- Checkout functionality.
+- Built with Express.js and React.js for a dynamic user experience.
+
+## Documentation
+
+Additional documentation can be found in the `docs` folder, specifically in the `api.md` file.

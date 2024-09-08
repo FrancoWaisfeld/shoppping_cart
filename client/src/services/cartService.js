@@ -30,7 +30,6 @@ export const fetchCart = async () => {
 
 export const addToCart = async (productId) => {
   const { data } = await axios.post(`/api/add-to-cart/`, { productId });
-  console.log(data);
   return data;
 };
 

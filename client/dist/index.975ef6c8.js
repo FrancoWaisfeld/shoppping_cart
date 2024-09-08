@@ -2946,862 +2946,25 @@ var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$20e5.prelude(module);
 
 try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _client = require("react-dom/client");
-var _clientDefault = parcelHelpers.interopDefault(_client);
-var _app = require("./components/App");
-var _appDefault = parcelHelpers.interopDefault(_app);
-const root = (0, _clientDefault.default).createRoot(document.getElementById("root"));
-root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appDefault.default), {}, void 0, false, {
-    fileName: "src/index.js",
-    lineNumber: 6,
-    columnNumber: 13
-}, undefined));
+"use strict";
+var _react = _interopRequireDefault(require("379ec07e2eead772"));
+var _client = _interopRequireDefault(require("f4376371ff5080bf"));
+var _App = _interopRequireDefault(require("ff8fc8b24a9e37f9"));
+var _jsxRuntime = require("77092f8820d6a2d3");
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+        "default": obj
+    };
+}
+var root = _client["default"].createRoot(document.getElementById("root"));
+root.render(/*#__PURE__*/ (0, _jsxRuntime.jsx)(_App["default"], {}));
 
   $parcel$ReactRefreshHelpers$20e5.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","./components/App":"ey9du","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports) {
-"use strict";
-module.exports = require("ee51401569654d91");
-
-},{"ee51401569654d91":"48uCM"}],"48uCM":[function(require,module,exports) {
-/**
- * @license React
- * react-jsx-dev-runtime.development.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */ "use strict";
-(function() {
-    "use strict";
-    var React = require("58362d9d82be395f");
-    // ATTENTION
-    // When adding new symbols to this file,
-    // Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
-    // The Symbol used to tag the ReactElement-like types.
-    var REACT_ELEMENT_TYPE = Symbol.for("react.element");
-    var REACT_PORTAL_TYPE = Symbol.for("react.portal");
-    var REACT_FRAGMENT_TYPE = Symbol.for("react.fragment");
-    var REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode");
-    var REACT_PROFILER_TYPE = Symbol.for("react.profiler");
-    var REACT_PROVIDER_TYPE = Symbol.for("react.provider");
-    var REACT_CONTEXT_TYPE = Symbol.for("react.context");
-    var REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref");
-    var REACT_SUSPENSE_TYPE = Symbol.for("react.suspense");
-    var REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list");
-    var REACT_MEMO_TYPE = Symbol.for("react.memo");
-    var REACT_LAZY_TYPE = Symbol.for("react.lazy");
-    var REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen");
-    var MAYBE_ITERATOR_SYMBOL = Symbol.iterator;
-    var FAUX_ITERATOR_SYMBOL = "@@iterator";
-    function getIteratorFn(maybeIterable) {
-        if (maybeIterable === null || typeof maybeIterable !== "object") return null;
-        var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
-        if (typeof maybeIterator === "function") return maybeIterator;
-        return null;
-    }
-    var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
-    function error(format) {
-        for(var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++)args[_key2 - 1] = arguments[_key2];
-        printWarning("error", format, args);
-    }
-    function printWarning(level, format, args) {
-        var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
-        var stack = ReactDebugCurrentFrame.getStackAddendum();
-        if (stack !== "") {
-            format += "%s";
-            args = args.concat([
-                stack
-            ]);
-        } // eslint-disable-next-line react-internal/safe-string-coercion
-        var argsWithFormat = args.map(function(item) {
-            return String(item);
-        }); // Careful: RN currently depends on this prefix
-        argsWithFormat.unshift("Warning: " + format); // We intentionally don't use spread (or .apply) directly because it
-        // breaks IE9: https://github.com/facebook/react/issues/13610
-        // eslint-disable-next-line react-internal/no-production-logging
-        Function.prototype.apply.call(console[level], console, argsWithFormat);
-    }
-    // -----------------------------------------------------------------------------
-    var enableScopeAPI = false; // Experimental Create Event Handle API.
-    var enableCacheElement = false;
-    var enableTransitionTracing = false; // No known bugs, but needs performance testing
-    var enableLegacyHidden = false; // Enables unstable_avoidThisFallback feature in Fiber
-    // stuff. Intended to enable React core members to more easily debug scheduling
-    // issues in DEV builds.
-    var enableDebugTracing = false; // Track which Fiber(s) schedule render work.
-    var REACT_MODULE_REFERENCE;
-    REACT_MODULE_REFERENCE = Symbol.for("react.module.reference");
-    function isValidElementType(type) {
-        if (typeof type === "string" || typeof type === "function") return true;
-         // Note: typeof might be other than 'symbol' or 'number' (e.g. if it's a polyfill).
-        if (type === REACT_FRAGMENT_TYPE || type === REACT_PROFILER_TYPE || enableDebugTracing || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || enableLegacyHidden || type === REACT_OFFSCREEN_TYPE || enableScopeAPI || enableCacheElement || enableTransitionTracing) return true;
-        if (typeof type === "object" && type !== null) {
-            if (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || // This needs to include all possible module reference object
-            // types supported by any Flight configuration anywhere since
-            // we don't know which Flight build this will end up being used
-            // with.
-            type.$$typeof === REACT_MODULE_REFERENCE || type.getModuleId !== undefined) return true;
-        }
-        return false;
-    }
-    function getWrappedName(outerType, innerType, wrapperName) {
-        var displayName = outerType.displayName;
-        if (displayName) return displayName;
-        var functionName = innerType.displayName || innerType.name || "";
-        return functionName !== "" ? wrapperName + "(" + functionName + ")" : wrapperName;
-    } // Keep in sync with react-reconciler/getComponentNameFromFiber
-    function getContextName(type) {
-        return type.displayName || "Context";
-    } // Note that the reconciler package should generally prefer to use getComponentNameFromFiber() instead.
-    function getComponentNameFromType(type) {
-        if (type == null) // Host root, text node or just invalid type.
-        return null;
-        if (typeof type.tag === "number") error("Received an unexpected object in getComponentNameFromType(). This is likely a bug in React. Please file an issue.");
-        if (typeof type === "function") return type.displayName || type.name || null;
-        if (typeof type === "string") return type;
-        switch(type){
-            case REACT_FRAGMENT_TYPE:
-                return "Fragment";
-            case REACT_PORTAL_TYPE:
-                return "Portal";
-            case REACT_PROFILER_TYPE:
-                return "Profiler";
-            case REACT_STRICT_MODE_TYPE:
-                return "StrictMode";
-            case REACT_SUSPENSE_TYPE:
-                return "Suspense";
-            case REACT_SUSPENSE_LIST_TYPE:
-                return "SuspenseList";
-        }
-        if (typeof type === "object") switch(type.$$typeof){
-            case REACT_CONTEXT_TYPE:
-                var context = type;
-                return getContextName(context) + ".Consumer";
-            case REACT_PROVIDER_TYPE:
-                var provider = type;
-                return getContextName(provider._context) + ".Provider";
-            case REACT_FORWARD_REF_TYPE:
-                return getWrappedName(type, type.render, "ForwardRef");
-            case REACT_MEMO_TYPE:
-                var outerName = type.displayName || null;
-                if (outerName !== null) return outerName;
-                return getComponentNameFromType(type.type) || "Memo";
-            case REACT_LAZY_TYPE:
-                var lazyComponent = type;
-                var payload = lazyComponent._payload;
-                var init = lazyComponent._init;
-                try {
-                    return getComponentNameFromType(init(payload));
-                } catch (x) {
-                    return null;
-                }
-        }
-        return null;
-    }
-    var assign = Object.assign;
-    // Helpers to patch console.logs to avoid logging during side-effect free
-    // replaying on render function. This currently only patches the object
-    // lazily which won't cover if the log function was extracted eagerly.
-    // We could also eagerly patch the method.
-    var disabledDepth = 0;
-    var prevLog;
-    var prevInfo;
-    var prevWarn;
-    var prevError;
-    var prevGroup;
-    var prevGroupCollapsed;
-    var prevGroupEnd;
-    function disabledLog() {}
-    disabledLog.__reactDisabledLog = true;
-    function disableLogs() {
-        if (disabledDepth === 0) {
-            /* eslint-disable react-internal/no-production-logging */ prevLog = console.log;
-            prevInfo = console.info;
-            prevWarn = console.warn;
-            prevError = console.error;
-            prevGroup = console.group;
-            prevGroupCollapsed = console.groupCollapsed;
-            prevGroupEnd = console.groupEnd; // https://github.com/facebook/react/issues/19099
-            var props = {
-                configurable: true,
-                enumerable: true,
-                value: disabledLog,
-                writable: true
-            }; // $FlowFixMe Flow thinks console is immutable.
-            Object.defineProperties(console, {
-                info: props,
-                log: props,
-                warn: props,
-                error: props,
-                group: props,
-                groupCollapsed: props,
-                groupEnd: props
-            });
-        /* eslint-enable react-internal/no-production-logging */ }
-        disabledDepth++;
-    }
-    function reenableLogs() {
-        disabledDepth--;
-        if (disabledDepth === 0) {
-            /* eslint-disable react-internal/no-production-logging */ var props = {
-                configurable: true,
-                enumerable: true,
-                writable: true
-            }; // $FlowFixMe Flow thinks console is immutable.
-            Object.defineProperties(console, {
-                log: assign({}, props, {
-                    value: prevLog
-                }),
-                info: assign({}, props, {
-                    value: prevInfo
-                }),
-                warn: assign({}, props, {
-                    value: prevWarn
-                }),
-                error: assign({}, props, {
-                    value: prevError
-                }),
-                group: assign({}, props, {
-                    value: prevGroup
-                }),
-                groupCollapsed: assign({}, props, {
-                    value: prevGroupCollapsed
-                }),
-                groupEnd: assign({}, props, {
-                    value: prevGroupEnd
-                })
-            });
-        /* eslint-enable react-internal/no-production-logging */ }
-        if (disabledDepth < 0) error("disabledDepth fell below zero. This is a bug in React. Please file an issue.");
-    }
-    var ReactCurrentDispatcher = ReactSharedInternals.ReactCurrentDispatcher;
-    var prefix;
-    function describeBuiltInComponentFrame(name, source, ownerFn) {
-        if (prefix === undefined) // Extract the VM specific prefix used by each line.
-        try {
-            throw Error();
-        } catch (x) {
-            var match = x.stack.trim().match(/\n( *(at )?)/);
-            prefix = match && match[1] || "";
-        }
-         // We use the prefix to ensure our stacks line up with native stack frames.
-        return "\n" + prefix + name;
-    }
-    var reentry = false;
-    var componentFrameCache;
-    var PossiblyWeakMap = typeof WeakMap === "function" ? WeakMap : Map;
-    componentFrameCache = new PossiblyWeakMap();
-    function describeNativeComponentFrame(fn, construct) {
-        // If something asked for a stack inside a fake render, it should get ignored.
-        if (!fn || reentry) return "";
-        var frame = componentFrameCache.get(fn);
-        if (frame !== undefined) return frame;
-        var control;
-        reentry = true;
-        var previousPrepareStackTrace = Error.prepareStackTrace; // $FlowFixMe It does accept undefined.
-        Error.prepareStackTrace = undefined;
-        var previousDispatcher;
-        previousDispatcher = ReactCurrentDispatcher.current; // Set the dispatcher in DEV because this might be call in the render function
-        // for warnings.
-        ReactCurrentDispatcher.current = null;
-        disableLogs();
-        try {
-            // This should throw.
-            if (construct) {
-                // Something should be setting the props in the constructor.
-                var Fake = function() {
-                    throw Error();
-                }; // $FlowFixMe
-                Object.defineProperty(Fake.prototype, "props", {
-                    set: function() {
-                        // We use a throwing setter instead of frozen or non-writable props
-                        // because that won't throw in a non-strict mode function.
-                        throw Error();
-                    }
-                });
-                if (typeof Reflect === "object" && Reflect.construct) {
-                    // We construct a different control for this case to include any extra
-                    // frames added by the construct call.
-                    try {
-                        Reflect.construct(Fake, []);
-                    } catch (x) {
-                        control = x;
-                    }
-                    Reflect.construct(fn, [], Fake);
-                } else {
-                    try {
-                        Fake.call();
-                    } catch (x) {
-                        control = x;
-                    }
-                    fn.call(Fake.prototype);
-                }
-            } else {
-                try {
-                    throw Error();
-                } catch (x) {
-                    control = x;
-                }
-                fn();
-            }
-        } catch (sample) {
-            // This is inlined manually because closure doesn't do it for us.
-            if (sample && control && typeof sample.stack === "string") {
-                // This extracts the first frame from the sample that isn't also in the control.
-                // Skipping one frame that we assume is the frame that calls the two.
-                var sampleLines = sample.stack.split("\n");
-                var controlLines = control.stack.split("\n");
-                var s = sampleLines.length - 1;
-                var c = controlLines.length - 1;
-                while(s >= 1 && c >= 0 && sampleLines[s] !== controlLines[c])// We expect at least one stack frame to be shared.
-                // Typically this will be the root most one. However, stack frames may be
-                // cut off due to maximum stack limits. In this case, one maybe cut off
-                // earlier than the other. We assume that the sample is longer or the same
-                // and there for cut off earlier. So we should find the root most frame in
-                // the sample somewhere in the control.
-                c--;
-                for(; s >= 1 && c >= 0; s--, c--)// Next we find the first one that isn't the same which should be the
-                // frame that called our sample function and the control.
-                if (sampleLines[s] !== controlLines[c]) {
-                    // In V8, the first line is describing the message but other VMs don't.
-                    // If we're about to return the first line, and the control is also on the same
-                    // line, that's a pretty good indicator that our sample threw at same line as
-                    // the control. I.e. before we entered the sample frame. So we ignore this result.
-                    // This can happen if you passed a class to function component, or non-function.
-                    if (s !== 1 || c !== 1) do {
-                        s--;
-                        c--; // We may still have similar intermediate frames from the construct call.
-                        // The next one that isn't the same should be our match though.
-                        if (c < 0 || sampleLines[s] !== controlLines[c]) {
-                            // V8 adds a "new" prefix for native classes. Let's remove it to make it prettier.
-                            var _frame = "\n" + sampleLines[s].replace(" at new ", " at "); // If our component frame is labeled "<anonymous>"
-                            // but we have a user-provided "displayName"
-                            // splice it in to make the stack more readable.
-                            if (fn.displayName && _frame.includes("<anonymous>")) _frame = _frame.replace("<anonymous>", fn.displayName);
-                            if (typeof fn === "function") componentFrameCache.set(fn, _frame);
-                            return _frame;
-                        }
-                    }while (s >= 1 && c >= 0);
-                    break;
-                }
-            }
-        } finally{
-            reentry = false;
-            ReactCurrentDispatcher.current = previousDispatcher;
-            reenableLogs();
-            Error.prepareStackTrace = previousPrepareStackTrace;
-        } // Fallback to just using the name if we couldn't make it throw.
-        var name = fn ? fn.displayName || fn.name : "";
-        var syntheticFrame = name ? describeBuiltInComponentFrame(name) : "";
-        if (typeof fn === "function") componentFrameCache.set(fn, syntheticFrame);
-        return syntheticFrame;
-    }
-    function describeFunctionComponentFrame(fn, source, ownerFn) {
-        return describeNativeComponentFrame(fn, false);
-    }
-    function shouldConstruct(Component) {
-        var prototype = Component.prototype;
-        return !!(prototype && prototype.isReactComponent);
-    }
-    function describeUnknownElementTypeFrameInDEV(type, source, ownerFn) {
-        if (type == null) return "";
-        if (typeof type === "function") return describeNativeComponentFrame(type, shouldConstruct(type));
-        if (typeof type === "string") return describeBuiltInComponentFrame(type);
-        switch(type){
-            case REACT_SUSPENSE_TYPE:
-                return describeBuiltInComponentFrame("Suspense");
-            case REACT_SUSPENSE_LIST_TYPE:
-                return describeBuiltInComponentFrame("SuspenseList");
-        }
-        if (typeof type === "object") switch(type.$$typeof){
-            case REACT_FORWARD_REF_TYPE:
-                return describeFunctionComponentFrame(type.render);
-            case REACT_MEMO_TYPE:
-                // Memo may contain any component type so we recursively resolve it.
-                return describeUnknownElementTypeFrameInDEV(type.type, source, ownerFn);
-            case REACT_LAZY_TYPE:
-                var lazyComponent = type;
-                var payload = lazyComponent._payload;
-                var init = lazyComponent._init;
-                try {
-                    // Lazy may contain any component type so we recursively resolve it.
-                    return describeUnknownElementTypeFrameInDEV(init(payload), source, ownerFn);
-                } catch (x) {}
-        }
-        return "";
-    }
-    var hasOwnProperty = Object.prototype.hasOwnProperty;
-    var loggedTypeFailures = {};
-    var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
-    function setCurrentlyValidatingElement(element) {
-        if (element) {
-            var owner = element._owner;
-            var stack = describeUnknownElementTypeFrameInDEV(element.type, element._source, owner ? owner.type : null);
-            ReactDebugCurrentFrame.setExtraStackFrame(stack);
-        } else ReactDebugCurrentFrame.setExtraStackFrame(null);
-    }
-    function checkPropTypes(typeSpecs, values, location, componentName, element) {
-        // $FlowFixMe This is okay but Flow doesn't know it.
-        var has = Function.call.bind(hasOwnProperty);
-        for(var typeSpecName in typeSpecs)if (has(typeSpecs, typeSpecName)) {
-            var error$1 = void 0; // Prop type validation may throw. In case they do, we don't want to
-            // fail the render phase where it didn't fail before. So we log it.
-            // After these have been cleaned up, we'll let them throw.
-            try {
-                // This is intentionally an invariant that gets caught. It's the same
-                // behavior as without this statement except with a better message.
-                if (typeof typeSpecs[typeSpecName] !== "function") {
-                    // eslint-disable-next-line react-internal/prod-error-codes
-                    var err = Error((componentName || "React class") + ": " + location + " type `" + typeSpecName + "` is invalid; " + "it must be a function, usually from the `prop-types` package, but received `" + typeof typeSpecs[typeSpecName] + "`." + "This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.");
-                    err.name = "Invariant Violation";
-                    throw err;
-                }
-                error$1 = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED");
-            } catch (ex) {
-                error$1 = ex;
-            }
-            if (error$1 && !(error$1 instanceof Error)) {
-                setCurrentlyValidatingElement(element);
-                error("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", componentName || "React class", location, typeSpecName, typeof error$1);
-                setCurrentlyValidatingElement(null);
-            }
-            if (error$1 instanceof Error && !(error$1.message in loggedTypeFailures)) {
-                // Only monitor this failure once because there tends to be a lot of the
-                // same error.
-                loggedTypeFailures[error$1.message] = true;
-                setCurrentlyValidatingElement(element);
-                error("Failed %s type: %s", location, error$1.message);
-                setCurrentlyValidatingElement(null);
-            }
-        }
-    }
-    var isArrayImpl = Array.isArray; // eslint-disable-next-line no-redeclare
-    function isArray(a) {
-        return isArrayImpl(a);
-    }
-    /*
- * The `'' + value` pattern (used in in perf-sensitive code) throws for Symbol
- * and Temporal.* types. See https://github.com/facebook/react/pull/22064.
- *
- * The functions in this module will throw an easier-to-understand,
- * easier-to-debug exception with a clear errors message message explaining the
- * problem. (Instead of a confusing exception thrown inside the implementation
- * of the `value` object).
- */ // $FlowFixMe only called in DEV, so void return is not possible.
-    function typeName(value) {
-        // toStringTag is needed for namespaced types like Temporal.Instant
-        var hasToStringTag = typeof Symbol === "function" && Symbol.toStringTag;
-        var type = hasToStringTag && value[Symbol.toStringTag] || value.constructor.name || "Object";
-        return type;
-    } // $FlowFixMe only called in DEV, so void return is not possible.
-    function willCoercionThrow(value) {
-        try {
-            testStringCoercion(value);
-            return false;
-        } catch (e) {
-            return true;
-        }
-    }
-    function testStringCoercion(value) {
-        // If you ended up here by following an exception call stack, here's what's
-        // happened: you supplied an object or symbol value to React (as a prop, key,
-        // DOM attribute, CSS property, string ref, etc.) and when React tried to
-        // coerce it to a string using `'' + value`, an exception was thrown.
-        //
-        // The most common types that will cause this exception are `Symbol` instances
-        // and Temporal objects like `Temporal.Instant`. But any object that has a
-        // `valueOf` or `[Symbol.toPrimitive]` method that throws will also cause this
-        // exception. (Library authors do this to prevent users from using built-in
-        // numeric operators like `+` or comparison operators like `>=` because custom
-        // methods are needed to perform accurate arithmetic or comparison.)
-        //
-        // To fix the problem, coerce this object or symbol value to a string before
-        // passing it to React. The most reliable way is usually `String(value)`.
-        //
-        // To find which value is throwing, check the browser or debugger console.
-        // Before this exception was thrown, there should be `console.error` output
-        // that shows the type (Symbol, Temporal.PlainDate, etc.) that caused the
-        // problem and how that type was used: key, atrribute, input value prop, etc.
-        // In most cases, this console output also shows the component and its
-        // ancestor components where the exception happened.
-        //
-        // eslint-disable-next-line react-internal/safe-string-coercion
-        return "" + value;
-    }
-    function checkKeyStringCoercion(value) {
-        if (willCoercionThrow(value)) {
-            error("The provided key is an unsupported type %s. This value must be coerced to a string before before using it here.", typeName(value));
-            return testStringCoercion(value); // throw (to help callers find troubleshooting comments)
-        }
-    }
-    var ReactCurrentOwner = ReactSharedInternals.ReactCurrentOwner;
-    var RESERVED_PROPS = {
-        key: true,
-        ref: true,
-        __self: true,
-        __source: true
-    };
-    var specialPropKeyWarningShown;
-    var specialPropRefWarningShown;
-    var didWarnAboutStringRefs;
-    didWarnAboutStringRefs = {};
-    function hasValidRef(config) {
-        if (hasOwnProperty.call(config, "ref")) {
-            var getter = Object.getOwnPropertyDescriptor(config, "ref").get;
-            if (getter && getter.isReactWarning) return false;
-        }
-        return config.ref !== undefined;
-    }
-    function hasValidKey(config) {
-        if (hasOwnProperty.call(config, "key")) {
-            var getter = Object.getOwnPropertyDescriptor(config, "key").get;
-            if (getter && getter.isReactWarning) return false;
-        }
-        return config.key !== undefined;
-    }
-    function warnIfStringRefCannotBeAutoConverted(config, self) {
-        if (typeof config.ref === "string" && ReactCurrentOwner.current && self && ReactCurrentOwner.current.stateNode !== self) {
-            var componentName = getComponentNameFromType(ReactCurrentOwner.current.type);
-            if (!didWarnAboutStringRefs[componentName]) {
-                error('Component "%s" contains the string ref "%s". Support for string refs will be removed in a future major release. This case cannot be automatically converted to an arrow function. We ask you to manually fix this case by using useRef() or createRef() instead. Learn more about using refs safely here: https://reactjs.org/link/strict-mode-string-ref', getComponentNameFromType(ReactCurrentOwner.current.type), config.ref);
-                didWarnAboutStringRefs[componentName] = true;
-            }
-        }
-    }
-    function defineKeyPropWarningGetter(props, displayName) {
-        var warnAboutAccessingKey = function() {
-            if (!specialPropKeyWarningShown) {
-                specialPropKeyWarningShown = true;
-                error("%s: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", displayName);
-            }
-        };
-        warnAboutAccessingKey.isReactWarning = true;
-        Object.defineProperty(props, "key", {
-            get: warnAboutAccessingKey,
-            configurable: true
-        });
-    }
-    function defineRefPropWarningGetter(props, displayName) {
-        var warnAboutAccessingRef = function() {
-            if (!specialPropRefWarningShown) {
-                specialPropRefWarningShown = true;
-                error("%s: `ref` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", displayName);
-            }
-        };
-        warnAboutAccessingRef.isReactWarning = true;
-        Object.defineProperty(props, "ref", {
-            get: warnAboutAccessingRef,
-            configurable: true
-        });
-    }
-    /**
- * Factory method to create a new React element. This no longer adheres to
- * the class pattern, so do not use new to call it. Also, instanceof check
- * will not work. Instead test $$typeof field against Symbol.for('react.element') to check
- * if something is a React Element.
- *
- * @param {*} type
- * @param {*} props
- * @param {*} key
- * @param {string|object} ref
- * @param {*} owner
- * @param {*} self A *temporary* helper to detect places where `this` is
- * different from the `owner` when React.createElement is called, so that we
- * can warn. We want to get rid of owner and replace string `ref`s with arrow
- * functions, and as long as `this` and owner are the same, there will be no
- * change in behavior.
- * @param {*} source An annotation object (added by a transpiler or otherwise)
- * indicating filename, line number, and/or other information.
- * @internal
- */ var ReactElement = function(type, key, ref, self, source, owner, props) {
-        var element = {
-            // This tag allows us to uniquely identify this as a React Element
-            $$typeof: REACT_ELEMENT_TYPE,
-            // Built-in properties that belong on the element
-            type: type,
-            key: key,
-            ref: ref,
-            props: props,
-            // Record the component responsible for creating this element.
-            _owner: owner
-        };
-        // The validation flag is currently mutative. We put it on
-        // an external backing store so that we can freeze the whole object.
-        // This can be replaced with a WeakMap once they are implemented in
-        // commonly used development environments.
-        element._store = {}; // To make comparing ReactElements easier for testing purposes, we make
-        // the validation flag non-enumerable (where possible, which should
-        // include every environment we run tests in), so the test framework
-        // ignores it.
-        Object.defineProperty(element._store, "validated", {
-            configurable: false,
-            enumerable: false,
-            writable: true,
-            value: false
-        }); // self and source are DEV only properties.
-        Object.defineProperty(element, "_self", {
-            configurable: false,
-            enumerable: false,
-            writable: false,
-            value: self
-        }); // Two elements created in two different places should be considered
-        // equal for testing purposes and therefore we hide it from enumeration.
-        Object.defineProperty(element, "_source", {
-            configurable: false,
-            enumerable: false,
-            writable: false,
-            value: source
-        });
-        if (Object.freeze) {
-            Object.freeze(element.props);
-            Object.freeze(element);
-        }
-        return element;
-    };
-    /**
- * https://github.com/reactjs/rfcs/pull/107
- * @param {*} type
- * @param {object} props
- * @param {string} key
- */ function jsxDEV(type, config, maybeKey, source, self) {
-        var propName; // Reserved names are extracted
-        var props = {};
-        var key = null;
-        var ref = null; // Currently, key can be spread in as a prop. This causes a potential
-        // issue if key is also explicitly declared (ie. <div {...props} key="Hi" />
-        // or <div key="Hi" {...props} /> ). We want to deprecate key spread,
-        // but as an intermediary step, we will use jsxDEV for everything except
-        // <div {...props} key="Hi" />, because we aren't currently able to tell if
-        // key is explicitly declared to be undefined or not.
-        if (maybeKey !== undefined) {
-            checkKeyStringCoercion(maybeKey);
-            key = "" + maybeKey;
-        }
-        if (hasValidKey(config)) {
-            checkKeyStringCoercion(config.key);
-            key = "" + config.key;
-        }
-        if (hasValidRef(config)) {
-            ref = config.ref;
-            warnIfStringRefCannotBeAutoConverted(config, self);
-        } // Remaining properties are added to a new props object
-        for(propName in config)if (hasOwnProperty.call(config, propName) && !RESERVED_PROPS.hasOwnProperty(propName)) props[propName] = config[propName];
-         // Resolve default props
-        if (type && type.defaultProps) {
-            var defaultProps = type.defaultProps;
-            for(propName in defaultProps)if (props[propName] === undefined) props[propName] = defaultProps[propName];
-        }
-        if (key || ref) {
-            var displayName = typeof type === "function" ? type.displayName || type.name || "Unknown" : type;
-            if (key) defineKeyPropWarningGetter(props, displayName);
-            if (ref) defineRefPropWarningGetter(props, displayName);
-        }
-        return ReactElement(type, key, ref, self, source, ReactCurrentOwner.current, props);
-    }
-    var ReactCurrentOwner$1 = ReactSharedInternals.ReactCurrentOwner;
-    var ReactDebugCurrentFrame$1 = ReactSharedInternals.ReactDebugCurrentFrame;
-    function setCurrentlyValidatingElement$1(element) {
-        if (element) {
-            var owner = element._owner;
-            var stack = describeUnknownElementTypeFrameInDEV(element.type, element._source, owner ? owner.type : null);
-            ReactDebugCurrentFrame$1.setExtraStackFrame(stack);
-        } else ReactDebugCurrentFrame$1.setExtraStackFrame(null);
-    }
-    var propTypesMisspellWarningShown;
-    propTypesMisspellWarningShown = false;
-    /**
- * Verifies the object is a ReactElement.
- * See https://reactjs.org/docs/react-api.html#isvalidelement
- * @param {?object} object
- * @return {boolean} True if `object` is a ReactElement.
- * @final
- */ function isValidElement(object) {
-        return typeof object === "object" && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
-    }
-    function getDeclarationErrorAddendum() {
-        if (ReactCurrentOwner$1.current) {
-            var name = getComponentNameFromType(ReactCurrentOwner$1.current.type);
-            if (name) return "\n\nCheck the render method of `" + name + "`.";
-        }
-        return "";
-    }
-    function getSourceInfoErrorAddendum(source) {
-        if (source !== undefined) {
-            var fileName = source.fileName.replace(/^.*[\\\/]/, "");
-            var lineNumber = source.lineNumber;
-            return "\n\nCheck your code at " + fileName + ":" + lineNumber + ".";
-        }
-        return "";
-    }
-    /**
- * Warn if there's no key explicitly set on dynamic arrays of children or
- * object keys are not valid. This allows us to keep track of children between
- * updates.
- */ var ownerHasKeyUseWarning = {};
-    function getCurrentComponentErrorInfo(parentType) {
-        var info = getDeclarationErrorAddendum();
-        if (!info) {
-            var parentName = typeof parentType === "string" ? parentType : parentType.displayName || parentType.name;
-            if (parentName) info = "\n\nCheck the top-level render call using <" + parentName + ">.";
-        }
-        return info;
-    }
-    /**
- * Warn if the element doesn't have an explicit key assigned to it.
- * This element is in an array. The array could grow and shrink or be
- * reordered. All children that haven't already been validated are required to
- * have a "key" property assigned to it. Error statuses are cached so a warning
- * will only be shown once.
- *
- * @internal
- * @param {ReactElement} element Element that requires a key.
- * @param {*} parentType element's parent's type.
- */ function validateExplicitKey(element, parentType) {
-        if (!element._store || element._store.validated || element.key != null) return;
-        element._store.validated = true;
-        var currentComponentErrorInfo = getCurrentComponentErrorInfo(parentType);
-        if (ownerHasKeyUseWarning[currentComponentErrorInfo]) return;
-        ownerHasKeyUseWarning[currentComponentErrorInfo] = true; // Usually the current owner is the offender, but if it accepts children as a
-        // property, it may be the creator of the child that's responsible for
-        // assigning it a key.
-        var childOwner = "";
-        if (element && element._owner && element._owner !== ReactCurrentOwner$1.current) // Give the component that originally created this child.
-        childOwner = " It was passed a child from " + getComponentNameFromType(element._owner.type) + ".";
-        setCurrentlyValidatingElement$1(element);
-        error('Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.', currentComponentErrorInfo, childOwner);
-        setCurrentlyValidatingElement$1(null);
-    }
-    /**
- * Ensure that every element either is passed in a static location, in an
- * array with an explicit keys property defined, or in an object literal
- * with valid key property.
- *
- * @internal
- * @param {ReactNode} node Statically passed child of any type.
- * @param {*} parentType node's parent's type.
- */ function validateChildKeys(node, parentType) {
-        if (typeof node !== "object") return;
-        if (isArray(node)) for(var i = 0; i < node.length; i++){
-            var child = node[i];
-            if (isValidElement(child)) validateExplicitKey(child, parentType);
-        }
-        else if (isValidElement(node)) // This element was passed in a valid location.
-        {
-            if (node._store) node._store.validated = true;
-        } else if (node) {
-            var iteratorFn = getIteratorFn(node);
-            if (typeof iteratorFn === "function") // Entry iterators used to provide implicit keys,
-            // but now we print a separate warning for them later.
-            {
-                if (iteratorFn !== node.entries) {
-                    var iterator = iteratorFn.call(node);
-                    var step;
-                    while(!(step = iterator.next()).done)if (isValidElement(step.value)) validateExplicitKey(step.value, parentType);
-                }
-            }
-        }
-    }
-    /**
- * Given an element, validate that its props follow the propTypes definition,
- * provided by the type.
- *
- * @param {ReactElement} element
- */ function validatePropTypes(element) {
-        var type = element.type;
-        if (type === null || type === undefined || typeof type === "string") return;
-        var propTypes;
-        if (typeof type === "function") propTypes = type.propTypes;
-        else if (typeof type === "object" && (type.$$typeof === REACT_FORWARD_REF_TYPE || // Note: Memo only checks outer props here.
-        // Inner props are checked in the reconciler.
-        type.$$typeof === REACT_MEMO_TYPE)) propTypes = type.propTypes;
-        else return;
-        if (propTypes) {
-            // Intentionally inside to avoid triggering lazy initializers:
-            var name = getComponentNameFromType(type);
-            checkPropTypes(propTypes, element.props, "prop", name, element);
-        } else if (type.PropTypes !== undefined && !propTypesMisspellWarningShown) {
-            propTypesMisspellWarningShown = true; // Intentionally inside to avoid triggering lazy initializers:
-            var _name = getComponentNameFromType(type);
-            error("Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?", _name || "Unknown");
-        }
-        if (typeof type.getDefaultProps === "function" && !type.getDefaultProps.isReactClassApproved) error("getDefaultProps is only used on classic React.createClass definitions. Use a static property named `defaultProps` instead.");
-    }
-    /**
- * Given a fragment, validate that it can only be provided with fragment props
- * @param {ReactElement} fragment
- */ function validateFragmentProps(fragment) {
-        var keys = Object.keys(fragment.props);
-        for(var i = 0; i < keys.length; i++){
-            var key = keys[i];
-            if (key !== "children" && key !== "key") {
-                setCurrentlyValidatingElement$1(fragment);
-                error("Invalid prop `%s` supplied to `React.Fragment`. React.Fragment can only have `key` and `children` props.", key);
-                setCurrentlyValidatingElement$1(null);
-                break;
-            }
-        }
-        if (fragment.ref !== null) {
-            setCurrentlyValidatingElement$1(fragment);
-            error("Invalid attribute `ref` supplied to `React.Fragment`.");
-            setCurrentlyValidatingElement$1(null);
-        }
-    }
-    function jsxWithValidation(type, props, key, isStaticChildren, source, self) {
-        var validType = isValidElementType(type); // We warn in this case but don't throw. We expect the element creation to
-        // succeed and there will likely be errors in render.
-        if (!validType) {
-            var info = "";
-            if (type === undefined || typeof type === "object" && type !== null && Object.keys(type).length === 0) info += " You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.";
-            var sourceInfo = getSourceInfoErrorAddendum(source);
-            if (sourceInfo) info += sourceInfo;
-            else info += getDeclarationErrorAddendum();
-            var typeString;
-            if (type === null) typeString = "null";
-            else if (isArray(type)) typeString = "array";
-            else if (type !== undefined && type.$$typeof === REACT_ELEMENT_TYPE) {
-                typeString = "<" + (getComponentNameFromType(type.type) || "Unknown") + " />";
-                info = " Did you accidentally export a JSX literal instead of a component?";
-            } else typeString = typeof type;
-            error("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
-        }
-        var element = jsxDEV(type, props, key, source, self); // The result can be nullish if a mock or a custom function is used.
-        // TODO: Drop this when these are no longer allowed as the type argument.
-        if (element == null) return element;
-         // Skip key warning if the type isn't valid since our key validation logic
-        // doesn't expect a non-string/function type and can throw confusing errors.
-        // We don't want exception behavior to differ between dev and prod.
-        // (Rendering will throw with a helpful message and as soon as the type is
-        // fixed, the key warnings will appear.)
-        if (validType) {
-            var children = props.children;
-            if (children !== undefined) {
-                if (isStaticChildren) {
-                    if (isArray(children)) {
-                        for(var i = 0; i < children.length; i++)validateChildKeys(children[i], type);
-                        if (Object.freeze) Object.freeze(children);
-                    } else error("React.jsx: Static children should always be an array. You are likely explicitly calling React.jsxs or React.jsxDEV. Use the Babel transform instead.");
-                } else validateChildKeys(children, type);
-            }
-        }
-        if (type === REACT_FRAGMENT_TYPE) validateFragmentProps(element);
-        else validatePropTypes(element);
-        return element;
-    } // These two functions exist to still get child warnings in dev
-    var jsxDEV$1 = jsxWithValidation;
-    exports.Fragment = REACT_FRAGMENT_TYPE;
-    exports.jsxDEV = jsxDEV$1;
-})();
-
-},{"58362d9d82be395f":"21dqq"}],"21dqq":[function(require,module,exports) {
+},{"379ec07e2eead772":"21dqq","f4376371ff5080bf":"lOjBx","ff8fc8b24a9e37f9":"ey9du","77092f8820d6a2d3":"6AEwr","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"21dqq":[function(require,module,exports) {
 "use strict";
 module.exports = require("a569817e6ea559f6");
 
@@ -27160,134 +26323,631 @@ var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$9bc7.prelude(module);
 
 try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _header = require("./Header");
-var _headerDefault = parcelHelpers.interopDefault(_header);
-var _addForm = require("./AddForm");
-var _addFormDefault = parcelHelpers.interopDefault(_addForm);
-var _productListing = require("./ProductListing");
-var _productListingDefault = parcelHelpers.interopDefault(_productListing);
-var _react = require("react");
-var _productService = require("../services/productService");
-var _cartService = require("../services/cartService");
-var _helpers = require("../utils/helpers");
-var _s = $RefreshSig$();
-const App = ()=>{
-    _s();
-    const [products, setProducts] = (0, _react.useState)([]);
-    const [cart, setCart] = (0, _react.useState)([]);
-    const [addProductVisible, setAddProductVisible] = (0, _react.useState)(false);
-    (0, _react.useEffect)(()=>{
-        (async ()=>{
-            const data = await (0, _productService.fetchProducts)();
-            setProducts(data);
-        })();
+"use strict";
+function _typeof(o) {
+    "@babel/helpers - typeof";
+    return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o) {
+        return typeof o;
+    } : function(o) {
+        return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
+    }, _typeof(o);
+}
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports["default"] = void 0;
+var _Header = _interopRequireDefault(require("bb6d3302caa4d107"));
+var _AddForm = _interopRequireDefault(require("36c4aabae9409ae2"));
+var _ProductListing = _interopRequireDefault(require("ea1dab44679e9d91"));
+var _react = require("f66f77d07dc2e896");
+var _productService = require("97e36faacbe86385");
+var _cartService = require("13257bf1f38fc5a4");
+var _helpers = require("f8ca19f2afe7186b");
+var _jsxRuntime = require("4fca4729a01c50e7");
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+        "default": obj
+    };
+}
+function _regeneratorRuntime() {
+    "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ 
+    _regeneratorRuntime = function _regeneratorRuntime() {
+        return e;
+    };
+    var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function(t, e, r) {
+        t[e] = r.value;
+    }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag";
+    function define(t, e, r) {
+        return Object.defineProperty(t, e, {
+            value: r,
+            enumerable: !0,
+            configurable: !0,
+            writable: !0
+        }), t[e];
+    }
+    try {
+        define({}, "");
+    } catch (t) {
+        define = function define(t, e, r) {
+            return t[e] = r;
+        };
+    }
+    function wrap(t, e, r, n) {
+        var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []);
+        return o(a, "_invoke", {
+            value: makeInvokeMethod(t, r, c)
+        }), a;
+    }
+    function tryCatch(t, e, r) {
+        try {
+            return {
+                type: "normal",
+                arg: t.call(e, r)
+            };
+        } catch (t) {
+            return {
+                type: "throw",
+                arg: t
+            };
+        }
+    }
+    e.wrap = wrap;
+    var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {};
+    function Generator() {}
+    function GeneratorFunction() {}
+    function GeneratorFunctionPrototype() {}
+    var p = {};
+    define(p, a, function() {
+        return this;
+    });
+    var d = Object.getPrototypeOf, v = d && d(d(values([])));
+    v && v !== r && n.call(v, a) && (p = v);
+    var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p);
+    function defineIteratorMethods(t) {
+        [
+            "next",
+            "throw",
+            "return"
+        ].forEach(function(e) {
+            define(t, e, function(t) {
+                return this._invoke(e, t);
+            });
+        });
+    }
+    function AsyncIterator(t, e) {
+        function invoke(r, o, i, a) {
+            var c = tryCatch(t[r], t, o);
+            if ("throw" !== c.type) {
+                var u = c.arg, h = u.value;
+                return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function(t) {
+                    invoke("next", t, i, a);
+                }, function(t) {
+                    invoke("throw", t, i, a);
+                }) : e.resolve(h).then(function(t) {
+                    u.value = t, i(u);
+                }, function(t) {
+                    return invoke("throw", t, i, a);
+                });
+            }
+            a(c.arg);
+        }
+        var r;
+        o(this, "_invoke", {
+            value: function value(t, n) {
+                function callInvokeWithMethodAndArg() {
+                    return new e(function(e, r) {
+                        invoke(t, n, e, r);
+                    });
+                }
+                return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg();
+            }
+        });
+    }
+    function makeInvokeMethod(e, r, n) {
+        var o = h;
+        return function(i, a) {
+            if (o === f) throw new Error("Generator is already running");
+            if (o === s) {
+                if ("throw" === i) throw a;
+                return {
+                    value: t,
+                    done: !0
+                };
+            }
+            for(n.method = i, n.arg = a;;){
+                var c = n.delegate;
+                if (c) {
+                    var u = maybeInvokeDelegate(c, n);
+                    if (u) {
+                        if (u === y) continue;
+                        return u;
+                    }
+                }
+                if ("next" === n.method) n.sent = n._sent = n.arg;
+                else if ("throw" === n.method) {
+                    if (o === h) throw o = s, n.arg;
+                    n.dispatchException(n.arg);
+                } else "return" === n.method && n.abrupt("return", n.arg);
+                o = f;
+                var p = tryCatch(e, r, n);
+                if ("normal" === p.type) {
+                    if (o = n.done ? s : l, p.arg === y) continue;
+                    return {
+                        value: p.arg,
+                        done: n.done
+                    };
+                }
+                "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg);
+            }
+        };
+    }
+    function maybeInvokeDelegate(e, r) {
+        var n = r.method, o = e.iterator[n];
+        if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y;
+        var i = tryCatch(o, e.iterator, r.arg);
+        if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y;
+        var a = i.arg;
+        return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y);
+    }
+    function pushTryEntry(t) {
+        var e = {
+            tryLoc: t[0]
+        };
+        1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e);
+    }
+    function resetTryEntry(t) {
+        var e = t.completion || {};
+        e.type = "normal", delete e.arg, t.completion = e;
+    }
+    function Context(t) {
+        this.tryEntries = [
+            {
+                tryLoc: "root"
+            }
+        ], t.forEach(pushTryEntry, this), this.reset(!0);
+    }
+    function values(e) {
+        if (e || "" === e) {
+            var r = e[a];
+            if (r) return r.call(e);
+            if ("function" == typeof e.next) return e;
+            if (!isNaN(e.length)) {
+                var o = -1, i = function next() {
+                    for(; ++o < e.length;)if (n.call(e, o)) return next.value = e[o], next.done = !1, next;
+                    return next.value = t, next.done = !0, next;
+                };
+                return i.next = i;
+            }
+        }
+        throw new TypeError(_typeof(e) + " is not iterable");
+    }
+    return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", {
+        value: GeneratorFunctionPrototype,
+        configurable: !0
+    }), o(GeneratorFunctionPrototype, "constructor", {
+        value: GeneratorFunction,
+        configurable: !0
+    }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function(t) {
+        var e = "function" == typeof t && t.constructor;
+        return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name));
+    }, e.mark = function(t) {
+        return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t;
+    }, e.awrap = function(t) {
+        return {
+            __await: t
+        };
+    }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function() {
+        return this;
+    }), e.AsyncIterator = AsyncIterator, e.async = function(t, r, n, o, i) {
+        void 0 === i && (i = Promise);
+        var a = new AsyncIterator(wrap(t, r, n, o), i);
+        return e.isGeneratorFunction(r) ? a : a.next().then(function(t) {
+            return t.done ? t.value : a.next();
+        });
+    }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function() {
+        return this;
+    }), define(g, "toString", function() {
+        return "[object Generator]";
+    }), e.keys = function(t) {
+        var e = Object(t), r = [];
+        for(var n in e)r.push(n);
+        return r.reverse(), function next() {
+            for(; r.length;){
+                var t = r.pop();
+                if (t in e) return next.value = t, next.done = !1, next;
+            }
+            return next.done = !0, next;
+        };
+    }, e.values = values, Context.prototype = {
+        constructor: Context,
+        reset: function reset(e) {
+            if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for(var r in this)"t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t);
+        },
+        stop: function stop() {
+            this.done = !0;
+            var t = this.tryEntries[0].completion;
+            if ("throw" === t.type) throw t.arg;
+            return this.rval;
+        },
+        dispatchException: function dispatchException(e) {
+            if (this.done) throw e;
+            var r = this;
+            function handle(n, o) {
+                return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o;
+            }
+            for(var o = this.tryEntries.length - 1; o >= 0; --o){
+                var i = this.tryEntries[o], a = i.completion;
+                if ("root" === i.tryLoc) return handle("end");
+                if (i.tryLoc <= this.prev) {
+                    var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc");
+                    if (c && u) {
+                        if (this.prev < i.catchLoc) return handle(i.catchLoc, !0);
+                        if (this.prev < i.finallyLoc) return handle(i.finallyLoc);
+                    } else if (c) {
+                        if (this.prev < i.catchLoc) return handle(i.catchLoc, !0);
+                    } else {
+                        if (!u) throw new Error("try statement without catch or finally");
+                        if (this.prev < i.finallyLoc) return handle(i.finallyLoc);
+                    }
+                }
+            }
+        },
+        abrupt: function abrupt(t, e) {
+            for(var r = this.tryEntries.length - 1; r >= 0; --r){
+                var o = this.tryEntries[r];
+                if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) {
+                    var i = o;
+                    break;
+                }
+            }
+            i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null);
+            var a = i ? i.completion : {};
+            return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a);
+        },
+        complete: function complete(t, e) {
+            if ("throw" === t.type) throw t.arg;
+            return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y;
+        },
+        finish: function finish(t) {
+            for(var e = this.tryEntries.length - 1; e >= 0; --e){
+                var r = this.tryEntries[e];
+                if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y;
+            }
+        },
+        "catch": function _catch(t) {
+            for(var e = this.tryEntries.length - 1; e >= 0; --e){
+                var r = this.tryEntries[e];
+                if (r.tryLoc === t) {
+                    var n = r.completion;
+                    if ("throw" === n.type) {
+                        var o = n.arg;
+                        resetTryEntry(r);
+                    }
+                    return o;
+                }
+            }
+            throw new Error("illegal catch attempt");
+        },
+        delegateYield: function delegateYield(e, r, n) {
+            return this.delegate = {
+                iterator: values(e),
+                resultName: r,
+                nextLoc: n
+            }, "next" === this.method && (this.arg = t), y;
+        }
+    }, e;
+}
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+    try {
+        var info = gen[key](arg);
+        var value = info.value;
+    } catch (error) {
+        reject(error);
+        return;
+    }
+    if (info.done) resolve(value);
+    else Promise.resolve(value).then(_next, _throw);
+}
+function _asyncToGenerator(fn) {
+    return function() {
+        var self = this, args = arguments;
+        return new Promise(function(resolve, reject) {
+            var gen = fn.apply(self, args);
+            function _next(value) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+            }
+            function _throw(err) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+            }
+            _next(undefined);
+        });
+    };
+}
+function _slicedToArray(arr, i) {
+    return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+}
+function _nonIterableRest() {
+    throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _unsupportedIterableToArray(o, minLen) {
+    if (!o) return;
+    if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+    var n = Object.prototype.toString.call(o).slice(8, -1);
+    if (n === "Object" && o.constructor) n = o.constructor.name;
+    if (n === "Map" || n === "Set") return Array.from(o);
+    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+function _arrayLikeToArray(arr, len) {
+    if (len == null || len > arr.length) len = arr.length;
+    for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
+    return arr2;
+}
+function _iterableToArrayLimit(r, l) {
+    var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
+    if (null != t) {
+        var e, n, i, u, a = [], f = !0, o = !1;
+        try {
+            if (i = (t = t.call(r)).next, 0 === l) {
+                if (Object(t) !== t) return;
+                f = !1;
+            } else for(; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0);
+        } catch (r) {
+            o = !0, n = r;
+        } finally{
+            try {
+                if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return;
+            } finally{
+                if (o) throw n;
+            }
+        }
+        return a;
+    }
+}
+function _arrayWithHoles(arr) {
+    if (Array.isArray(arr)) return arr;
+}
+var App = function App() {
+    var _useState = (0, _react.useState)([]), _useState2 = _slicedToArray(_useState, 2), products = _useState2[0], setProducts = _useState2[1];
+    var _useState3 = (0, _react.useState)([]), _useState4 = _slicedToArray(_useState3, 2), cart = _useState4[0], setCart = _useState4[1];
+    var _useState5 = (0, _react.useState)(false), _useState6 = _slicedToArray(_useState5, 2), addProductVisible = _useState6[0], setAddProductVisible = _useState6[1];
+    (0, _react.useEffect)(function() {
+        _asyncToGenerator(/*#__PURE__*/ _regeneratorRuntime().mark(function _callee() {
+            var data;
+            return _regeneratorRuntime().wrap(function _callee$(_context) {
+                while(true)switch(_context.prev = _context.next){
+                    case 0:
+                        _context.next = 2;
+                        return (0, _productService.fetchProducts)();
+                    case 2:
+                        data = _context.sent;
+                        setProducts(data);
+                    case 4:
+                    case "end":
+                        return _context.stop();
+                }
+            }, _callee);
+        }))();
     }, []);
-    (0, _react.useEffect)(()=>{
-        (async ()=>{
-            const data = await (0, _cartService.fetchCart)();
-            setCart(data);
-        })();
+    (0, _react.useEffect)(function() {
+        _asyncToGenerator(/*#__PURE__*/ _regeneratorRuntime().mark(function _callee2() {
+            var data;
+            return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+                while(true)switch(_context2.prev = _context2.next){
+                    case 0:
+                        _context2.next = 2;
+                        return (0, _cartService.fetchCart)();
+                    case 2:
+                        data = _context2.sent;
+                        setCart(data);
+                    case 4:
+                    case "end":
+                        return _context2.stop();
+                }
+            }, _callee2);
+        }))();
     }, []);
-    const handleAddProductSubmit = async (newProduct, callback)=>{
-        try {
-            const { data } = await (0, _productService.addNewProduct)(newProduct);
-            setProducts(products.concat(data));
-            if (callback) callback();
-        } catch (error) {
-            console.error(error);
-        }
-    };
-    const handleEditProductSubmit = async (product, callback)=>{
-        try {
-            const { data } = await (0, _productService.updateProduct)(product);
-            const newProducts = (0, _helpers.replaceItemInArray)(products, data);
-            setProducts(newProducts);
-            if (callback) callback();
-        } catch (e) {
-            console.error(e);
-        }
-    };
-    const handleDeleteClick = async (productId)=>{
-        try {
-            await (0, _productService.deleteProduct)(productId);
-            setProducts(products.filter((product)=>product._id !== productId));
-        } catch (e) {
-            console.error(e);
-        }
-    };
-    const handleAddToCart = async (id)=>{
-        try {
-            let newCart;
-            const data = await (0, _cartService.addToCart)(id);
-            const { product, item } = data;
-            const newProducts = (0, _helpers.replaceItemInArray)(products, product);
-            if (cart.some((ele)=>ele._id === item._id)) newCart = (0, _helpers.replaceItemInArray)(cart, item);
-            else newCart = cart.concat(item);
-            setProducts(newProducts);
-            setCart(newCart);
-        } catch (e) {
-            console.error(e);
-        }
-    };
-    const handleCheckout = async ()=>{
-        try {
-            await (0, _cartService.checkoutCart)();
-            setCart([]);
-        } catch (error) {
-            console.error(error);
-        }
-    };
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+    var handleAddProductSubmit = /*#__PURE__*/ function() {
+        var _ref3 = _asyncToGenerator(/*#__PURE__*/ _regeneratorRuntime().mark(function _callee3(newProduct, callback) {
+            var _yield$addNewProduct, data;
+            return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+                while(true)switch(_context3.prev = _context3.next){
+                    case 0:
+                        _context3.prev = 0;
+                        _context3.next = 3;
+                        return (0, _productService.addNewProduct)(newProduct);
+                    case 3:
+                        _yield$addNewProduct = _context3.sent;
+                        data = _yield$addNewProduct.data;
+                        setProducts(products.concat(data));
+                        if (callback) callback();
+                        _context3.next = 12;
+                        break;
+                    case 9:
+                        _context3.prev = 9;
+                        _context3.t0 = _context3["catch"](0);
+                        console.error(_context3.t0);
+                    case 12:
+                    case "end":
+                        return _context3.stop();
+                }
+            }, _callee3, null, [
+                [
+                    0,
+                    9
+                ]
+            ]);
+        }));
+        return function handleAddProductSubmit(_x, _x2) {
+            return _ref3.apply(this, arguments);
+        };
+    }();
+    var handleEditProductSubmit = /*#__PURE__*/ function() {
+        var _ref4 = _asyncToGenerator(/*#__PURE__*/ _regeneratorRuntime().mark(function _callee4(product, callback) {
+            var _yield$updateProduct, data, newProducts;
+            return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+                while(true)switch(_context4.prev = _context4.next){
+                    case 0:
+                        _context4.prev = 0;
+                        _context4.next = 3;
+                        return (0, _productService.updateProduct)(product);
+                    case 3:
+                        _yield$updateProduct = _context4.sent;
+                        data = _yield$updateProduct.data;
+                        newProducts = (0, _helpers.replaceItemInArray)(products, data);
+                        setProducts(newProducts);
+                        if (callback) callback();
+                        _context4.next = 13;
+                        break;
+                    case 10:
+                        _context4.prev = 10;
+                        _context4.t0 = _context4["catch"](0);
+                        console.error(_context4.t0);
+                    case 13:
+                    case "end":
+                        return _context4.stop();
+                }
+            }, _callee4, null, [
+                [
+                    0,
+                    10
+                ]
+            ]);
+        }));
+        return function handleEditProductSubmit(_x3, _x4) {
+            return _ref4.apply(this, arguments);
+        };
+    }();
+    var handleDeleteClick = /*#__PURE__*/ function() {
+        var _ref5 = _asyncToGenerator(/*#__PURE__*/ _regeneratorRuntime().mark(function _callee5(productId) {
+            return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+                while(true)switch(_context5.prev = _context5.next){
+                    case 0:
+                        _context5.prev = 0;
+                        _context5.next = 3;
+                        return (0, _productService.deleteProduct)(productId);
+                    case 3:
+                        setProducts(products.filter(function(product) {
+                            return product._id !== productId;
+                        }));
+                        _context5.next = 9;
+                        break;
+                    case 6:
+                        _context5.prev = 6;
+                        _context5.t0 = _context5["catch"](0);
+                        console.error(_context5.t0);
+                    case 9:
+                    case "end":
+                        return _context5.stop();
+                }
+            }, _callee5, null, [
+                [
+                    0,
+                    6
+                ]
+            ]);
+        }));
+        return function handleDeleteClick(_x5) {
+            return _ref5.apply(this, arguments);
+        };
+    }();
+    var handleAddToCart = /*#__PURE__*/ function() {
+        var _ref6 = _asyncToGenerator(/*#__PURE__*/ _regeneratorRuntime().mark(function _callee6(id) {
+            var newCart, data, product, item, newProducts;
+            return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+                while(true)switch(_context6.prev = _context6.next){
+                    case 0:
+                        _context6.prev = 0;
+                        _context6.next = 3;
+                        return (0, _cartService.addToCart)(id);
+                    case 3:
+                        data = _context6.sent;
+                        product = data.product, item = data.item;
+                        newProducts = (0, _helpers.replaceItemInArray)(products, product);
+                        if (cart.some(function(ele) {
+                            return ele._id === item._id;
+                        })) newCart = (0, _helpers.replaceItemInArray)(cart, item);
+                        else newCart = cart.concat(item);
+                        setProducts(newProducts);
+                        setCart(newCart);
+                        _context6.next = 14;
+                        break;
+                    case 11:
+                        _context6.prev = 11;
+                        _context6.t0 = _context6["catch"](0);
+                        console.error(_context6.t0);
+                    case 14:
+                    case "end":
+                        return _context6.stop();
+                }
+            }, _callee6, null, [
+                [
+                    0,
+                    11
+                ]
+            ]);
+        }));
+        return function handleAddToCart(_x6) {
+            return _ref6.apply(this, arguments);
+        };
+    }();
+    var handleCheckout = /*#__PURE__*/ function() {
+        var _ref7 = _asyncToGenerator(/*#__PURE__*/ _regeneratorRuntime().mark(function _callee7() {
+            return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+                while(true)switch(_context7.prev = _context7.next){
+                    case 0:
+                        _context7.prev = 0;
+                        _context7.next = 3;
+                        return (0, _cartService.checkoutCart)();
+                    case 3:
+                        setCart([]);
+                        _context7.next = 9;
+                        break;
+                    case 6:
+                        _context7.prev = 6;
+                        _context7.t0 = _context7["catch"](0);
+                        console.error(_context7.t0);
+                    case 9:
+                    case "end":
+                        return _context7.stop();
+                }
+            }, _callee7, null, [
+                [
+                    0,
+                    6
+                ]
+            ]);
+        }));
+        return function handleCheckout() {
+            return _ref7.apply(this, arguments);
+        };
+    }();
+    return /*#__PURE__*/ (0, _jsxRuntime.jsxs)("div", {
         id: "app",
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerDefault.default), {
+            /*#__PURE__*/ (0, _jsxRuntime.jsx)(_Header["default"], {
                 cart: cart,
                 onCheckout: handleCheckout
-            }, void 0, false, {
-                fileName: "src/components/App.js",
-                lineNumber: 101,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
+            }),
+            /*#__PURE__*/ (0, _jsxRuntime.jsxs)("main", {
                 children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _productListingDefault.default), {
+                    /*#__PURE__*/ (0, _jsxRuntime.jsx)(_ProductListing["default"], {
                         products: products,
                         onEditProductSubmit: handleEditProductSubmit,
                         onDeleteClick: handleDeleteClick,
                         onAddToCart: handleAddToCart
-                    }, void 0, false, {
-                        fileName: "src/components/App.js",
-                        lineNumber: 103,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _addFormDefault.default), {
+                    }),
+                    /*#__PURE__*/ (0, _jsxRuntime.jsx)(_AddForm["default"], {
                         onAddProductSubmit: handleAddProductSubmit,
                         visible: addProductVisible,
                         setVisible: setAddProductVisible
-                    }, void 0, false, {
-                        fileName: "src/components/App.js",
-                        lineNumber: 110,
-                        columnNumber: 11
-                    }, undefined)
+                    })
                 ]
-            }, void 0, true, {
-                fileName: "src/components/App.js",
-                lineNumber: 102,
-                columnNumber: 7
-            }, undefined)
+            })
         ]
-    }, void 0, true, {
-        fileName: "src/components/App.js",
-        lineNumber: 100,
-        columnNumber: 5
-    }, undefined);
+    });
 };
-_s(App, "zC71s65dK7VwMfI9DdS7/BOClPk=");
 _c = App;
-exports.default = App;
+var _default = exports["default"] = App;
 var _c;
 $RefreshReg$(_c, "App");
 
@@ -27296,45 +26956,41 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","./Header":"hsJbF","./AddForm":"9FxpF","./ProductListing":"83Yr4","react":"21dqq","../services/productService":"hN7Za","../services/cartService":"dMYeP","../utils/helpers":"3mrwQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"hsJbF":[function(require,module,exports) {
+},{"bb6d3302caa4d107":"hsJbF","36c4aabae9409ae2":"9FxpF","ea1dab44679e9d91":"83Yr4","f66f77d07dc2e896":"21dqq","97e36faacbe86385":"hN7Za","13257bf1f38fc5a4":"dMYeP","f8ca19f2afe7186b":"3mrwQ","4fca4729a01c50e7":"6AEwr","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"hsJbF":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$bfed = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$bfed.prelude(module);
 
 try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _cart = require("./Cart");
-var _cartDefault = parcelHelpers.interopDefault(_cart);
-const Header = ({ cart, onCheckout })=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("header", {
+"use strict";
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports["default"] = void 0;
+var _Cart = _interopRequireDefault(require("97c103e0febac3ee"));
+var _jsxRuntime = require("311dca9a0edaece4");
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+        "default": obj
+    };
+}
+var Header = function Header(_ref) {
+    var cart = _ref.cart, onCheckout = _ref.onCheckout;
+    return /*#__PURE__*/ (0, _jsxRuntime.jsxs)("header", {
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+            /*#__PURE__*/ (0, _jsxRuntime.jsx)("h1", {
                 children: "The Shop!"
-            }, void 0, false, {
-                fileName: "src/components/Header.js",
-                lineNumber: 6,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cartDefault.default), {
+            }),
+            /*#__PURE__*/ (0, _jsxRuntime.jsx)(_Cart["default"], {
                 cart: cart,
                 onCheckout: onCheckout
-            }, void 0, false, {
-                fileName: "src/components/Header.js",
-                lineNumber: 7,
-                columnNumber: 7
-            }, undefined)
+            })
         ]
-    }, void 0, true, {
-        fileName: "src/components/Header.js",
-        lineNumber: 5,
-        columnNumber: 5
-    }, undefined);
+    });
 };
 _c = Header;
-exports.default = Header;
+var _default = exports["default"] = Header;
 var _c;
 $RefreshReg$(_c, "Header");
 
@@ -27343,61 +26999,51 @@ $RefreshReg$(_c, "Header");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","./Cart":"h8J3U","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"h8J3U":[function(require,module,exports) {
+},{"97c103e0febac3ee":"h8J3U","311dca9a0edaece4":"6AEwr","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"h8J3U":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$ad24 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$ad24.prelude(module);
 
 try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _cartItems = require("./CartItems");
-var _cartItemsDefault = parcelHelpers.interopDefault(_cartItems);
-const Cart = ({ cart, onCheckout })=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+"use strict";
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports["default"] = void 0;
+var _CartItems = _interopRequireDefault(require("839d52bb095e4a8f"));
+var _jsxRuntime = require("1fe76f52c043ea41");
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+        "default": obj
+    };
+}
+var Cart = function Cart(_ref) {
+    var cart = _ref.cart, onCheckout = _ref.onCheckout;
+    return /*#__PURE__*/ (0, _jsxRuntime.jsxs)("div", {
         className: "cart",
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+            /*#__PURE__*/ (0, _jsxRuntime.jsx)("h2", {
                 children: "Your Cart"
-            }, void 0, false, {
-                fileName: "src/components/Cart.js",
-                lineNumber: 6,
-                columnNumber: 7
-            }, undefined),
-            cart.length > 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cartItemsDefault.default), {
+            }),
+            cart.length > 0 ? /*#__PURE__*/ (0, _jsxRuntime.jsx)(_CartItems["default"], {
                 cart: cart
-            }, void 0, false, {
-                fileName: "src/components/Cart.js",
-                lineNumber: 7,
-                columnNumber: 26
-            }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+            }) : /*#__PURE__*/ (0, _jsxRuntime.jsx)("p", {
                 children: "Your cart is empty"
-            }, void 0, false, {
-                fileName: "src/components/Cart.js",
-                lineNumber: 7,
-                columnNumber: 54
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+            }),
+            /*#__PURE__*/ (0, _jsxRuntime.jsx)("button", {
                 className: "checkout",
                 disabled: cart.length === 0,
-                onClick: ()=>onCheckout(),
+                onClick: function onClick() {
+                    return onCheckout();
+                },
                 children: "Checkout"
-            }, void 0, false, {
-                fileName: "src/components/Cart.js",
-                lineNumber: 8,
-                columnNumber: 7
-            }, undefined)
+            })
         ]
-    }, void 0, true, {
-        fileName: "src/components/Cart.js",
-        lineNumber: 5,
-        columnNumber: 5
-    }, undefined);
+    });
 };
 _c = Cart;
-exports.default = Cart;
+var _default = exports["default"] = Cart;
 var _c;
 $RefreshReg$(_c, "Cart");
 
@@ -27406,107 +27052,73 @@ $RefreshReg$(_c, "Cart");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","./CartItems":"fu7yu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"fu7yu":[function(require,module,exports) {
+},{"839d52bb095e4a8f":"fu7yu","1fe76f52c043ea41":"6AEwr","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"fu7yu":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$1824 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$1824.prelude(module);
 
 try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _helpers = require("../utils/helpers");
-var _cartItem = require("./CartItem");
-var _cartItemDefault = parcelHelpers.interopDefault(_cartItem);
-const CartItems = ({ cart })=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("table", {
+"use strict";
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports["default"] = void 0;
+var _helpers = require("a96d6b36e2f42267");
+var _CartItem = _interopRequireDefault(require("5e67b66c7312df8d"));
+var _jsxRuntime = require("e39bdeeb987a6100");
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+        "default": obj
+    };
+}
+var CartItems = function CartItems(_ref) {
+    var cart = _ref.cart;
+    return /*#__PURE__*/ (0, _jsxRuntime.jsxs)("table", {
         className: "cart-items",
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("thead", {
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tr", {
+            /*#__PURE__*/ (0, _jsxRuntime.jsx)("thead", {
+                children: /*#__PURE__*/ (0, _jsxRuntime.jsxs)("tr", {
                     children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
+                        /*#__PURE__*/ (0, _jsxRuntime.jsx)("th", {
                             scope: "col",
                             children: "Item"
-                        }, void 0, false, {
-                            fileName: "src/components/CartItems.js",
-                            lineNumber: 9,
-                            columnNumber: 11
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
+                        }),
+                        /*#__PURE__*/ (0, _jsxRuntime.jsx)("th", {
                             scope: "col",
                             children: "Quantity"
-                        }, void 0, false, {
-                            fileName: "src/components/CartItems.js",
-                            lineNumber: 10,
-                            columnNumber: 11
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
+                        }),
+                        /*#__PURE__*/ (0, _jsxRuntime.jsx)("th", {
                             scope: "col",
                             children: "Price"
-                        }, void 0, false, {
-                            fileName: "src/components/CartItems.js",
-                            lineNumber: 11,
-                            columnNumber: 11
-                        }, undefined)
+                        })
                     ]
-                }, void 0, true, {
-                    fileName: "src/components/CartItems.js",
-                    lineNumber: 8,
-                    columnNumber: 9
-                }, undefined)
-            }, void 0, false, {
-                fileName: "src/components/CartItems.js",
-                lineNumber: 7,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tbody", {
-                children: cart.map((cartItem)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cartItemDefault.default), {
+                })
+            }),
+            /*#__PURE__*/ (0, _jsxRuntime.jsx)("tbody", {
+                children: cart.map(function(cartItem) {
+                    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(_CartItem["default"], {
                         cartItem: cartItem
-                    }, cartItem._id, false, {
-                        fileName: "src/components/CartItems.js",
-                        lineNumber: 16,
-                        columnNumber: 11
-                    }, undefined))
-            }, void 0, false, {
-                fileName: "src/components/CartItems.js",
-                lineNumber: 14,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tfoot", {
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tr", {
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
+                    }, cartItem._id);
+                })
+            }),
+            /*#__PURE__*/ (0, _jsxRuntime.jsx)("tfoot", {
+                children: /*#__PURE__*/ (0, _jsxRuntime.jsx)("tr", {
+                    children: /*#__PURE__*/ (0, _jsxRuntime.jsxs)("td", {
                         colSpan: "3",
                         className: "total",
                         children: [
                             "Total: $",
                             (0, _helpers.calculateCartTotal)(cart)
                         ]
-                    }, void 0, true, {
-                        fileName: "src/components/CartItems.js",
-                        lineNumber: 21,
-                        columnNumber: 11
-                    }, undefined)
-                }, void 0, false, {
-                    fileName: "src/components/CartItems.js",
-                    lineNumber: 20,
-                    columnNumber: 9
-                }, undefined)
-            }, void 0, false, {
-                fileName: "src/components/CartItems.js",
-                lineNumber: 19,
-                columnNumber: 7
-            }, undefined)
+                    })
+                })
+            })
         ]
-    }, void 0, true, {
-        fileName: "src/components/CartItems.js",
-        lineNumber: 6,
-        columnNumber: 5
-    }, undefined);
+    });
 };
 _c = CartItems;
-exports.default = CartItems;
+var _default = exports["default"] = CartItems;
 var _c;
 $RefreshReg$(_c, "CartItems");
 
@@ -27515,45 +27127,20 @@ $RefreshReg$(_c, "CartItems");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","../utils/helpers":"3mrwQ","./CartItem":"h762k","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"3mrwQ":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "calculateCartTotal", ()=>calculateCartTotal);
-parcelHelpers.export(exports, "replaceItemInArray", ()=>replaceItemInArray);
-const calculateCartTotal = (items)=>{
-    return items.reduce((acc, item)=>acc + item.price * item.quantity, 0);
+},{"a96d6b36e2f42267":"3mrwQ","5e67b66c7312df8d":"h762k","e39bdeeb987a6100":"6AEwr","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"3mrwQ":[function(require,module,exports) {
+"use strict";
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.replaceItemInArray = exports.calculateCartTotal = void 0;
+var calculateCartTotal = exports.calculateCartTotal = function calculateCartTotal(items) {
+    return items.reduce(function(acc, item) {
+        return acc + item.price * item.quantity;
+    }, 0);
 };
-const replaceItemInArray = (arr, newElement)=>{
-    return arr.map((element)=>element._id === newElement._id ? newElement : element);
-};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, "__esModule", {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === "default" || key === "__esModule" || Object.prototype.hasOwnProperty.call(dest, key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
+var replaceItemInArray = exports.replaceItemInArray = function replaceItemInArray(arr, newElement) {
+    return arr.map(function(element) {
+        return element._id === newElement._id ? newElement : element;
     });
 };
 
@@ -27564,46 +27151,34 @@ var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$48cf.prelude(module);
 
 try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-const CartItem = ({ cartItem })=>{
-    const { title, quantity, price } = cartItem;
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tr", {
+"use strict";
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports["default"] = void 0;
+var _jsxRuntime = require("f4cee863553b4a4a");
+var CartItem = function CartItem(_ref) {
+    var cartItem = _ref.cartItem;
+    var title = cartItem.title, quantity = cartItem.quantity, price = cartItem.price;
+    return /*#__PURE__*/ (0, _jsxRuntime.jsxs)("tr", {
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
+            /*#__PURE__*/ (0, _jsxRuntime.jsx)("td", {
                 children: title
-            }, void 0, false, {
-                fileName: "src/components/CartItem.js",
-                lineNumber: 6,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
+            }),
+            /*#__PURE__*/ (0, _jsxRuntime.jsx)("td", {
                 children: quantity
-            }, void 0, false, {
-                fileName: "src/components/CartItem.js",
-                lineNumber: 7,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
+            }),
+            /*#__PURE__*/ (0, _jsxRuntime.jsxs)("td", {
                 children: [
                     "$",
                     price
                 ]
-            }, void 0, true, {
-                fileName: "src/components/CartItem.js",
-                lineNumber: 8,
-                columnNumber: 7
-            }, undefined)
+            })
         ]
-    }, void 0, true, {
-        fileName: "src/components/CartItem.js",
-        lineNumber: 5,
-        columnNumber: 5
-    }, undefined);
+    });
 };
 _c = CartItem;
-exports.default = CartItem;
+var _default = exports["default"] = CartItem;
 var _c;
 $RefreshReg$(_c, "CartItem");
 
@@ -27612,7 +27187,854 @@ $RefreshReg$(_c, "CartItem");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"km3Ru":[function(require,module,exports) {
+},{"f4cee863553b4a4a":"6AEwr","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"6AEwr":[function(require,module,exports) {
+"use strict";
+module.exports = require("c4c10cbba9862d5f");
+
+},{"c4c10cbba9862d5f":"kujY4"}],"kujY4":[function(require,module,exports) {
+/**
+ * @license React
+ * react-jsx-runtime.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */ "use strict";
+(function() {
+    "use strict";
+    var React = require("593632ccebda0d3a");
+    // ATTENTION
+    // When adding new symbols to this file,
+    // Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
+    // The Symbol used to tag the ReactElement-like types.
+    var REACT_ELEMENT_TYPE = Symbol.for("react.element");
+    var REACT_PORTAL_TYPE = Symbol.for("react.portal");
+    var REACT_FRAGMENT_TYPE = Symbol.for("react.fragment");
+    var REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode");
+    var REACT_PROFILER_TYPE = Symbol.for("react.profiler");
+    var REACT_PROVIDER_TYPE = Symbol.for("react.provider");
+    var REACT_CONTEXT_TYPE = Symbol.for("react.context");
+    var REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref");
+    var REACT_SUSPENSE_TYPE = Symbol.for("react.suspense");
+    var REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list");
+    var REACT_MEMO_TYPE = Symbol.for("react.memo");
+    var REACT_LAZY_TYPE = Symbol.for("react.lazy");
+    var REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen");
+    var MAYBE_ITERATOR_SYMBOL = Symbol.iterator;
+    var FAUX_ITERATOR_SYMBOL = "@@iterator";
+    function getIteratorFn(maybeIterable) {
+        if (maybeIterable === null || typeof maybeIterable !== "object") return null;
+        var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
+        if (typeof maybeIterator === "function") return maybeIterator;
+        return null;
+    }
+    var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+    function error(format) {
+        for(var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++)args[_key2 - 1] = arguments[_key2];
+        printWarning("error", format, args);
+    }
+    function printWarning(level, format, args) {
+        var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
+        var stack = ReactDebugCurrentFrame.getStackAddendum();
+        if (stack !== "") {
+            format += "%s";
+            args = args.concat([
+                stack
+            ]);
+        } // eslint-disable-next-line react-internal/safe-string-coercion
+        var argsWithFormat = args.map(function(item) {
+            return String(item);
+        }); // Careful: RN currently depends on this prefix
+        argsWithFormat.unshift("Warning: " + format); // We intentionally don't use spread (or .apply) directly because it
+        // breaks IE9: https://github.com/facebook/react/issues/13610
+        // eslint-disable-next-line react-internal/no-production-logging
+        Function.prototype.apply.call(console[level], console, argsWithFormat);
+    }
+    // -----------------------------------------------------------------------------
+    var enableScopeAPI = false; // Experimental Create Event Handle API.
+    var enableCacheElement = false;
+    var enableTransitionTracing = false; // No known bugs, but needs performance testing
+    var enableLegacyHidden = false; // Enables unstable_avoidThisFallback feature in Fiber
+    // stuff. Intended to enable React core members to more easily debug scheduling
+    // issues in DEV builds.
+    var enableDebugTracing = false; // Track which Fiber(s) schedule render work.
+    var REACT_MODULE_REFERENCE;
+    REACT_MODULE_REFERENCE = Symbol.for("react.module.reference");
+    function isValidElementType(type) {
+        if (typeof type === "string" || typeof type === "function") return true;
+         // Note: typeof might be other than 'symbol' or 'number' (e.g. if it's a polyfill).
+        if (type === REACT_FRAGMENT_TYPE || type === REACT_PROFILER_TYPE || enableDebugTracing || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || enableLegacyHidden || type === REACT_OFFSCREEN_TYPE || enableScopeAPI || enableCacheElement || enableTransitionTracing) return true;
+        if (typeof type === "object" && type !== null) {
+            if (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || // This needs to include all possible module reference object
+            // types supported by any Flight configuration anywhere since
+            // we don't know which Flight build this will end up being used
+            // with.
+            type.$$typeof === REACT_MODULE_REFERENCE || type.getModuleId !== undefined) return true;
+        }
+        return false;
+    }
+    function getWrappedName(outerType, innerType, wrapperName) {
+        var displayName = outerType.displayName;
+        if (displayName) return displayName;
+        var functionName = innerType.displayName || innerType.name || "";
+        return functionName !== "" ? wrapperName + "(" + functionName + ")" : wrapperName;
+    } // Keep in sync with react-reconciler/getComponentNameFromFiber
+    function getContextName(type) {
+        return type.displayName || "Context";
+    } // Note that the reconciler package should generally prefer to use getComponentNameFromFiber() instead.
+    function getComponentNameFromType(type) {
+        if (type == null) // Host root, text node or just invalid type.
+        return null;
+        if (typeof type.tag === "number") error("Received an unexpected object in getComponentNameFromType(). This is likely a bug in React. Please file an issue.");
+        if (typeof type === "function") return type.displayName || type.name || null;
+        if (typeof type === "string") return type;
+        switch(type){
+            case REACT_FRAGMENT_TYPE:
+                return "Fragment";
+            case REACT_PORTAL_TYPE:
+                return "Portal";
+            case REACT_PROFILER_TYPE:
+                return "Profiler";
+            case REACT_STRICT_MODE_TYPE:
+                return "StrictMode";
+            case REACT_SUSPENSE_TYPE:
+                return "Suspense";
+            case REACT_SUSPENSE_LIST_TYPE:
+                return "SuspenseList";
+        }
+        if (typeof type === "object") switch(type.$$typeof){
+            case REACT_CONTEXT_TYPE:
+                var context = type;
+                return getContextName(context) + ".Consumer";
+            case REACT_PROVIDER_TYPE:
+                var provider = type;
+                return getContextName(provider._context) + ".Provider";
+            case REACT_FORWARD_REF_TYPE:
+                return getWrappedName(type, type.render, "ForwardRef");
+            case REACT_MEMO_TYPE:
+                var outerName = type.displayName || null;
+                if (outerName !== null) return outerName;
+                return getComponentNameFromType(type.type) || "Memo";
+            case REACT_LAZY_TYPE:
+                var lazyComponent = type;
+                var payload = lazyComponent._payload;
+                var init = lazyComponent._init;
+                try {
+                    return getComponentNameFromType(init(payload));
+                } catch (x) {
+                    return null;
+                }
+        }
+        return null;
+    }
+    var assign = Object.assign;
+    // Helpers to patch console.logs to avoid logging during side-effect free
+    // replaying on render function. This currently only patches the object
+    // lazily which won't cover if the log function was extracted eagerly.
+    // We could also eagerly patch the method.
+    var disabledDepth = 0;
+    var prevLog;
+    var prevInfo;
+    var prevWarn;
+    var prevError;
+    var prevGroup;
+    var prevGroupCollapsed;
+    var prevGroupEnd;
+    function disabledLog() {}
+    disabledLog.__reactDisabledLog = true;
+    function disableLogs() {
+        if (disabledDepth === 0) {
+            /* eslint-disable react-internal/no-production-logging */ prevLog = console.log;
+            prevInfo = console.info;
+            prevWarn = console.warn;
+            prevError = console.error;
+            prevGroup = console.group;
+            prevGroupCollapsed = console.groupCollapsed;
+            prevGroupEnd = console.groupEnd; // https://github.com/facebook/react/issues/19099
+            var props = {
+                configurable: true,
+                enumerable: true,
+                value: disabledLog,
+                writable: true
+            }; // $FlowFixMe Flow thinks console is immutable.
+            Object.defineProperties(console, {
+                info: props,
+                log: props,
+                warn: props,
+                error: props,
+                group: props,
+                groupCollapsed: props,
+                groupEnd: props
+            });
+        /* eslint-enable react-internal/no-production-logging */ }
+        disabledDepth++;
+    }
+    function reenableLogs() {
+        disabledDepth--;
+        if (disabledDepth === 0) {
+            /* eslint-disable react-internal/no-production-logging */ var props = {
+                configurable: true,
+                enumerable: true,
+                writable: true
+            }; // $FlowFixMe Flow thinks console is immutable.
+            Object.defineProperties(console, {
+                log: assign({}, props, {
+                    value: prevLog
+                }),
+                info: assign({}, props, {
+                    value: prevInfo
+                }),
+                warn: assign({}, props, {
+                    value: prevWarn
+                }),
+                error: assign({}, props, {
+                    value: prevError
+                }),
+                group: assign({}, props, {
+                    value: prevGroup
+                }),
+                groupCollapsed: assign({}, props, {
+                    value: prevGroupCollapsed
+                }),
+                groupEnd: assign({}, props, {
+                    value: prevGroupEnd
+                })
+            });
+        /* eslint-enable react-internal/no-production-logging */ }
+        if (disabledDepth < 0) error("disabledDepth fell below zero. This is a bug in React. Please file an issue.");
+    }
+    var ReactCurrentDispatcher = ReactSharedInternals.ReactCurrentDispatcher;
+    var prefix;
+    function describeBuiltInComponentFrame(name, source, ownerFn) {
+        if (prefix === undefined) // Extract the VM specific prefix used by each line.
+        try {
+            throw Error();
+        } catch (x) {
+            var match = x.stack.trim().match(/\n( *(at )?)/);
+            prefix = match && match[1] || "";
+        }
+         // We use the prefix to ensure our stacks line up with native stack frames.
+        return "\n" + prefix + name;
+    }
+    var reentry = false;
+    var componentFrameCache;
+    var PossiblyWeakMap = typeof WeakMap === "function" ? WeakMap : Map;
+    componentFrameCache = new PossiblyWeakMap();
+    function describeNativeComponentFrame(fn, construct) {
+        // If something asked for a stack inside a fake render, it should get ignored.
+        if (!fn || reentry) return "";
+        var frame = componentFrameCache.get(fn);
+        if (frame !== undefined) return frame;
+        var control;
+        reentry = true;
+        var previousPrepareStackTrace = Error.prepareStackTrace; // $FlowFixMe It does accept undefined.
+        Error.prepareStackTrace = undefined;
+        var previousDispatcher;
+        previousDispatcher = ReactCurrentDispatcher.current; // Set the dispatcher in DEV because this might be call in the render function
+        // for warnings.
+        ReactCurrentDispatcher.current = null;
+        disableLogs();
+        try {
+            // This should throw.
+            if (construct) {
+                // Something should be setting the props in the constructor.
+                var Fake = function() {
+                    throw Error();
+                }; // $FlowFixMe
+                Object.defineProperty(Fake.prototype, "props", {
+                    set: function() {
+                        // We use a throwing setter instead of frozen or non-writable props
+                        // because that won't throw in a non-strict mode function.
+                        throw Error();
+                    }
+                });
+                if (typeof Reflect === "object" && Reflect.construct) {
+                    // We construct a different control for this case to include any extra
+                    // frames added by the construct call.
+                    try {
+                        Reflect.construct(Fake, []);
+                    } catch (x) {
+                        control = x;
+                    }
+                    Reflect.construct(fn, [], Fake);
+                } else {
+                    try {
+                        Fake.call();
+                    } catch (x) {
+                        control = x;
+                    }
+                    fn.call(Fake.prototype);
+                }
+            } else {
+                try {
+                    throw Error();
+                } catch (x) {
+                    control = x;
+                }
+                fn();
+            }
+        } catch (sample) {
+            // This is inlined manually because closure doesn't do it for us.
+            if (sample && control && typeof sample.stack === "string") {
+                // This extracts the first frame from the sample that isn't also in the control.
+                // Skipping one frame that we assume is the frame that calls the two.
+                var sampleLines = sample.stack.split("\n");
+                var controlLines = control.stack.split("\n");
+                var s = sampleLines.length - 1;
+                var c = controlLines.length - 1;
+                while(s >= 1 && c >= 0 && sampleLines[s] !== controlLines[c])// We expect at least one stack frame to be shared.
+                // Typically this will be the root most one. However, stack frames may be
+                // cut off due to maximum stack limits. In this case, one maybe cut off
+                // earlier than the other. We assume that the sample is longer or the same
+                // and there for cut off earlier. So we should find the root most frame in
+                // the sample somewhere in the control.
+                c--;
+                for(; s >= 1 && c >= 0; s--, c--)// Next we find the first one that isn't the same which should be the
+                // frame that called our sample function and the control.
+                if (sampleLines[s] !== controlLines[c]) {
+                    // In V8, the first line is describing the message but other VMs don't.
+                    // If we're about to return the first line, and the control is also on the same
+                    // line, that's a pretty good indicator that our sample threw at same line as
+                    // the control. I.e. before we entered the sample frame. So we ignore this result.
+                    // This can happen if you passed a class to function component, or non-function.
+                    if (s !== 1 || c !== 1) do {
+                        s--;
+                        c--; // We may still have similar intermediate frames from the construct call.
+                        // The next one that isn't the same should be our match though.
+                        if (c < 0 || sampleLines[s] !== controlLines[c]) {
+                            // V8 adds a "new" prefix for native classes. Let's remove it to make it prettier.
+                            var _frame = "\n" + sampleLines[s].replace(" at new ", " at "); // If our component frame is labeled "<anonymous>"
+                            // but we have a user-provided "displayName"
+                            // splice it in to make the stack more readable.
+                            if (fn.displayName && _frame.includes("<anonymous>")) _frame = _frame.replace("<anonymous>", fn.displayName);
+                            if (typeof fn === "function") componentFrameCache.set(fn, _frame);
+                            return _frame;
+                        }
+                    }while (s >= 1 && c >= 0);
+                    break;
+                }
+            }
+        } finally{
+            reentry = false;
+            ReactCurrentDispatcher.current = previousDispatcher;
+            reenableLogs();
+            Error.prepareStackTrace = previousPrepareStackTrace;
+        } // Fallback to just using the name if we couldn't make it throw.
+        var name = fn ? fn.displayName || fn.name : "";
+        var syntheticFrame = name ? describeBuiltInComponentFrame(name) : "";
+        if (typeof fn === "function") componentFrameCache.set(fn, syntheticFrame);
+        return syntheticFrame;
+    }
+    function describeFunctionComponentFrame(fn, source, ownerFn) {
+        return describeNativeComponentFrame(fn, false);
+    }
+    function shouldConstruct(Component) {
+        var prototype = Component.prototype;
+        return !!(prototype && prototype.isReactComponent);
+    }
+    function describeUnknownElementTypeFrameInDEV(type, source, ownerFn) {
+        if (type == null) return "";
+        if (typeof type === "function") return describeNativeComponentFrame(type, shouldConstruct(type));
+        if (typeof type === "string") return describeBuiltInComponentFrame(type);
+        switch(type){
+            case REACT_SUSPENSE_TYPE:
+                return describeBuiltInComponentFrame("Suspense");
+            case REACT_SUSPENSE_LIST_TYPE:
+                return describeBuiltInComponentFrame("SuspenseList");
+        }
+        if (typeof type === "object") switch(type.$$typeof){
+            case REACT_FORWARD_REF_TYPE:
+                return describeFunctionComponentFrame(type.render);
+            case REACT_MEMO_TYPE:
+                // Memo may contain any component type so we recursively resolve it.
+                return describeUnknownElementTypeFrameInDEV(type.type, source, ownerFn);
+            case REACT_LAZY_TYPE:
+                var lazyComponent = type;
+                var payload = lazyComponent._payload;
+                var init = lazyComponent._init;
+                try {
+                    // Lazy may contain any component type so we recursively resolve it.
+                    return describeUnknownElementTypeFrameInDEV(init(payload), source, ownerFn);
+                } catch (x) {}
+        }
+        return "";
+    }
+    var hasOwnProperty = Object.prototype.hasOwnProperty;
+    var loggedTypeFailures = {};
+    var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
+    function setCurrentlyValidatingElement(element) {
+        if (element) {
+            var owner = element._owner;
+            var stack = describeUnknownElementTypeFrameInDEV(element.type, element._source, owner ? owner.type : null);
+            ReactDebugCurrentFrame.setExtraStackFrame(stack);
+        } else ReactDebugCurrentFrame.setExtraStackFrame(null);
+    }
+    function checkPropTypes(typeSpecs, values, location, componentName, element) {
+        // $FlowFixMe This is okay but Flow doesn't know it.
+        var has = Function.call.bind(hasOwnProperty);
+        for(var typeSpecName in typeSpecs)if (has(typeSpecs, typeSpecName)) {
+            var error$1 = void 0; // Prop type validation may throw. In case they do, we don't want to
+            // fail the render phase where it didn't fail before. So we log it.
+            // After these have been cleaned up, we'll let them throw.
+            try {
+                // This is intentionally an invariant that gets caught. It's the same
+                // behavior as without this statement except with a better message.
+                if (typeof typeSpecs[typeSpecName] !== "function") {
+                    // eslint-disable-next-line react-internal/prod-error-codes
+                    var err = Error((componentName || "React class") + ": " + location + " type `" + typeSpecName + "` is invalid; " + "it must be a function, usually from the `prop-types` package, but received `" + typeof typeSpecs[typeSpecName] + "`." + "This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.");
+                    err.name = "Invariant Violation";
+                    throw err;
+                }
+                error$1 = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED");
+            } catch (ex) {
+                error$1 = ex;
+            }
+            if (error$1 && !(error$1 instanceof Error)) {
+                setCurrentlyValidatingElement(element);
+                error("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", componentName || "React class", location, typeSpecName, typeof error$1);
+                setCurrentlyValidatingElement(null);
+            }
+            if (error$1 instanceof Error && !(error$1.message in loggedTypeFailures)) {
+                // Only monitor this failure once because there tends to be a lot of the
+                // same error.
+                loggedTypeFailures[error$1.message] = true;
+                setCurrentlyValidatingElement(element);
+                error("Failed %s type: %s", location, error$1.message);
+                setCurrentlyValidatingElement(null);
+            }
+        }
+    }
+    var isArrayImpl = Array.isArray; // eslint-disable-next-line no-redeclare
+    function isArray(a) {
+        return isArrayImpl(a);
+    }
+    /*
+ * The `'' + value` pattern (used in in perf-sensitive code) throws for Symbol
+ * and Temporal.* types. See https://github.com/facebook/react/pull/22064.
+ *
+ * The functions in this module will throw an easier-to-understand,
+ * easier-to-debug exception with a clear errors message message explaining the
+ * problem. (Instead of a confusing exception thrown inside the implementation
+ * of the `value` object).
+ */ // $FlowFixMe only called in DEV, so void return is not possible.
+    function typeName(value) {
+        // toStringTag is needed for namespaced types like Temporal.Instant
+        var hasToStringTag = typeof Symbol === "function" && Symbol.toStringTag;
+        var type = hasToStringTag && value[Symbol.toStringTag] || value.constructor.name || "Object";
+        return type;
+    } // $FlowFixMe only called in DEV, so void return is not possible.
+    function willCoercionThrow(value) {
+        try {
+            testStringCoercion(value);
+            return false;
+        } catch (e) {
+            return true;
+        }
+    }
+    function testStringCoercion(value) {
+        // If you ended up here by following an exception call stack, here's what's
+        // happened: you supplied an object or symbol value to React (as a prop, key,
+        // DOM attribute, CSS property, string ref, etc.) and when React tried to
+        // coerce it to a string using `'' + value`, an exception was thrown.
+        //
+        // The most common types that will cause this exception are `Symbol` instances
+        // and Temporal objects like `Temporal.Instant`. But any object that has a
+        // `valueOf` or `[Symbol.toPrimitive]` method that throws will also cause this
+        // exception. (Library authors do this to prevent users from using built-in
+        // numeric operators like `+` or comparison operators like `>=` because custom
+        // methods are needed to perform accurate arithmetic or comparison.)
+        //
+        // To fix the problem, coerce this object or symbol value to a string before
+        // passing it to React. The most reliable way is usually `String(value)`.
+        //
+        // To find which value is throwing, check the browser or debugger console.
+        // Before this exception was thrown, there should be `console.error` output
+        // that shows the type (Symbol, Temporal.PlainDate, etc.) that caused the
+        // problem and how that type was used: key, atrribute, input value prop, etc.
+        // In most cases, this console output also shows the component and its
+        // ancestor components where the exception happened.
+        //
+        // eslint-disable-next-line react-internal/safe-string-coercion
+        return "" + value;
+    }
+    function checkKeyStringCoercion(value) {
+        if (willCoercionThrow(value)) {
+            error("The provided key is an unsupported type %s. This value must be coerced to a string before before using it here.", typeName(value));
+            return testStringCoercion(value); // throw (to help callers find troubleshooting comments)
+        }
+    }
+    var ReactCurrentOwner = ReactSharedInternals.ReactCurrentOwner;
+    var RESERVED_PROPS = {
+        key: true,
+        ref: true,
+        __self: true,
+        __source: true
+    };
+    var specialPropKeyWarningShown;
+    var specialPropRefWarningShown;
+    var didWarnAboutStringRefs;
+    didWarnAboutStringRefs = {};
+    function hasValidRef(config) {
+        if (hasOwnProperty.call(config, "ref")) {
+            var getter = Object.getOwnPropertyDescriptor(config, "ref").get;
+            if (getter && getter.isReactWarning) return false;
+        }
+        return config.ref !== undefined;
+    }
+    function hasValidKey(config) {
+        if (hasOwnProperty.call(config, "key")) {
+            var getter = Object.getOwnPropertyDescriptor(config, "key").get;
+            if (getter && getter.isReactWarning) return false;
+        }
+        return config.key !== undefined;
+    }
+    function warnIfStringRefCannotBeAutoConverted(config, self) {
+        if (typeof config.ref === "string" && ReactCurrentOwner.current && self && ReactCurrentOwner.current.stateNode !== self) {
+            var componentName = getComponentNameFromType(ReactCurrentOwner.current.type);
+            if (!didWarnAboutStringRefs[componentName]) {
+                error('Component "%s" contains the string ref "%s". Support for string refs will be removed in a future major release. This case cannot be automatically converted to an arrow function. We ask you to manually fix this case by using useRef() or createRef() instead. Learn more about using refs safely here: https://reactjs.org/link/strict-mode-string-ref', getComponentNameFromType(ReactCurrentOwner.current.type), config.ref);
+                didWarnAboutStringRefs[componentName] = true;
+            }
+        }
+    }
+    function defineKeyPropWarningGetter(props, displayName) {
+        var warnAboutAccessingKey = function() {
+            if (!specialPropKeyWarningShown) {
+                specialPropKeyWarningShown = true;
+                error("%s: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", displayName);
+            }
+        };
+        warnAboutAccessingKey.isReactWarning = true;
+        Object.defineProperty(props, "key", {
+            get: warnAboutAccessingKey,
+            configurable: true
+        });
+    }
+    function defineRefPropWarningGetter(props, displayName) {
+        var warnAboutAccessingRef = function() {
+            if (!specialPropRefWarningShown) {
+                specialPropRefWarningShown = true;
+                error("%s: `ref` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", displayName);
+            }
+        };
+        warnAboutAccessingRef.isReactWarning = true;
+        Object.defineProperty(props, "ref", {
+            get: warnAboutAccessingRef,
+            configurable: true
+        });
+    }
+    /**
+ * Factory method to create a new React element. This no longer adheres to
+ * the class pattern, so do not use new to call it. Also, instanceof check
+ * will not work. Instead test $$typeof field against Symbol.for('react.element') to check
+ * if something is a React Element.
+ *
+ * @param {*} type
+ * @param {*} props
+ * @param {*} key
+ * @param {string|object} ref
+ * @param {*} owner
+ * @param {*} self A *temporary* helper to detect places where `this` is
+ * different from the `owner` when React.createElement is called, so that we
+ * can warn. We want to get rid of owner and replace string `ref`s with arrow
+ * functions, and as long as `this` and owner are the same, there will be no
+ * change in behavior.
+ * @param {*} source An annotation object (added by a transpiler or otherwise)
+ * indicating filename, line number, and/or other information.
+ * @internal
+ */ var ReactElement = function(type, key, ref, self, source, owner, props) {
+        var element = {
+            // This tag allows us to uniquely identify this as a React Element
+            $$typeof: REACT_ELEMENT_TYPE,
+            // Built-in properties that belong on the element
+            type: type,
+            key: key,
+            ref: ref,
+            props: props,
+            // Record the component responsible for creating this element.
+            _owner: owner
+        };
+        // The validation flag is currently mutative. We put it on
+        // an external backing store so that we can freeze the whole object.
+        // This can be replaced with a WeakMap once they are implemented in
+        // commonly used development environments.
+        element._store = {}; // To make comparing ReactElements easier for testing purposes, we make
+        // the validation flag non-enumerable (where possible, which should
+        // include every environment we run tests in), so the test framework
+        // ignores it.
+        Object.defineProperty(element._store, "validated", {
+            configurable: false,
+            enumerable: false,
+            writable: true,
+            value: false
+        }); // self and source are DEV only properties.
+        Object.defineProperty(element, "_self", {
+            configurable: false,
+            enumerable: false,
+            writable: false,
+            value: self
+        }); // Two elements created in two different places should be considered
+        // equal for testing purposes and therefore we hide it from enumeration.
+        Object.defineProperty(element, "_source", {
+            configurable: false,
+            enumerable: false,
+            writable: false,
+            value: source
+        });
+        if (Object.freeze) {
+            Object.freeze(element.props);
+            Object.freeze(element);
+        }
+        return element;
+    };
+    /**
+ * https://github.com/reactjs/rfcs/pull/107
+ * @param {*} type
+ * @param {object} props
+ * @param {string} key
+ */ function jsxDEV(type, config, maybeKey, source, self) {
+        var propName; // Reserved names are extracted
+        var props = {};
+        var key = null;
+        var ref = null; // Currently, key can be spread in as a prop. This causes a potential
+        // issue if key is also explicitly declared (ie. <div {...props} key="Hi" />
+        // or <div key="Hi" {...props} /> ). We want to deprecate key spread,
+        // but as an intermediary step, we will use jsxDEV for everything except
+        // <div {...props} key="Hi" />, because we aren't currently able to tell if
+        // key is explicitly declared to be undefined or not.
+        if (maybeKey !== undefined) {
+            checkKeyStringCoercion(maybeKey);
+            key = "" + maybeKey;
+        }
+        if (hasValidKey(config)) {
+            checkKeyStringCoercion(config.key);
+            key = "" + config.key;
+        }
+        if (hasValidRef(config)) {
+            ref = config.ref;
+            warnIfStringRefCannotBeAutoConverted(config, self);
+        } // Remaining properties are added to a new props object
+        for(propName in config)if (hasOwnProperty.call(config, propName) && !RESERVED_PROPS.hasOwnProperty(propName)) props[propName] = config[propName];
+         // Resolve default props
+        if (type && type.defaultProps) {
+            var defaultProps = type.defaultProps;
+            for(propName in defaultProps)if (props[propName] === undefined) props[propName] = defaultProps[propName];
+        }
+        if (key || ref) {
+            var displayName = typeof type === "function" ? type.displayName || type.name || "Unknown" : type;
+            if (key) defineKeyPropWarningGetter(props, displayName);
+            if (ref) defineRefPropWarningGetter(props, displayName);
+        }
+        return ReactElement(type, key, ref, self, source, ReactCurrentOwner.current, props);
+    }
+    var ReactCurrentOwner$1 = ReactSharedInternals.ReactCurrentOwner;
+    var ReactDebugCurrentFrame$1 = ReactSharedInternals.ReactDebugCurrentFrame;
+    function setCurrentlyValidatingElement$1(element) {
+        if (element) {
+            var owner = element._owner;
+            var stack = describeUnknownElementTypeFrameInDEV(element.type, element._source, owner ? owner.type : null);
+            ReactDebugCurrentFrame$1.setExtraStackFrame(stack);
+        } else ReactDebugCurrentFrame$1.setExtraStackFrame(null);
+    }
+    var propTypesMisspellWarningShown;
+    propTypesMisspellWarningShown = false;
+    /**
+ * Verifies the object is a ReactElement.
+ * See https://reactjs.org/docs/react-api.html#isvalidelement
+ * @param {?object} object
+ * @return {boolean} True if `object` is a ReactElement.
+ * @final
+ */ function isValidElement(object) {
+        return typeof object === "object" && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+    }
+    function getDeclarationErrorAddendum() {
+        if (ReactCurrentOwner$1.current) {
+            var name = getComponentNameFromType(ReactCurrentOwner$1.current.type);
+            if (name) return "\n\nCheck the render method of `" + name + "`.";
+        }
+        return "";
+    }
+    function getSourceInfoErrorAddendum(source) {
+        if (source !== undefined) {
+            var fileName = source.fileName.replace(/^.*[\\\/]/, "");
+            var lineNumber = source.lineNumber;
+            return "\n\nCheck your code at " + fileName + ":" + lineNumber + ".";
+        }
+        return "";
+    }
+    /**
+ * Warn if there's no key explicitly set on dynamic arrays of children or
+ * object keys are not valid. This allows us to keep track of children between
+ * updates.
+ */ var ownerHasKeyUseWarning = {};
+    function getCurrentComponentErrorInfo(parentType) {
+        var info = getDeclarationErrorAddendum();
+        if (!info) {
+            var parentName = typeof parentType === "string" ? parentType : parentType.displayName || parentType.name;
+            if (parentName) info = "\n\nCheck the top-level render call using <" + parentName + ">.";
+        }
+        return info;
+    }
+    /**
+ * Warn if the element doesn't have an explicit key assigned to it.
+ * This element is in an array. The array could grow and shrink or be
+ * reordered. All children that haven't already been validated are required to
+ * have a "key" property assigned to it. Error statuses are cached so a warning
+ * will only be shown once.
+ *
+ * @internal
+ * @param {ReactElement} element Element that requires a key.
+ * @param {*} parentType element's parent's type.
+ */ function validateExplicitKey(element, parentType) {
+        if (!element._store || element._store.validated || element.key != null) return;
+        element._store.validated = true;
+        var currentComponentErrorInfo = getCurrentComponentErrorInfo(parentType);
+        if (ownerHasKeyUseWarning[currentComponentErrorInfo]) return;
+        ownerHasKeyUseWarning[currentComponentErrorInfo] = true; // Usually the current owner is the offender, but if it accepts children as a
+        // property, it may be the creator of the child that's responsible for
+        // assigning it a key.
+        var childOwner = "";
+        if (element && element._owner && element._owner !== ReactCurrentOwner$1.current) // Give the component that originally created this child.
+        childOwner = " It was passed a child from " + getComponentNameFromType(element._owner.type) + ".";
+        setCurrentlyValidatingElement$1(element);
+        error('Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.', currentComponentErrorInfo, childOwner);
+        setCurrentlyValidatingElement$1(null);
+    }
+    /**
+ * Ensure that every element either is passed in a static location, in an
+ * array with an explicit keys property defined, or in an object literal
+ * with valid key property.
+ *
+ * @internal
+ * @param {ReactNode} node Statically passed child of any type.
+ * @param {*} parentType node's parent's type.
+ */ function validateChildKeys(node, parentType) {
+        if (typeof node !== "object") return;
+        if (isArray(node)) for(var i = 0; i < node.length; i++){
+            var child = node[i];
+            if (isValidElement(child)) validateExplicitKey(child, parentType);
+        }
+        else if (isValidElement(node)) // This element was passed in a valid location.
+        {
+            if (node._store) node._store.validated = true;
+        } else if (node) {
+            var iteratorFn = getIteratorFn(node);
+            if (typeof iteratorFn === "function") // Entry iterators used to provide implicit keys,
+            // but now we print a separate warning for them later.
+            {
+                if (iteratorFn !== node.entries) {
+                    var iterator = iteratorFn.call(node);
+                    var step;
+                    while(!(step = iterator.next()).done)if (isValidElement(step.value)) validateExplicitKey(step.value, parentType);
+                }
+            }
+        }
+    }
+    /**
+ * Given an element, validate that its props follow the propTypes definition,
+ * provided by the type.
+ *
+ * @param {ReactElement} element
+ */ function validatePropTypes(element) {
+        var type = element.type;
+        if (type === null || type === undefined || typeof type === "string") return;
+        var propTypes;
+        if (typeof type === "function") propTypes = type.propTypes;
+        else if (typeof type === "object" && (type.$$typeof === REACT_FORWARD_REF_TYPE || // Note: Memo only checks outer props here.
+        // Inner props are checked in the reconciler.
+        type.$$typeof === REACT_MEMO_TYPE)) propTypes = type.propTypes;
+        else return;
+        if (propTypes) {
+            // Intentionally inside to avoid triggering lazy initializers:
+            var name = getComponentNameFromType(type);
+            checkPropTypes(propTypes, element.props, "prop", name, element);
+        } else if (type.PropTypes !== undefined && !propTypesMisspellWarningShown) {
+            propTypesMisspellWarningShown = true; // Intentionally inside to avoid triggering lazy initializers:
+            var _name = getComponentNameFromType(type);
+            error("Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?", _name || "Unknown");
+        }
+        if (typeof type.getDefaultProps === "function" && !type.getDefaultProps.isReactClassApproved) error("getDefaultProps is only used on classic React.createClass definitions. Use a static property named `defaultProps` instead.");
+    }
+    /**
+ * Given a fragment, validate that it can only be provided with fragment props
+ * @param {ReactElement} fragment
+ */ function validateFragmentProps(fragment) {
+        var keys = Object.keys(fragment.props);
+        for(var i = 0; i < keys.length; i++){
+            var key = keys[i];
+            if (key !== "children" && key !== "key") {
+                setCurrentlyValidatingElement$1(fragment);
+                error("Invalid prop `%s` supplied to `React.Fragment`. React.Fragment can only have `key` and `children` props.", key);
+                setCurrentlyValidatingElement$1(null);
+                break;
+            }
+        }
+        if (fragment.ref !== null) {
+            setCurrentlyValidatingElement$1(fragment);
+            error("Invalid attribute `ref` supplied to `React.Fragment`.");
+            setCurrentlyValidatingElement$1(null);
+        }
+    }
+    function jsxWithValidation(type, props, key, isStaticChildren, source, self) {
+        var validType = isValidElementType(type); // We warn in this case but don't throw. We expect the element creation to
+        // succeed and there will likely be errors in render.
+        if (!validType) {
+            var info = "";
+            if (type === undefined || typeof type === "object" && type !== null && Object.keys(type).length === 0) info += " You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.";
+            var sourceInfo = getSourceInfoErrorAddendum(source);
+            if (sourceInfo) info += sourceInfo;
+            else info += getDeclarationErrorAddendum();
+            var typeString;
+            if (type === null) typeString = "null";
+            else if (isArray(type)) typeString = "array";
+            else if (type !== undefined && type.$$typeof === REACT_ELEMENT_TYPE) {
+                typeString = "<" + (getComponentNameFromType(type.type) || "Unknown") + " />";
+                info = " Did you accidentally export a JSX literal instead of a component?";
+            } else typeString = typeof type;
+            error("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
+        }
+        var element = jsxDEV(type, props, key, source, self); // The result can be nullish if a mock or a custom function is used.
+        // TODO: Drop this when these are no longer allowed as the type argument.
+        if (element == null) return element;
+         // Skip key warning if the type isn't valid since our key validation logic
+        // doesn't expect a non-string/function type and can throw confusing errors.
+        // We don't want exception behavior to differ between dev and prod.
+        // (Rendering will throw with a helpful message and as soon as the type is
+        // fixed, the key warnings will appear.)
+        if (validType) {
+            var children = props.children;
+            if (children !== undefined) {
+                if (isStaticChildren) {
+                    if (isArray(children)) {
+                        for(var i = 0; i < children.length; i++)validateChildKeys(children[i], type);
+                        if (Object.freeze) Object.freeze(children);
+                    } else error("React.jsx: Static children should always be an array. You are likely explicitly calling React.jsxs or React.jsxDEV. Use the Babel transform instead.");
+                } else validateChildKeys(children, type);
+            }
+        }
+        if (type === REACT_FRAGMENT_TYPE) validateFragmentProps(element);
+        else validatePropTypes(element);
+        return element;
+    } // These two functions exist to still get child warnings in dev
+    // even with the prod transform. This means that jsxDEV is purely
+    // opt-in behavior for better messages but that we won't stop
+    // giving you warnings if you use production apis.
+    function jsxWithValidationStatic(type, props, key) {
+        return jsxWithValidation(type, props, key, true);
+    }
+    function jsxWithValidationDynamic(type, props, key) {
+        return jsxWithValidation(type, props, key, false);
+    }
+    var jsx = jsxWithValidationDynamic; // we may want to special case jsxs internally to take advantage of static children.
+    // for now we can ship identical prod functions
+    var jsxs = jsxWithValidationStatic;
+    exports.Fragment = REACT_FRAGMENT_TYPE;
+    exports.jsx = jsx;
+    exports.jsxs = jsxs;
+})();
+
+},{"593632ccebda0d3a":"21dqq"}],"km3Ru":[function(require,module,exports) {
 "use strict";
 var Refresh = require("7422ead32dcc1e6b");
 function debounce(func, delay) {
@@ -27757,193 +28179,179 @@ var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$a902.prelude(module);
 
 try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _s = $RefreshSig$();
-const AddForm = ({ onAddProductSubmit, visible, setVisible })=>{
-    _s();
-    const [title, setTitle] = (0, _react.useState)("");
-    const [quantity, setQuantity] = (0, _react.useState)("");
-    const [price, setPrice] = (0, _react.useState)("");
-    const reset = ()=>{
+"use strict";
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports["default"] = void 0;
+var _react = require("f0e1855053b45110");
+var _jsxRuntime = require("a2044cf3e0a3a033");
+function _slicedToArray(arr, i) {
+    return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+}
+function _nonIterableRest() {
+    throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _unsupportedIterableToArray(o, minLen) {
+    if (!o) return;
+    if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+    var n = Object.prototype.toString.call(o).slice(8, -1);
+    if (n === "Object" && o.constructor) n = o.constructor.name;
+    if (n === "Map" || n === "Set") return Array.from(o);
+    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+function _arrayLikeToArray(arr, len) {
+    if (len == null || len > arr.length) len = arr.length;
+    for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
+    return arr2;
+}
+function _iterableToArrayLimit(r, l) {
+    var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
+    if (null != t) {
+        var e, n, i, u, a = [], f = !0, o = !1;
+        try {
+            if (i = (t = t.call(r)).next, 0 === l) {
+                if (Object(t) !== t) return;
+                f = !1;
+            } else for(; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0);
+        } catch (r) {
+            o = !0, n = r;
+        } finally{
+            try {
+                if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return;
+            } finally{
+                if (o) throw n;
+            }
+        }
+        return a;
+    }
+}
+function _arrayWithHoles(arr) {
+    if (Array.isArray(arr)) return arr;
+}
+var AddForm = function AddForm(_ref) {
+    var onAddProductSubmit = _ref.onAddProductSubmit, visible = _ref.visible, setVisible = _ref.setVisible;
+    var _useState = (0, _react.useState)(""), _useState2 = _slicedToArray(_useState, 2), title = _useState2[0], setTitle = _useState2[1];
+    var _useState3 = (0, _react.useState)(""), _useState4 = _slicedToArray(_useState3, 2), quantity = _useState4[0], setQuantity = _useState4[1];
+    var _useState5 = (0, _react.useState)(""), _useState6 = _slicedToArray(_useState5, 2), price = _useState6[0], setPrice = _useState6[1];
+    var reset = function reset() {
         setTitle("");
         setQuantity("");
         setPrice("");
         setVisible(false);
     };
-    const handleSubmit = (e)=>{
+    var handleSubmit = function handleSubmit(e) {
         e.preventDefault();
-        const newProduct = {
-            title,
-            quantity,
-            price
+        var newProduct = {
+            title: title,
+            quantity: quantity,
+            price: price
         };
         onAddProductSubmit(newProduct, reset);
     };
-    let className = "add-form";
+    var className = "add-form";
     if (visible) className += " visible";
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+    return /*#__PURE__*/ (0, _jsxRuntime.jsxs)("div", {
         className: className,
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+            /*#__PURE__*/ (0, _jsxRuntime.jsx)("p", {
+                children: /*#__PURE__*/ (0, _jsxRuntime.jsx)("button", {
                     className: "add-product-button",
-                    onClick: ()=>setVisible(true),
+                    onClick: function onClick() {
+                        return setVisible(true);
+                    },
                     children: "Add A Product"
-                }, void 0, false, {
-                    fileName: "src/components/AddForm.js",
-                    lineNumber: 34,
-                    columnNumber: 9
-                }, undefined)
-            }, void 0, false, {
-                fileName: "src/components/AddForm.js",
-                lineNumber: 33,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                })
+            }),
+            /*#__PURE__*/ (0, _jsxRuntime.jsx)("h3", {
                 children: "Add Product"
-            }, void 0, false, {
-                fileName: "src/components/AddForm.js",
-                lineNumber: 38,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
+            }),
+            /*#__PURE__*/ (0, _jsxRuntime.jsxs)("form", {
                 onSubmit: handleSubmit,
                 children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    /*#__PURE__*/ (0, _jsxRuntime.jsxs)("div", {
                         className: "input-group",
                         children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                            /*#__PURE__*/ (0, _jsxRuntime.jsx)("label", {
                                 htmlFor: "product-name",
                                 children: "Product Name:"
-                            }, void 0, false, {
-                                fileName: "src/components/AddForm.js",
-                                lineNumber: 41,
-                                columnNumber: 11
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                            }),
+                            /*#__PURE__*/ (0, _jsxRuntime.jsx)("input", {
                                 type: "text",
                                 id: "product-name",
                                 name: "product-name",
                                 value: title,
-                                onChange: (e)=>setTitle(e.target.value),
+                                onChange: function onChange(e) {
+                                    return setTitle(e.target.value);
+                                },
                                 required: true
-                            }, void 0, false, {
-                                fileName: "src/components/AddForm.js",
-                                lineNumber: 42,
-                                columnNumber: 11
-                            }, undefined)
+                            })
                         ]
-                    }, void 0, true, {
-                        fileName: "src/components/AddForm.js",
-                        lineNumber: 40,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    }),
+                    /*#__PURE__*/ (0, _jsxRuntime.jsxs)("div", {
                         className: "input-group",
                         children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                            /*#__PURE__*/ (0, _jsxRuntime.jsx)("label", {
                                 htmlFor: "product-price",
                                 children: "Price:"
-                            }, void 0, false, {
-                                fileName: "src/components/AddForm.js",
-                                lineNumber: 52,
-                                columnNumber: 11
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                            }),
+                            /*#__PURE__*/ (0, _jsxRuntime.jsx)("input", {
                                 type: "number",
                                 id: "product-price",
                                 name: "product-price",
                                 min: "0",
                                 step: "0.01",
                                 value: price,
-                                onChange: (e)=>setPrice(e.target.value),
+                                onChange: function onChange(e) {
+                                    return setPrice(e.target.value);
+                                },
                                 required: true
-                            }, void 0, false, {
-                                fileName: "src/components/AddForm.js",
-                                lineNumber: 53,
-                                columnNumber: 11
-                            }, undefined)
+                            })
                         ]
-                    }, void 0, true, {
-                        fileName: "src/components/AddForm.js",
-                        lineNumber: 51,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    }),
+                    /*#__PURE__*/ (0, _jsxRuntime.jsxs)("div", {
                         className: "input-group",
                         children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                            /*#__PURE__*/ (0, _jsxRuntime.jsx)("label", {
                                 htmlFor: "product-quantity",
                                 children: "Quantity:"
-                            }, void 0, false, {
-                                fileName: "src/components/AddForm.js",
-                                lineNumber: 65,
-                                columnNumber: 11
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                            }),
+                            /*#__PURE__*/ (0, _jsxRuntime.jsx)("input", {
                                 type: "number",
                                 id: "product-quantity",
                                 name: "product-quantity",
                                 min: "0",
                                 value: quantity,
-                                onChange: (e)=>setQuantity(e.target.value),
+                                onChange: function onChange(e) {
+                                    return setQuantity(e.target.value);
+                                },
                                 required: true
-                            }, void 0, false, {
-                                fileName: "src/components/AddForm.js",
-                                lineNumber: 66,
-                                columnNumber: 11
-                            }, undefined)
+                            })
                         ]
-                    }, void 0, true, {
-                        fileName: "src/components/AddForm.js",
-                        lineNumber: 64,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    }),
+                    /*#__PURE__*/ (0, _jsxRuntime.jsxs)("div", {
                         className: "actions form-actions",
                         children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                            /*#__PURE__*/ (0, _jsxRuntime.jsx)("button", {
                                 type: "submit",
                                 children: "Add"
-                            }, void 0, false, {
-                                fileName: "src/components/AddForm.js",
-                                lineNumber: 77,
-                                columnNumber: 11
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                            }),
+                            /*#__PURE__*/ (0, _jsxRuntime.jsx)("button", {
                                 type: "button",
-                                onClick: ()=>setVisible(false),
+                                onClick: function onClick() {
+                                    return setVisible(false);
+                                },
                                 children: "Cancel"
-                            }, void 0, false, {
-                                fileName: "src/components/AddForm.js",
-                                lineNumber: 78,
-                                columnNumber: 11
-                            }, undefined)
+                            })
                         ]
-                    }, void 0, true, {
-                        fileName: "src/components/AddForm.js",
-                        lineNumber: 76,
-                        columnNumber: 9
-                    }, undefined)
+                    })
                 ]
-            }, void 0, true, {
-                fileName: "src/components/AddForm.js",
-                lineNumber: 39,
-                columnNumber: 7
-            }, undefined)
+            })
         ]
-    }, void 0, true, {
-        fileName: "src/components/AddForm.js",
-        lineNumber: 32,
-        columnNumber: 5
-    }, undefined);
+    });
 };
-_s(AddForm, "figGqxoOYb5LzniUCN/Xu++xk88=");
 _c = AddForm;
-exports.default = AddForm;
+var _default = exports["default"] = AddForm;
 var _c;
 $RefreshReg$(_c, "AddForm");
 
@@ -27952,55 +28360,49 @@ $RefreshReg$(_c, "AddForm");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"83Yr4":[function(require,module,exports) {
+},{"f0e1855053b45110":"21dqq","a2044cf3e0a3a033":"6AEwr","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"83Yr4":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$e46a = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$e46a.prelude(module);
 
 try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _editableProduct = require("./EditableProduct");
-var _editableProductDefault = parcelHelpers.interopDefault(_editableProduct);
-const ProductListing = ({ products, onEditProductSubmit, onDeleteClick, onAddToCart })=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+"use strict";
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports["default"] = void 0;
+var _EditableProduct = _interopRequireDefault(require("820a4701ab52a68e"));
+var _jsxRuntime = require("3e8b7458eacac26");
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+        "default": obj
+    };
+}
+var ProductListing = function ProductListing(_ref) {
+    var products = _ref.products, onEditProductSubmit = _ref.onEditProductSubmit, onDeleteClick = _ref.onDeleteClick, onAddToCart = _ref.onAddToCart;
+    return /*#__PURE__*/ (0, _jsxRuntime.jsxs)("div", {
         className: "product-listing",
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+            /*#__PURE__*/ (0, _jsxRuntime.jsx)("h2", {
                 children: "Products"
-            }, void 0, false, {
-                fileName: "src/components/ProductListing.js",
-                lineNumber: 11,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+            }),
+            /*#__PURE__*/ (0, _jsxRuntime.jsx)("ul", {
                 className: "product-list",
-                children: products.map((product)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _editableProductDefault.default), {
+                children: products.map(function(product) {
+                    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(_EditableProduct["default"], {
                         product: product,
                         onEditProductSubmit: onEditProductSubmit,
                         onDeleteClick: onDeleteClick,
                         onAddToCart: onAddToCart
-                    }, product._id, false, {
-                        fileName: "src/components/ProductListing.js",
-                        lineNumber: 14,
-                        columnNumber: 11
-                    }, undefined))
-            }, void 0, false, {
-                fileName: "src/components/ProductListing.js",
-                lineNumber: 12,
-                columnNumber: 7
-            }, undefined)
+                    }, product._id);
+                })
+            })
         ]
-    }, void 0, true, {
-        fileName: "src/components/ProductListing.js",
-        lineNumber: 10,
-        columnNumber: 5
-    }, undefined);
+    });
 };
 _c = ProductListing;
-exports.default = ProductListing;
+var _default = exports["default"] = ProductListing;
 var _c;
 $RefreshReg$(_c, "ProductListing");
 
@@ -28009,57 +28411,92 @@ $RefreshReg$(_c, "ProductListing");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","./EditableProduct":"hmy0c","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"hmy0c":[function(require,module,exports) {
+},{"820a4701ab52a68e":"hmy0c","3e8b7458eacac26":"6AEwr","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"hmy0c":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$0062 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$0062.prelude(module);
 
 try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _product = require("./Product");
-var _productDefault = parcelHelpers.interopDefault(_product);
-var _editForm = require("./EditForm");
-var _editFormDefault = parcelHelpers.interopDefault(_editForm);
-var _react = require("react");
-var _s = $RefreshSig$();
-const EditableProduct = ({ product, onEditProductSubmit, onDeleteClick, onAddToCart })=>{
-    _s();
-    const [editFormVisible, setEditFormVisible] = (0, _react.useState)(false);
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+"use strict";
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports["default"] = void 0;
+var _Product = _interopRequireDefault(require("4120210113fd7d1"));
+var _EditForm = _interopRequireDefault(require("ce10231160fb42c5"));
+var _react = require("62e25ed0b9f42b2");
+var _jsxRuntime = require("5bce869fca894d79");
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+        "default": obj
+    };
+}
+function _slicedToArray(arr, i) {
+    return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+}
+function _nonIterableRest() {
+    throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _unsupportedIterableToArray(o, minLen) {
+    if (!o) return;
+    if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+    var n = Object.prototype.toString.call(o).slice(8, -1);
+    if (n === "Object" && o.constructor) n = o.constructor.name;
+    if (n === "Map" || n === "Set") return Array.from(o);
+    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+function _arrayLikeToArray(arr, len) {
+    if (len == null || len > arr.length) len = arr.length;
+    for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
+    return arr2;
+}
+function _iterableToArrayLimit(r, l) {
+    var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
+    if (null != t) {
+        var e, n, i, u, a = [], f = !0, o = !1;
+        try {
+            if (i = (t = t.call(r)).next, 0 === l) {
+                if (Object(t) !== t) return;
+                f = !1;
+            } else for(; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0);
+        } catch (r) {
+            o = !0, n = r;
+        } finally{
+            try {
+                if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return;
+            } finally{
+                if (o) throw n;
+            }
+        }
+        return a;
+    }
+}
+function _arrayWithHoles(arr) {
+    if (Array.isArray(arr)) return arr;
+}
+var EditableProduct = function EditableProduct(_ref) {
+    var product = _ref.product, onEditProductSubmit = _ref.onEditProductSubmit, onDeleteClick = _ref.onDeleteClick, onAddToCart = _ref.onAddToCart;
+    var _useState = (0, _react.useState)(false), _useState2 = _slicedToArray(_useState, 2), editFormVisible = _useState2[0], setEditFormVisible = _useState2[1];
+    return /*#__PURE__*/ (0, _jsxRuntime.jsxs)("li", {
         className: "product",
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _productDefault.default), {
+            /*#__PURE__*/ (0, _jsxRuntime.jsx)(_Product["default"], {
                 product: product,
                 setEditFormVisible: setEditFormVisible,
                 onDeleteClick: onDeleteClick,
                 onAddToCart: onAddToCart
-            }, void 0, false, {
-                fileName: "src/components/EditableProduct.js",
-                lineNumber: 15,
-                columnNumber: 7
-            }, undefined),
-            editFormVisible && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _editFormDefault.default), {
+            }),
+            editFormVisible && /*#__PURE__*/ (0, _jsxRuntime.jsx)(_EditForm["default"], {
                 product: product,
                 setEditFormVisible: setEditFormVisible,
                 onEditProductSubmit: onEditProductSubmit
-            }, void 0, false, {
-                fileName: "src/components/EditableProduct.js",
-                lineNumber: 22,
-                columnNumber: 9
-            }, undefined)
+            })
         ]
-    }, void 0, true, {
-        fileName: "src/components/EditableProduct.js",
-        lineNumber: 14,
-        columnNumber: 5
-    }, undefined);
+    });
 };
-_s(EditableProduct, "R3VaR3+aiPntEq1hnmldBD68Qms=");
 _c = EditableProduct;
-exports.default = EditableProduct;
+var _default = exports["default"] = EditableProduct;
 var _c;
 $RefreshReg$(_c, "EditableProduct");
 
@@ -28068,104 +28505,76 @@ $RefreshReg$(_c, "EditableProduct");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","./Product":"8VNuK","./EditForm":"42Uhe","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"8VNuK":[function(require,module,exports) {
+},{"4120210113fd7d1":"8VNuK","ce10231160fb42c5":"42Uhe","62e25ed0b9f42b2":"21dqq","5bce869fca894d79":"6AEwr","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"8VNuK":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$5065 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$5065.prelude(module);
 
 try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-const Product = ({ product, setEditFormVisible, onDeleteClick, onAddToCart })=>{
-    const handleAddToCart = ()=>{
+"use strict";
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports["default"] = void 0;
+var _jsxRuntime = require("7ef672daa344563");
+var Product = function Product(_ref) {
+    var product = _ref.product, setEditFormVisible = _ref.setEditFormVisible, onDeleteClick = _ref.onDeleteClick, onAddToCart = _ref.onAddToCart;
+    var handleAddToCart = function handleAddToCart() {
         onAddToCart(product._id);
     };
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+    return /*#__PURE__*/ (0, _jsxRuntime.jsxs)("div", {
         className: "product-details",
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+            /*#__PURE__*/ (0, _jsxRuntime.jsx)("h3", {
                 children: product.title
-            }, void 0, false, {
-                fileName: "src/components/Product.js",
-                lineNumber: 12,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+            }),
+            /*#__PURE__*/ (0, _jsxRuntime.jsxs)("p", {
                 className: "price",
                 children: [
                     "$",
                     product.price
                 ]
-            }, void 0, true, {
-                fileName: "src/components/Product.js",
-                lineNumber: 13,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+            }),
+            /*#__PURE__*/ (0, _jsxRuntime.jsxs)("p", {
                 className: "quantity",
                 children: [
                     product.quantity,
                     " left in stock"
                 ]
-            }, void 0, true, {
-                fileName: "src/components/Product.js",
-                lineNumber: 14,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            }),
+            /*#__PURE__*/ (0, _jsxRuntime.jsxs)("div", {
                 className: "actions product-actions",
                 children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                    /*#__PURE__*/ (0, _jsxRuntime.jsx)("button", {
                         className: "add-to-cart",
                         disabled: product.quantity <= 0,
                         onClick: handleAddToCart,
                         children: "Add to Cart"
-                    }, void 0, false, {
-                        fileName: "src/components/Product.js",
-                        lineNumber: 16,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                    }),
+                    /*#__PURE__*/ (0, _jsxRuntime.jsx)("button", {
                         className: "edit",
-                        onClick: ()=>setEditFormVisible(true),
+                        onClick: function onClick() {
+                            return setEditFormVisible(true);
+                        },
                         children: "Edit"
-                    }, void 0, false, {
-                        fileName: "src/components/Product.js",
-                        lineNumber: 23,
-                        columnNumber: 9
-                    }, undefined)
+                    })
                 ]
-            }, void 0, true, {
-                fileName: "src/components/Product.js",
-                lineNumber: 15,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+            }),
+            /*#__PURE__*/ (0, _jsxRuntime.jsx)("button", {
                 className: "delete-button",
-                onClick: ()=>onDeleteClick(product._id),
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                onClick: function onClick() {
+                    return onDeleteClick(product._id);
+                },
+                children: /*#__PURE__*/ (0, _jsxRuntime.jsx)("span", {
                     children: "X"
-                }, void 0, false, {
-                    fileName: "src/components/Product.js",
-                    lineNumber: 31,
-                    columnNumber: 9
-                }, undefined)
-            }, void 0, false, {
-                fileName: "src/components/Product.js",
-                lineNumber: 27,
-                columnNumber: 7
-            }, undefined)
+                })
+            })
         ]
-    }, void 0, true, {
-        fileName: "src/components/Product.js",
-        lineNumber: 11,
-        columnNumber: 5
-    }, undefined);
+    });
 };
 _c = Product;
-exports.default = Product;
+var _default = exports["default"] = Product;
 var _c;
 $RefreshReg$(_c, "Product");
 
@@ -28174,24 +28583,69 @@ $RefreshReg$(_c, "Product");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"42Uhe":[function(require,module,exports) {
+},{"7ef672daa344563":"6AEwr","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"42Uhe":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$db68 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$db68.prelude(module);
 
 try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _s = $RefreshSig$();
-const EditForm = ({ product, setEditFormVisible, onEditProductSubmit })=>{
-    _s();
-    const [formTitle, setFormTitle] = (0, _react.useState)(product.title);
-    const [formPrice, setFormPrice] = (0, _react.useState)(parseFloat(product.price));
-    const [formQuantity, setFormQuantity] = (0, _react.useState)(parseInt(product.quantity));
-    const handleEditFormSubmit = (e)=>{
+"use strict";
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports["default"] = void 0;
+var _react = require("320e2e25892e371f");
+var _jsxRuntime = require("64a2d1d002a7b610");
+function _slicedToArray(arr, i) {
+    return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+}
+function _nonIterableRest() {
+    throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _unsupportedIterableToArray(o, minLen) {
+    if (!o) return;
+    if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+    var n = Object.prototype.toString.call(o).slice(8, -1);
+    if (n === "Object" && o.constructor) n = o.constructor.name;
+    if (n === "Map" || n === "Set") return Array.from(o);
+    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+function _arrayLikeToArray(arr, len) {
+    if (len == null || len > arr.length) len = arr.length;
+    for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
+    return arr2;
+}
+function _iterableToArrayLimit(r, l) {
+    var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
+    if (null != t) {
+        var e, n, i, u, a = [], f = !0, o = !1;
+        try {
+            if (i = (t = t.call(r)).next, 0 === l) {
+                if (Object(t) !== t) return;
+                f = !1;
+            } else for(; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0);
+        } catch (r) {
+            o = !0, n = r;
+        } finally{
+            try {
+                if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return;
+            } finally{
+                if (o) throw n;
+            }
+        }
+        return a;
+    }
+}
+function _arrayWithHoles(arr) {
+    if (Array.isArray(arr)) return arr;
+}
+var EditForm = function EditForm(_ref) {
+    var product = _ref.product, setEditFormVisible = _ref.setEditFormVisible, onEditProductSubmit = _ref.onEditProductSubmit;
+    var _useState = (0, _react.useState)(product.title), _useState2 = _slicedToArray(_useState, 2), formTitle = _useState2[0], setFormTitle = _useState2[1];
+    var _useState3 = (0, _react.useState)(parseFloat(product.price)), _useState4 = _slicedToArray(_useState3, 2), formPrice = _useState4[0], setFormPrice = _useState4[1];
+    var _useState5 = (0, _react.useState)(parseInt(product.quantity)), _useState6 = _slicedToArray(_useState5, 2), formQuantity = _useState6[0], setFormQuantity = _useState6[1];
+    var handleEditFormSubmit = function handleEditFormSubmit(e) {
         e.preventDefault();
         try {
             onEditProductSubmit({
@@ -28199,150 +28653,99 @@ const EditForm = ({ product, setEditFormVisible, onEditProductSubmit })=>{
                 title: formTitle,
                 price: parseFloat(formPrice),
                 quantity: parseInt(formQuantity)
-            }, ()=>setEditFormVisible(false));
+            }, function() {
+                return setEditFormVisible(false);
+            });
         } catch (e) {
             console.error(e);
         }
     };
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+    return /*#__PURE__*/ (0, _jsxRuntime.jsxs)("div", {
         className: "edit-form",
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+            /*#__PURE__*/ (0, _jsxRuntime.jsx)("h3", {
                 children: "Edit Product"
-            }, void 0, false, {
-                fileName: "src/components/EditForm.js",
-                lineNumber: 27,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
+            }),
+            /*#__PURE__*/ (0, _jsxRuntime.jsxs)("form", {
                 onSubmit: handleEditFormSubmit,
                 children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    /*#__PURE__*/ (0, _jsxRuntime.jsxs)("div", {
                         className: "input-group",
                         children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                            /*#__PURE__*/ (0, _jsxRuntime.jsx)("label", {
                                 htmlFor: "product-name",
                                 children: "Product Name"
-                            }, void 0, false, {
-                                fileName: "src/components/EditForm.js",
-                                lineNumber: 30,
-                                columnNumber: 11
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                            }),
+                            /*#__PURE__*/ (0, _jsxRuntime.jsx)("input", {
                                 type: "text",
                                 id: "product-name",
                                 value: formTitle,
                                 "aria-label": "Product Name",
-                                onChange: (e)=>setFormTitle(e.target.value)
-                            }, void 0, false, {
-                                fileName: "src/components/EditForm.js",
-                                lineNumber: 31,
-                                columnNumber: 11
-                            }, undefined)
+                                onChange: function onChange(e) {
+                                    return setFormTitle(e.target.value);
+                                }
+                            })
                         ]
-                    }, void 0, true, {
-                        fileName: "src/components/EditForm.js",
-                        lineNumber: 29,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    }),
+                    /*#__PURE__*/ (0, _jsxRuntime.jsxs)("div", {
                         className: "input-group",
                         children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                            /*#__PURE__*/ (0, _jsxRuntime.jsx)("label", {
                                 htmlFor: "product-price",
                                 children: "Price"
-                            }, void 0, false, {
-                                fileName: "src/components/EditForm.js",
-                                lineNumber: 41,
-                                columnNumber: 11
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                            }),
+                            /*#__PURE__*/ (0, _jsxRuntime.jsx)("input", {
                                 type: "number",
                                 id: "product-price",
                                 value: formPrice,
                                 "aria-label": "Product Price",
-                                onChange: (e)=>setFormPrice(e.target.value)
-                            }, void 0, false, {
-                                fileName: "src/components/EditForm.js",
-                                lineNumber: 42,
-                                columnNumber: 11
-                            }, undefined)
+                                onChange: function onChange(e) {
+                                    return setFormPrice(e.target.value);
+                                }
+                            })
                         ]
-                    }, void 0, true, {
-                        fileName: "src/components/EditForm.js",
-                        lineNumber: 40,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    }),
+                    /*#__PURE__*/ (0, _jsxRuntime.jsxs)("div", {
                         className: "input-group",
                         children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                            /*#__PURE__*/ (0, _jsxRuntime.jsx)("label", {
                                 htmlFor: "product-quantity",
                                 children: "Quantity"
-                            }, void 0, false, {
-                                fileName: "src/components/EditForm.js",
-                                lineNumber: 52,
-                                columnNumber: 11
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                            }),
+                            /*#__PURE__*/ (0, _jsxRuntime.jsx)("input", {
                                 type: "number",
                                 id: "product-quantity",
                                 value: formQuantity,
                                 "aria-label": "Product Quantity",
-                                onChange: (e)=>setFormQuantity(e.target.value)
-                            }, void 0, false, {
-                                fileName: "src/components/EditForm.js",
-                                lineNumber: 53,
-                                columnNumber: 11
-                            }, undefined)
+                                onChange: function onChange(e) {
+                                    return setFormQuantity(e.target.value);
+                                }
+                            })
                         ]
-                    }, void 0, true, {
-                        fileName: "src/components/EditForm.js",
-                        lineNumber: 51,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    }),
+                    /*#__PURE__*/ (0, _jsxRuntime.jsxs)("div", {
                         className: "actions form-actions",
                         children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                            /*#__PURE__*/ (0, _jsxRuntime.jsx)("button", {
                                 type: "submit",
                                 children: "Update"
-                            }, void 0, false, {
-                                fileName: "src/components/EditForm.js",
-                                lineNumber: 63,
-                                columnNumber: 11
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                            }),
+                            /*#__PURE__*/ (0, _jsxRuntime.jsx)("button", {
                                 type: "button",
-                                onClick: ()=>setEditFormVisible(false),
+                                onClick: function onClick() {
+                                    return setEditFormVisible(false);
+                                },
                                 children: "Cancel"
-                            }, void 0, false, {
-                                fileName: "src/components/EditForm.js",
-                                lineNumber: 64,
-                                columnNumber: 11
-                            }, undefined)
+                            })
                         ]
-                    }, void 0, true, {
-                        fileName: "src/components/EditForm.js",
-                        lineNumber: 62,
-                        columnNumber: 9
-                    }, undefined)
+                    })
                 ]
-            }, void 0, true, {
-                fileName: "src/components/EditForm.js",
-                lineNumber: 28,
-                columnNumber: 7
-            }, undefined)
+            })
         ]
-    }, void 0, true, {
-        fileName: "src/components/EditForm.js",
-        lineNumber: 26,
-        columnNumber: 5
-    }, undefined);
+    });
 };
-_s(EditForm, "oWVgvCylwtWWcdUKDkq09FrW6oM=");
 _c = EditForm;
-exports.default = EditForm;
+var _default = exports["default"] = EditForm;
 var _c;
 $RefreshReg$(_c, "EditForm");
 
@@ -28351,39 +28754,430 @@ $RefreshReg$(_c, "EditForm");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"hN7Za":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "fetchProducts", ()=>fetchProducts);
-parcelHelpers.export(exports, "addNewProduct", ()=>addNewProduct);
-parcelHelpers.export(exports, "updateProduct", ()=>updateProduct);
-parcelHelpers.export(exports, "deleteProduct", ()=>deleteProduct);
-var _axios = require("axios");
-var _axiosDefault = parcelHelpers.interopDefault(_axios);
-const fetchProducts = async ()=>{
-    const { data } = await (0, _axiosDefault.default).get("/api/products");
-    return data;
-};
-const addNewProduct = async (newProduct)=>{
-    //todo input validation for quantity and price
-    const result = await (0, _axiosDefault.default).post("/api/products", newProduct, {
-        "Content-Type": "application/json"
+},{"320e2e25892e371f":"21dqq","64a2d1d002a7b610":"6AEwr","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"hN7Za":[function(require,module,exports) {
+"use strict";
+function _typeof(o) {
+    "@babel/helpers - typeof";
+    return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o) {
+        return typeof o;
+    } : function(o) {
+        return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
+    }, _typeof(o);
+}
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.updateProduct = exports.fetchProducts = exports.deleteProduct = exports.addNewProduct = void 0;
+var _axios = _interopRequireDefault(require("ab60911c26f001e1"));
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+        "default": obj
+    };
+}
+function _regeneratorRuntime() {
+    "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ 
+    _regeneratorRuntime = function _regeneratorRuntime() {
+        return e;
+    };
+    var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function(t, e, r) {
+        t[e] = r.value;
+    }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag";
+    function define(t, e, r) {
+        return Object.defineProperty(t, e, {
+            value: r,
+            enumerable: !0,
+            configurable: !0,
+            writable: !0
+        }), t[e];
+    }
+    try {
+        define({}, "");
+    } catch (t) {
+        define = function define(t, e, r) {
+            return t[e] = r;
+        };
+    }
+    function wrap(t, e, r, n) {
+        var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []);
+        return o(a, "_invoke", {
+            value: makeInvokeMethod(t, r, c)
+        }), a;
+    }
+    function tryCatch(t, e, r) {
+        try {
+            return {
+                type: "normal",
+                arg: t.call(e, r)
+            };
+        } catch (t) {
+            return {
+                type: "throw",
+                arg: t
+            };
+        }
+    }
+    e.wrap = wrap;
+    var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {};
+    function Generator() {}
+    function GeneratorFunction() {}
+    function GeneratorFunctionPrototype() {}
+    var p = {};
+    define(p, a, function() {
+        return this;
     });
-    return result;
-};
-const updateProduct = async ({ id, title, price, quantity })=>{
-    const result = await (0, _axiosDefault.default).put(`/api/products/${id}`, {
-        title,
-        price,
-        quantity
-    });
-    return result;
-};
-const deleteProduct = async (id)=>{
-    await (0, _axiosDefault.default).delete(`/api/products/${id}`);
-};
+    var d = Object.getPrototypeOf, v = d && d(d(values([])));
+    v && v !== r && n.call(v, a) && (p = v);
+    var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p);
+    function defineIteratorMethods(t) {
+        [
+            "next",
+            "throw",
+            "return"
+        ].forEach(function(e) {
+            define(t, e, function(t) {
+                return this._invoke(e, t);
+            });
+        });
+    }
+    function AsyncIterator(t, e) {
+        function invoke(r, o, i, a) {
+            var c = tryCatch(t[r], t, o);
+            if ("throw" !== c.type) {
+                var u = c.arg, h = u.value;
+                return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function(t) {
+                    invoke("next", t, i, a);
+                }, function(t) {
+                    invoke("throw", t, i, a);
+                }) : e.resolve(h).then(function(t) {
+                    u.value = t, i(u);
+                }, function(t) {
+                    return invoke("throw", t, i, a);
+                });
+            }
+            a(c.arg);
+        }
+        var r;
+        o(this, "_invoke", {
+            value: function value(t, n) {
+                function callInvokeWithMethodAndArg() {
+                    return new e(function(e, r) {
+                        invoke(t, n, e, r);
+                    });
+                }
+                return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg();
+            }
+        });
+    }
+    function makeInvokeMethod(e, r, n) {
+        var o = h;
+        return function(i, a) {
+            if (o === f) throw new Error("Generator is already running");
+            if (o === s) {
+                if ("throw" === i) throw a;
+                return {
+                    value: t,
+                    done: !0
+                };
+            }
+            for(n.method = i, n.arg = a;;){
+                var c = n.delegate;
+                if (c) {
+                    var u = maybeInvokeDelegate(c, n);
+                    if (u) {
+                        if (u === y) continue;
+                        return u;
+                    }
+                }
+                if ("next" === n.method) n.sent = n._sent = n.arg;
+                else if ("throw" === n.method) {
+                    if (o === h) throw o = s, n.arg;
+                    n.dispatchException(n.arg);
+                } else "return" === n.method && n.abrupt("return", n.arg);
+                o = f;
+                var p = tryCatch(e, r, n);
+                if ("normal" === p.type) {
+                    if (o = n.done ? s : l, p.arg === y) continue;
+                    return {
+                        value: p.arg,
+                        done: n.done
+                    };
+                }
+                "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg);
+            }
+        };
+    }
+    function maybeInvokeDelegate(e, r) {
+        var n = r.method, o = e.iterator[n];
+        if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y;
+        var i = tryCatch(o, e.iterator, r.arg);
+        if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y;
+        var a = i.arg;
+        return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y);
+    }
+    function pushTryEntry(t) {
+        var e = {
+            tryLoc: t[0]
+        };
+        1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e);
+    }
+    function resetTryEntry(t) {
+        var e = t.completion || {};
+        e.type = "normal", delete e.arg, t.completion = e;
+    }
+    function Context(t) {
+        this.tryEntries = [
+            {
+                tryLoc: "root"
+            }
+        ], t.forEach(pushTryEntry, this), this.reset(!0);
+    }
+    function values(e) {
+        if (e || "" === e) {
+            var r = e[a];
+            if (r) return r.call(e);
+            if ("function" == typeof e.next) return e;
+            if (!isNaN(e.length)) {
+                var o = -1, i = function next() {
+                    for(; ++o < e.length;)if (n.call(e, o)) return next.value = e[o], next.done = !1, next;
+                    return next.value = t, next.done = !0, next;
+                };
+                return i.next = i;
+            }
+        }
+        throw new TypeError(_typeof(e) + " is not iterable");
+    }
+    return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", {
+        value: GeneratorFunctionPrototype,
+        configurable: !0
+    }), o(GeneratorFunctionPrototype, "constructor", {
+        value: GeneratorFunction,
+        configurable: !0
+    }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function(t) {
+        var e = "function" == typeof t && t.constructor;
+        return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name));
+    }, e.mark = function(t) {
+        return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t;
+    }, e.awrap = function(t) {
+        return {
+            __await: t
+        };
+    }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function() {
+        return this;
+    }), e.AsyncIterator = AsyncIterator, e.async = function(t, r, n, o, i) {
+        void 0 === i && (i = Promise);
+        var a = new AsyncIterator(wrap(t, r, n, o), i);
+        return e.isGeneratorFunction(r) ? a : a.next().then(function(t) {
+            return t.done ? t.value : a.next();
+        });
+    }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function() {
+        return this;
+    }), define(g, "toString", function() {
+        return "[object Generator]";
+    }), e.keys = function(t) {
+        var e = Object(t), r = [];
+        for(var n in e)r.push(n);
+        return r.reverse(), function next() {
+            for(; r.length;){
+                var t = r.pop();
+                if (t in e) return next.value = t, next.done = !1, next;
+            }
+            return next.done = !0, next;
+        };
+    }, e.values = values, Context.prototype = {
+        constructor: Context,
+        reset: function reset(e) {
+            if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for(var r in this)"t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t);
+        },
+        stop: function stop() {
+            this.done = !0;
+            var t = this.tryEntries[0].completion;
+            if ("throw" === t.type) throw t.arg;
+            return this.rval;
+        },
+        dispatchException: function dispatchException(e) {
+            if (this.done) throw e;
+            var r = this;
+            function handle(n, o) {
+                return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o;
+            }
+            for(var o = this.tryEntries.length - 1; o >= 0; --o){
+                var i = this.tryEntries[o], a = i.completion;
+                if ("root" === i.tryLoc) return handle("end");
+                if (i.tryLoc <= this.prev) {
+                    var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc");
+                    if (c && u) {
+                        if (this.prev < i.catchLoc) return handle(i.catchLoc, !0);
+                        if (this.prev < i.finallyLoc) return handle(i.finallyLoc);
+                    } else if (c) {
+                        if (this.prev < i.catchLoc) return handle(i.catchLoc, !0);
+                    } else {
+                        if (!u) throw new Error("try statement without catch or finally");
+                        if (this.prev < i.finallyLoc) return handle(i.finallyLoc);
+                    }
+                }
+            }
+        },
+        abrupt: function abrupt(t, e) {
+            for(var r = this.tryEntries.length - 1; r >= 0; --r){
+                var o = this.tryEntries[r];
+                if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) {
+                    var i = o;
+                    break;
+                }
+            }
+            i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null);
+            var a = i ? i.completion : {};
+            return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a);
+        },
+        complete: function complete(t, e) {
+            if ("throw" === t.type) throw t.arg;
+            return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y;
+        },
+        finish: function finish(t) {
+            for(var e = this.tryEntries.length - 1; e >= 0; --e){
+                var r = this.tryEntries[e];
+                if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y;
+            }
+        },
+        "catch": function _catch(t) {
+            for(var e = this.tryEntries.length - 1; e >= 0; --e){
+                var r = this.tryEntries[e];
+                if (r.tryLoc === t) {
+                    var n = r.completion;
+                    if ("throw" === n.type) {
+                        var o = n.arg;
+                        resetTryEntry(r);
+                    }
+                    return o;
+                }
+            }
+            throw new Error("illegal catch attempt");
+        },
+        delegateYield: function delegateYield(e, r, n) {
+            return this.delegate = {
+                iterator: values(e),
+                resultName: r,
+                nextLoc: n
+            }, "next" === this.method && (this.arg = t), y;
+        }
+    }, e;
+}
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+    try {
+        var info = gen[key](arg);
+        var value = info.value;
+    } catch (error) {
+        reject(error);
+        return;
+    }
+    if (info.done) resolve(value);
+    else Promise.resolve(value).then(_next, _throw);
+}
+function _asyncToGenerator(fn) {
+    return function() {
+        var self = this, args = arguments;
+        return new Promise(function(resolve, reject) {
+            var gen = fn.apply(self, args);
+            function _next(value) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+            }
+            function _throw(err) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+            }
+            _next(undefined);
+        });
+    };
+}
+var fetchProducts = exports.fetchProducts = /*#__PURE__*/ function() {
+    var _ref = _asyncToGenerator(/*#__PURE__*/ _regeneratorRuntime().mark(function _callee() {
+        var _yield$axios$get, data;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+            while(true)switch(_context.prev = _context.next){
+                case 0:
+                    _context.next = 2;
+                    return _axios["default"].get("/api/products");
+                case 2:
+                    _yield$axios$get = _context.sent;
+                    data = _yield$axios$get.data;
+                    return _context.abrupt("return", data);
+                case 5:
+                case "end":
+                    return _context.stop();
+            }
+        }, _callee);
+    }));
+    return function fetchProducts() {
+        return _ref.apply(this, arguments);
+    };
+}();
+var addNewProduct = exports.addNewProduct = /*#__PURE__*/ function() {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/ _regeneratorRuntime().mark(function _callee2(newProduct) {
+        var result;
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+            while(true)switch(_context2.prev = _context2.next){
+                case 0:
+                    _context2.next = 2;
+                    return _axios["default"].post("/api/products", newProduct, {
+                        "Content-Type": "application/json"
+                    });
+                case 2:
+                    result = _context2.sent;
+                    return _context2.abrupt("return", result);
+                case 4:
+                case "end":
+                    return _context2.stop();
+            }
+        }, _callee2);
+    }));
+    return function addNewProduct(_x) {
+        return _ref2.apply(this, arguments);
+    };
+}();
+var updateProduct = exports.updateProduct = /*#__PURE__*/ function() {
+    var _ref4 = _asyncToGenerator(/*#__PURE__*/ _regeneratorRuntime().mark(function _callee3(_ref3) {
+        var id, title, price, quantity, result;
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+            while(true)switch(_context3.prev = _context3.next){
+                case 0:
+                    id = _ref3.id, title = _ref3.title, price = _ref3.price, quantity = _ref3.quantity;
+                    _context3.next = 3;
+                    return _axios["default"].put("/api/products/".concat(id), {
+                        title: title,
+                        price: price,
+                        quantity: quantity
+                    });
+                case 3:
+                    result = _context3.sent;
+                    return _context3.abrupt("return", result);
+                case 5:
+                case "end":
+                    return _context3.stop();
+            }
+        }, _callee3);
+    }));
+    return function updateProduct(_x2) {
+        return _ref4.apply(this, arguments);
+    };
+}();
+var deleteProduct = exports.deleteProduct = /*#__PURE__*/ function() {
+    var _ref5 = _asyncToGenerator(/*#__PURE__*/ _regeneratorRuntime().mark(function _callee4(id) {
+        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+            while(true)switch(_context4.prev = _context4.next){
+                case 0:
+                    _context4.next = 2;
+                    return _axios["default"]["delete"]("/api/products/".concat(id));
+                case 2:
+                case "end":
+                    return _context4.stop();
+            }
+        }, _callee4);
+    }));
+    return function deleteProduct(_x3) {
+        return _ref5.apply(this, arguments);
+    };
+}();
 
-},{"axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jo6P5":[function(require,module,exports) {
+},{"ab60911c26f001e1":"jo6P5"}],"jo6P5":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>(0, _axiosJsDefault.default));
@@ -29065,7 +29859,37 @@ function bind(fn, thisArg) {
     };
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cpqD8":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || Object.prototype.hasOwnProperty.call(dest, key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"cpqD8":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _utilsJs = require("./../utils.js");
@@ -32759,14 +33583,340 @@ Object.entries(HttpStatusCode).forEach(([key, value])=>{
 exports.default = HttpStatusCode;
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dMYeP":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "fetchCart", ()=>fetchCart);
-parcelHelpers.export(exports, "addToCart", ()=>addToCart);
-parcelHelpers.export(exports, "checkoutCart", ()=>checkoutCart);
-var _axios = require("axios");
-var _axiosDefault = parcelHelpers.interopDefault(_axios);
-const testItems = [
+"use strict";
+function _typeof(o) {
+    "@babel/helpers - typeof";
+    return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o) {
+        return typeof o;
+    } : function(o) {
+        return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
+    }, _typeof(o);
+}
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.fetchCart = exports.checkoutCart = exports.addToCart = void 0;
+var _axios = _interopRequireDefault(require("953fc08fd5d48305"));
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+        "default": obj
+    };
+}
+function _regeneratorRuntime() {
+    "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ 
+    _regeneratorRuntime = function _regeneratorRuntime() {
+        return e;
+    };
+    var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function(t, e, r) {
+        t[e] = r.value;
+    }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag";
+    function define(t, e, r) {
+        return Object.defineProperty(t, e, {
+            value: r,
+            enumerable: !0,
+            configurable: !0,
+            writable: !0
+        }), t[e];
+    }
+    try {
+        define({}, "");
+    } catch (t) {
+        define = function define(t, e, r) {
+            return t[e] = r;
+        };
+    }
+    function wrap(t, e, r, n) {
+        var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []);
+        return o(a, "_invoke", {
+            value: makeInvokeMethod(t, r, c)
+        }), a;
+    }
+    function tryCatch(t, e, r) {
+        try {
+            return {
+                type: "normal",
+                arg: t.call(e, r)
+            };
+        } catch (t) {
+            return {
+                type: "throw",
+                arg: t
+            };
+        }
+    }
+    e.wrap = wrap;
+    var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {};
+    function Generator() {}
+    function GeneratorFunction() {}
+    function GeneratorFunctionPrototype() {}
+    var p = {};
+    define(p, a, function() {
+        return this;
+    });
+    var d = Object.getPrototypeOf, v = d && d(d(values([])));
+    v && v !== r && n.call(v, a) && (p = v);
+    var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p);
+    function defineIteratorMethods(t) {
+        [
+            "next",
+            "throw",
+            "return"
+        ].forEach(function(e) {
+            define(t, e, function(t) {
+                return this._invoke(e, t);
+            });
+        });
+    }
+    function AsyncIterator(t, e) {
+        function invoke(r, o, i, a) {
+            var c = tryCatch(t[r], t, o);
+            if ("throw" !== c.type) {
+                var u = c.arg, h = u.value;
+                return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function(t) {
+                    invoke("next", t, i, a);
+                }, function(t) {
+                    invoke("throw", t, i, a);
+                }) : e.resolve(h).then(function(t) {
+                    u.value = t, i(u);
+                }, function(t) {
+                    return invoke("throw", t, i, a);
+                });
+            }
+            a(c.arg);
+        }
+        var r;
+        o(this, "_invoke", {
+            value: function value(t, n) {
+                function callInvokeWithMethodAndArg() {
+                    return new e(function(e, r) {
+                        invoke(t, n, e, r);
+                    });
+                }
+                return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg();
+            }
+        });
+    }
+    function makeInvokeMethod(e, r, n) {
+        var o = h;
+        return function(i, a) {
+            if (o === f) throw new Error("Generator is already running");
+            if (o === s) {
+                if ("throw" === i) throw a;
+                return {
+                    value: t,
+                    done: !0
+                };
+            }
+            for(n.method = i, n.arg = a;;){
+                var c = n.delegate;
+                if (c) {
+                    var u = maybeInvokeDelegate(c, n);
+                    if (u) {
+                        if (u === y) continue;
+                        return u;
+                    }
+                }
+                if ("next" === n.method) n.sent = n._sent = n.arg;
+                else if ("throw" === n.method) {
+                    if (o === h) throw o = s, n.arg;
+                    n.dispatchException(n.arg);
+                } else "return" === n.method && n.abrupt("return", n.arg);
+                o = f;
+                var p = tryCatch(e, r, n);
+                if ("normal" === p.type) {
+                    if (o = n.done ? s : l, p.arg === y) continue;
+                    return {
+                        value: p.arg,
+                        done: n.done
+                    };
+                }
+                "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg);
+            }
+        };
+    }
+    function maybeInvokeDelegate(e, r) {
+        var n = r.method, o = e.iterator[n];
+        if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y;
+        var i = tryCatch(o, e.iterator, r.arg);
+        if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y;
+        var a = i.arg;
+        return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y);
+    }
+    function pushTryEntry(t) {
+        var e = {
+            tryLoc: t[0]
+        };
+        1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e);
+    }
+    function resetTryEntry(t) {
+        var e = t.completion || {};
+        e.type = "normal", delete e.arg, t.completion = e;
+    }
+    function Context(t) {
+        this.tryEntries = [
+            {
+                tryLoc: "root"
+            }
+        ], t.forEach(pushTryEntry, this), this.reset(!0);
+    }
+    function values(e) {
+        if (e || "" === e) {
+            var r = e[a];
+            if (r) return r.call(e);
+            if ("function" == typeof e.next) return e;
+            if (!isNaN(e.length)) {
+                var o = -1, i = function next() {
+                    for(; ++o < e.length;)if (n.call(e, o)) return next.value = e[o], next.done = !1, next;
+                    return next.value = t, next.done = !0, next;
+                };
+                return i.next = i;
+            }
+        }
+        throw new TypeError(_typeof(e) + " is not iterable");
+    }
+    return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", {
+        value: GeneratorFunctionPrototype,
+        configurable: !0
+    }), o(GeneratorFunctionPrototype, "constructor", {
+        value: GeneratorFunction,
+        configurable: !0
+    }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function(t) {
+        var e = "function" == typeof t && t.constructor;
+        return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name));
+    }, e.mark = function(t) {
+        return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t;
+    }, e.awrap = function(t) {
+        return {
+            __await: t
+        };
+    }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function() {
+        return this;
+    }), e.AsyncIterator = AsyncIterator, e.async = function(t, r, n, o, i) {
+        void 0 === i && (i = Promise);
+        var a = new AsyncIterator(wrap(t, r, n, o), i);
+        return e.isGeneratorFunction(r) ? a : a.next().then(function(t) {
+            return t.done ? t.value : a.next();
+        });
+    }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function() {
+        return this;
+    }), define(g, "toString", function() {
+        return "[object Generator]";
+    }), e.keys = function(t) {
+        var e = Object(t), r = [];
+        for(var n in e)r.push(n);
+        return r.reverse(), function next() {
+            for(; r.length;){
+                var t = r.pop();
+                if (t in e) return next.value = t, next.done = !1, next;
+            }
+            return next.done = !0, next;
+        };
+    }, e.values = values, Context.prototype = {
+        constructor: Context,
+        reset: function reset(e) {
+            if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for(var r in this)"t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t);
+        },
+        stop: function stop() {
+            this.done = !0;
+            var t = this.tryEntries[0].completion;
+            if ("throw" === t.type) throw t.arg;
+            return this.rval;
+        },
+        dispatchException: function dispatchException(e) {
+            if (this.done) throw e;
+            var r = this;
+            function handle(n, o) {
+                return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o;
+            }
+            for(var o = this.tryEntries.length - 1; o >= 0; --o){
+                var i = this.tryEntries[o], a = i.completion;
+                if ("root" === i.tryLoc) return handle("end");
+                if (i.tryLoc <= this.prev) {
+                    var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc");
+                    if (c && u) {
+                        if (this.prev < i.catchLoc) return handle(i.catchLoc, !0);
+                        if (this.prev < i.finallyLoc) return handle(i.finallyLoc);
+                    } else if (c) {
+                        if (this.prev < i.catchLoc) return handle(i.catchLoc, !0);
+                    } else {
+                        if (!u) throw new Error("try statement without catch or finally");
+                        if (this.prev < i.finallyLoc) return handle(i.finallyLoc);
+                    }
+                }
+            }
+        },
+        abrupt: function abrupt(t, e) {
+            for(var r = this.tryEntries.length - 1; r >= 0; --r){
+                var o = this.tryEntries[r];
+                if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) {
+                    var i = o;
+                    break;
+                }
+            }
+            i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null);
+            var a = i ? i.completion : {};
+            return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a);
+        },
+        complete: function complete(t, e) {
+            if ("throw" === t.type) throw t.arg;
+            return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y;
+        },
+        finish: function finish(t) {
+            for(var e = this.tryEntries.length - 1; e >= 0; --e){
+                var r = this.tryEntries[e];
+                if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y;
+            }
+        },
+        "catch": function _catch(t) {
+            for(var e = this.tryEntries.length - 1; e >= 0; --e){
+                var r = this.tryEntries[e];
+                if (r.tryLoc === t) {
+                    var n = r.completion;
+                    if ("throw" === n.type) {
+                        var o = n.arg;
+                        resetTryEntry(r);
+                    }
+                    return o;
+                }
+            }
+            throw new Error("illegal catch attempt");
+        },
+        delegateYield: function delegateYield(e, r, n) {
+            return this.delegate = {
+                iterator: values(e),
+                resultName: r,
+                nextLoc: n
+            }, "next" === this.method && (this.arg = t), y;
+        }
+    }, e;
+}
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+    try {
+        var info = gen[key](arg);
+        var value = info.value;
+    } catch (error) {
+        reject(error);
+        return;
+    }
+    if (info.done) resolve(value);
+    else Promise.resolve(value).then(_next, _throw);
+}
+function _asyncToGenerator(fn) {
+    return function() {
+        var self = this, args = arguments;
+        return new Promise(function(resolve, reject) {
+            var gen = fn.apply(self, args);
+            function _next(value) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+            }
+            function _throw(err) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+            }
+            _next(undefined);
+        });
+    };
+}
+var testItems = [
     {
         _id: "545454f72092473d55a809e1",
         title: "Kindle",
@@ -32788,21 +33938,70 @@ const testItems = [
         _v: 0
     }
 ];
-const fetchCart = async ()=>{
-    const { data } = await (0, _axiosDefault.default).get("/api/cart");
-    return data;
-};
-const addToCart = async (productId)=>{
-    const { data } = await (0, _axiosDefault.default).post(`/api/add-to-cart/`, {
-        productId
-    });
-    console.log(data);
-    return data;
-};
-const checkoutCart = async ()=>{
-    await (0, _axiosDefault.default).post("/api/checkout");
-};
+var fetchCart = exports.fetchCart = /*#__PURE__*/ function() {
+    var _ref = _asyncToGenerator(/*#__PURE__*/ _regeneratorRuntime().mark(function _callee() {
+        var _yield$axios$get, data;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+            while(true)switch(_context.prev = _context.next){
+                case 0:
+                    _context.next = 2;
+                    return _axios["default"].get("/api/cart");
+                case 2:
+                    _yield$axios$get = _context.sent;
+                    data = _yield$axios$get.data;
+                    return _context.abrupt("return", data);
+                case 5:
+                case "end":
+                    return _context.stop();
+            }
+        }, _callee);
+    }));
+    return function fetchCart() {
+        return _ref.apply(this, arguments);
+    };
+}();
+var addToCart = exports.addToCart = /*#__PURE__*/ function() {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/ _regeneratorRuntime().mark(function _callee2(productId) {
+        var _yield$axios$post, data;
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+            while(true)switch(_context2.prev = _context2.next){
+                case 0:
+                    _context2.next = 2;
+                    return _axios["default"].post("/api/add-to-cart/", {
+                        productId: productId
+                    });
+                case 2:
+                    _yield$axios$post = _context2.sent;
+                    data = _yield$axios$post.data;
+                    return _context2.abrupt("return", data);
+                case 5:
+                case "end":
+                    return _context2.stop();
+            }
+        }, _callee2);
+    }));
+    return function addToCart(_x) {
+        return _ref2.apply(this, arguments);
+    };
+}();
+var checkoutCart = exports.checkoutCart = /*#__PURE__*/ function() {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/ _regeneratorRuntime().mark(function _callee3() {
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+            while(true)switch(_context3.prev = _context3.next){
+                case 0:
+                    _context3.next = 2;
+                    return _axios["default"].post("/api/checkout");
+                case 2:
+                case "end":
+                    return _context3.stop();
+            }
+        }, _callee3);
+    }));
+    return function checkoutCart() {
+        return _ref3.apply(this, arguments);
+    };
+}();
 
-},{"axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["4rkIz","1xC6H","8lqZg"], "8lqZg", "parcelRequiree8ef")
+},{"953fc08fd5d48305":"jo6P5"}]},["4rkIz","1xC6H","8lqZg"], "8lqZg", "parcelRequiree8ef")
 
 //# sourceMappingURL=index.975ef6c8.js.map
